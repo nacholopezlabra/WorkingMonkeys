@@ -22,6 +22,6 @@ import { LoginTeachersComponent } from './login-teachers/login-teachers.componen
     BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [RegisterTeachersComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
