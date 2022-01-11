@@ -5,17 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterTeachersComponent } from './register-teachers/register-teachers.component';
+import { LoginTeachersComponent } from './login-teachers/login-teachers.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterTeachersComponent,
+    LoginTeachersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [RegisterTeachersComponent]
 })
 export class AppModule { }

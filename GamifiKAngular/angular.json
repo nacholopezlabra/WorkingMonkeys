@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "2a3154c4-180f-4273-86b7-46de68b247b8"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -27,6 +30,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
