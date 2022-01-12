@@ -3,19 +3,19 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class BdService {
+export class DbService {
 
   constructor() { }
 
 
-  pushData(bdSlot:string,data:any):void{
+  pushData(dbSlot:string,data:any):void{
     //save data inside localStorage, to use it you must put a string on bdSlot, ex:'users';
-    localStorage.setItem(bdSlot,JSON.stringify(data));
+    localStorage.setItem(dbSlot,JSON.stringify(data));
   }
 
-  fetchData(bdSlot:string){
+  fetchData(dbSlot:string){
     //return data from localStorage.
-    return JSON.parse(localStorage.getItem(bdSlot)!);
+    return JSON.parse(localStorage.getItem(dbSlot)!);
   }
 
 

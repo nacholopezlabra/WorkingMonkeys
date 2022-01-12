@@ -1,1 +1,20 @@
 
+<html>
+  <div class="cardBox">
+    <div class="imageCard standarCard">
+      <div class="imageCardContainer">
+        <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
+        <img class="profileImage" *ngIf="user?.image == ''" src="../../../assets/placeholders/userPlaceholder.jpg">
+        <p *ngIf="user?.userType == 1" >Professor</p>
+        <p *ngIf="user?.userType == 0">Estudiante</p>
+      </div>
+    </div>
+    <div class="infoCard standarCard">
+      usuario:{{user?.nickname}}
+      nombre:{{user?.name}}
+      correo:{{user?.mail}}
+      contraseña: <button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button> <span *ngIf="passwordShowed">{{user?.password}}</span>
+    </div>
+  </div>
+
+</html>

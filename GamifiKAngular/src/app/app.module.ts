@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterTeachersComponent } from './register-teachers/register-teachers.component';
-import { LoginTeachersComponent } from './login-teachers/login-teachers.component';
+import { RegisterTeachersComponent } from './pages/register-teachers/register-teachers.component';
+import { LoginTeachersComponent } from './pages/login-teachers/login-teachers.component';
 @NgModule({
   declarations: [
     AppComponent,

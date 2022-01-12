@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { user } from 'src/app/model/users';
+import { UsersService } from 'src/app/services/userService/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user:user|undefined = undefined;
+  passwordShowed:boolean =false;
+  constructor(private usersService:UsersService) {
+
+    this.user = this.usersService.getCurrentUser();
+
+   }
 
   ngOnInit(): void {
   }
+
+  showPassword():void{
+    if(!this.passwordShowed){
+      this.passwordShowed = true;
+    }else{
+      this.passwordShowed = false;
+    }
+
+  }
+
+
+
+
 
 
 }
