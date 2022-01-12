@@ -10,3 +10,11 @@ export interface user{
   userType:number;
   image:string;
 }
+
+export interface ranking{
+  id:number;
+  name:string;
+  memberCount:number;
+  members:number[];
+  teacher:number;
+}

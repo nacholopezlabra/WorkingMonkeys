@@ -9,9 +9,6 @@
 
 .imageCard{
   float: left;
-  padding-left: 15px;
-  padding-top: 15px;
-  padding-right: 15px;
   margin-right: 10px;
 }
 .cardBox{
@@ -28,11 +25,15 @@
   width:fit-content;
   align-items: center;
   text-align: left;
-  padding:15px;
+
 
 }
 .standarCard{
   border-radius: 20px;
   border: 1px solid rgba(92, 92, 92, 0.301);
   height: fit-content;
+  padding:15px;
+}
+.rankingCard{
+  width:fit-content;
 }
