@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { user } from 'src/app/model/users';
+import { user } from 'src/app/model/interfaces';
+import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProfileComponent implements OnInit {
 
   user:user|undefined = undefined;
   passwordShowed:boolean =false;
-  constructor(private usersService:UsersService) {
+  constructor(private usersService:UsersService, public rankingService:RankingService) {
 
     this.user = this.usersService.getCurrentUser();
 
