@@ -7,43 +7,40 @@ import { UsersService } from 'src/app/services/userService/users.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-
-  user:user|undefined = undefined;
-  passwordShowed:boolean =false;
-  constructor(private usersService:UsersService, public rankingService:RankingService, private apiService:ApiService) {
-
+  user: user | undefined = undefined;
+  passwordShowed: boolean = false;
+  constructor(
+    private usersService: UsersService,
+    public rankingService: RankingService,
+    private apiService: ApiService
+  ) {
     this.user = this.usersService.getCurrentUser();
-
-   }
-
-  ngOnInit(): void {
   }
 
-  showPassword():void{
-    if(!this.passwordShowed){
+  ngOnInit(): void {}
+
+  showPassword(): void {
+    if (!this.passwordShowed) {
       this.passwordShowed = true;
-    }else{
+    } else {
       this.passwordShowed = false;
     }
-
   }
 
-  async logUser(){
+  async logUser() {
+    let res: any;
 
-    let res:any;
-
-    await this.apiService.logIn("wotroyer","1234").subscribe((data:any)=> {
-      res = data;
-    }, error => {
-      console.log('Me ha dado error');
-    });;
-    console.log(res)
+    await this.apiService.logIn('wotroyer', '1234').subscribe(
+      (data: any) => {
+        res = data;
+      },
+      (error) => {
+        console.log('Me ha dado error');
+      }
+    );
+    console.log(res);
   }
-
-
-
-
 }

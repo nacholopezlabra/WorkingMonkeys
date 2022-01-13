@@ -18,6 +18,10 @@ export class ApiService {
 
   }
 
+  logOut(){
+
+  }
+
 
 
   generateUrl(path:string):string{
