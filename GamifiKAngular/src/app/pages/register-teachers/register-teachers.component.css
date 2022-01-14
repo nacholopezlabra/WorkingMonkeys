@@ -97,22 +97,22 @@ body{
   width: 100%;
   background: #fff;
 }
-.container .form-content{
+.container .formContent{
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.form-content .login-form,
-.form-content .signup-form{
+.formContent .loginForm,
+.formContent .signupForm{
   width: calc(100% / 2 - 25px);
 }
-.forms .form-content .title{
+.forms .formContent .title{
   position: relative;
   font-size: 24px;
   font-weight: 500;
   color: #333;
 }
-.forms .form-content .title:before{
+.forms .formContent .title:before{
   content: '';
   position: absolute;
   left: 0;
@@ -121,13 +121,13 @@ body{
   width: 25px;
   background: #333;
 }
-.forms .signup-form  .title:before{
+.forms .signupForm  .title:before{
   width: 20px;
 }
-.forms .form-content .input-boxes{
+.forms .formContent .inputBoxes{
   margin-top: 30px;
 }
-.forms .form-content .input-box{
+.forms .formContent .inputBox{
   display: flex;
   align-items: center;
   height: 50px;
@@ -135,7 +135,7 @@ body{
   margin: 10px 0;
   position: relative;
 }
-.form-content .input-box input{
+.formContent .inputBox input{
   height: 100%;
   width: 100%;
   outline: none;
@@ -146,31 +146,31 @@ body{
   border-bottom: 2px solid rgba(0,0,0,0.2);
   transition: all 0.3s ease;
 }
-.form-content .input-box input:focus,
-.form-content .input-box input:valid{
+.formContent .inputBox input:focus,
+.formContent .inputBox input:valid{
   border-color: #333;
 }
-.form-content .input-box i{
+.formContent .inputBox i{
   position: absolute;
   color: #333;
   font-size: 17px;
 }
-.forms .form-content .text{
+.forms .formContent .text{
   font-size: 14px;
   font-weight: 500;
   color: #333;
 }
-.forms .form-content .text a{
+.forms .formContent .text a{
   text-decoration: none;
 }
-.forms .form-content .text a:hover{
+.forms .formContent .text a:hover{
   text-decoration: underline;
 }
-.forms .form-content .button{
+.forms .formContent .button{
   color: #fff;
   margin-top: 40px;
 }
-.forms .form-content .button input{
+.forms .formContent .button input{
   color: #fff;
   background: #333;
   border-radius: 6px;
@@ -178,18 +178,18 @@ body{
   cursor: pointer;
   transition: all 0.4s ease;
 }
-.forms .form-content .button input:hover{
+.forms .formContent .button input:hover{
   background: #333;
 }
-.forms .form-content label{
+.forms .formContent label{
   color: #333;
   cursor: pointer;
 }
-.forms .form-content label:hover{
+.forms .formContent label:hover{
   text-decoration: underline;
 }
-.forms .form-content .login-text,
-.forms .form-content .sign-up-text{
+.forms .formContent .loginText,
+.forms .formContent .signupText{
   text-align: center;
   margin-top: 25px;
 }
@@ -200,17 +200,17 @@ body{
   .container .cover{
     display: none;
   }
-  .form-content .login-form,
-  .form-content .signup-form{
+  .formContent .loginForm,
+  .formContent .signupForm{
     width: 100%;
   }
-  .form-content .signup-form{
+  .formContent .signupForm{
     display: none;
   }
-  .container #flip:checked ~ .forms .signup-form{
+  .container #flip:checked ~ .forms .signupForm{
     display: block;
   }
-  .container #flip:checked ~ .forms .login-form{
+  .container #flip:checked ~ .forms .loginForm{
     display: none;
   }
 }
