@@ -34,13 +34,15 @@ export class ProfileComponent implements OnInit {
     let res: any;
 
     await this.apiService.logIn('wotroyer', '1234').subscribe(
-      (data: any) => {
-        res = data;
+      (data) => {
+        res = data.data;
+        console.log(res);
+        this.usersService.fetchCurrentUser(res);
       },
       (error) => {
         console.log('Me ha dado error');
       }
     );
-    console.log(res);
+
   }
 }

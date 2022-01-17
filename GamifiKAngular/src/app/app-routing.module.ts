@@ -5,9 +5,9 @@ import { LoginTeachersComponent } from './pages/login-teachers/login-teachers.co
 import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', component: RegisterTeachersComponent },
+  { path: 'register', component: RegisterTeachersComponent },
   { path: 'loginTeachers', component: LoginTeachersComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: '', component: ProfileComponent },
 ];
 
 @NgModule({

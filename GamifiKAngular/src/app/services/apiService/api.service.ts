@@ -25,6 +25,7 @@ export class ApiService {
 
 
   generateUrl(path:string):string{
+    console.log(HOST+path);
     return HOST+path;
   }
 

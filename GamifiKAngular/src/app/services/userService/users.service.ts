@@ -21,6 +21,7 @@ export class UsersService {
     this.currentUser = {id:2, nickname:"fonsiii1",mail:"fonsi@gmail.com",password:"1234",name:"fonsi",surname:"Garcia",birthday:new Date("17/09/1999"),userType:1,image:""};
     if(!!data){
       this.currentUser = data;
+      console.log(this.currentUser);
     }
 
   }
