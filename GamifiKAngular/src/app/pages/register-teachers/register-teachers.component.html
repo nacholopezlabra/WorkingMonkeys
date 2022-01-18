@@ -20,15 +20,15 @@
         </div>
       </div>
     </div>
-    <div class="forms" [formGroup]="validateUser" (ngSubmit)="onSubmit()" novalidate>
+    <div class="forms" >
       <div class="formContent">
         <div class="loginForm">
           <div class="title">Login</div>
-          <form action="#">
+          <form action="#" [formGroup]="validateLog" (ngSubmit)="onSubmit()" novalidate>
             <div class="inputBoxes">
               <div class="inputBox">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Pon tu correo" formControlName="mail" required>
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Pon tu nick" formControlName="nickname" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-lock"></i>
@@ -36,7 +36,7 @@
               </div>
               <div class="text"><a href="#">Olvidaste tu contraseña?</a></div>
               <div class="button inputBox">
-                <input type="submit" value="Sumbit">
+                <input type="submit" value="Sumbit"  [disabled]="!validateLog.valid" (click)="passwordMatchValidator()">
               </div>
               <div class="text signupText">No tienes una cuenta? <label for="flip">Registrate</label></div>
             </div>
@@ -44,11 +44,11 @@
         </div>
         <div class="signupForm">
           <div class="title">Signup</div>
-          <form action="#">
+          <form action="#"[formGroup]="validateUser" (ngSubmit)="onSubmit()" novalidate>
             <div class="inputBoxes">
               <div class="inputBox">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Pon tu nombre" formControlName="nick" required>
+                <input type="text" placeholder="Pon tu nick" formControlName="nickname" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-envelope"></i>
