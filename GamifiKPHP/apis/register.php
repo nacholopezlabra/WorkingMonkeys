@@ -14,8 +14,6 @@ class Result
   // $mensaje;
 }
 
-
-echo $postdata;
 $query = "INSERT INTO users(id, nickname, mail, password, name, surname, center, birthday, userType, image) VALUES (null,".$_GET['nickname'].",".$_GET['mail'].",".$_GET['password'].",".$_GET['name'].",".$_GET['surname'].",".$_GET['center'].",".$_GET['birthday'].",".$_GET['userType'].",".$_GET['image'].")";
 $res = mysqli_query($con,$query);
 $response = new Result();
