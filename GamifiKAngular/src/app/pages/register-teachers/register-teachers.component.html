@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="forms">
+    <div class="forms" #teacherForm="ngform">
         <div class="formContent">
           <div class="loginForm">
             <div class="title">Login</div>
@@ -29,11 +29,11 @@
             <div class="inputBoxes">
               <div class="inputBox">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Pon tu correo" required>
+                <input type="text" placeholder="Pon tu correo" required ngModel> 
               </div>
               <div class="inputBox">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Pon tu contraseña" required>
+                <input type="password" placeholder="Pon tu contraseña" required ngModel>
               </div>
               <div class="text"><a href="#">Olvidaste tu contraseña?</a></div>
               <div class="button inputBox">
@@ -49,31 +49,31 @@
             <div class="inputBoxes">
               <div class="inputBox">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Pon tu nombre" required>
+                <input type="text" placeholder="Pon tu nombre" name="nick" required ngModel>
               </div>
               <div class="inputBox">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Pon tu correo" required>
+                <input type="text" placeholder="Pon tu correo" name="email" required ngModel>
               </div>
               <div class="inputBox">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Pon tu contraseña" required>
+                <input type="password" placeholder="Pon tu contraseña" name="password1" required ngModel>
               </div>
               <div class="inputBox">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="repite tu contraseña" required>
+                <input type="password" placeholder="repite tu contraseña"  name="password2" required ngModel>
               </div>
               <div class="inputBox">
                 <i class="fas fa-user-tie"></i>
-                <input type="password" placeholder="Pon tu nombre" required>
+                <input type="text" placeholder="Pon tu nombre"  name="name" required ngModel>
               </div>
               <div class="inputBox">
                 <i class="fas fa-user-tie"></i>
-                <input type="password" placeholder="Pon tu apellido" required>
+                <input type="text" placeholder="Pon tu apellido"  name="surname" required ngModel>
               </div>
               <div class="inputBox">
                 <i class="fas fa-school"></i>
-                <input type="password" placeholder="Pon tu centro de estudios" required>
+                <input type="text" placeholder="Pon tu centro de estudios" name="school" required ngModel>
               </div>
               <div class="button inputBox">
                 <input type="submit" value="Sumbit">
