@@ -8,12 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterTeachersComponent } from './pages/register-teachers/register-teachers.component';
 import { LoginTeachersComponent } from './pages/login-teachers/login-teachers.component';
+import { LoginStudentsComponent } from './pages/login-students/login-students.component';
+import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     RegisterTeachersComponent,
-    LoginTeachersComponent
+    LoginTeachersComponent,
+    LoginStudentsComponent,
+    RegisterStudentsComponent
   ],
   imports: [
     BrowserModule,
