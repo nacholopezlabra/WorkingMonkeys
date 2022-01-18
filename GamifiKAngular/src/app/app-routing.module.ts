@@ -8,10 +8,10 @@ import { RegisterStudentsComponent } from './pages/register-students/register-st
 
 const routes: Routes = [
   { path: 'registerTeachers', component: RegisterTeachersComponent },
-  { path: 'registerStudents', component: RegisterStudentsComponent },
+  { path: '', component: RegisterStudentsComponent },
   { path: 'loginTeachers', component: LoginTeachersComponent },
   { path: 'loginStudents', component: LoginStudentsComponent },
-  { path: '', component: ProfileComponent },
+  { path: '1', component: ProfileComponent },
 ];
 
 @NgModule({
