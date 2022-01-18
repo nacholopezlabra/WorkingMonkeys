@@ -1,6 +1,5 @@
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body>
   <div class="container">
@@ -21,19 +20,19 @@
         </div>
       </div>
     </div>
-    <div class="forms" #teacherForm="ngform">
-        <div class="formContent">
-          <div class="loginForm">
-            <div class="title">Login</div>
+    <div class="forms" [formGroup]="validateUser" (ngSubmit)="onSubmit()" novalidate>
+      <div class="formContent">
+        <div class="loginForm">
+          <div class="title">Login</div>
           <form action="#">
             <div class="inputBoxes">
               <div class="inputBox">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Pon tu correo" required ngModel> 
+                <input type="text" placeholder="Pon tu correo" formControlName="mail" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Pon tu contraseña" required ngModel>
+                <input type="password" placeholder="Pon tu contraseña" formControlName="password" required>
               </div>
               <div class="text"><a href="#">Olvidaste tu contraseña?</a></div>
               <div class="button inputBox">
@@ -41,49 +40,56 @@
               </div>
               <div class="text signupText">No tienes una cuenta? <label for="flip">Registrate</label></div>
             </div>
-        </form>
-      </div>
+          </form>
+        </div>
         <div class="signupForm">
           <div class="title">Signup</div>
-        <form action="#">
+          <form action="#">
             <div class="inputBoxes">
               <div class="inputBox">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Pon tu nombre" name="nick" required ngModel>
+                <input type="text" placeholder="Pon tu nombre" formControlName="nick" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Pon tu correo" name="email" required ngModel>
+                <input type="text" placeholder="Pon tu correo" formControlName="mail" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Pon tu contraseña" name="password1" required ngModel>
+                <input type="password" placeholder="Pon tu contraseña" formControlName="password" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="repite tu contraseña"  name="password2" required ngModel>
+                <input type="password" placeholder="repite tu contraseña" formControlName="password" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-user-tie"></i>
-                <input type="text" placeholder="Pon tu nombre"  name="name" required ngModel>
+                <input type="text" placeholder="Pon tu nombre" formControlName="name" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-user-tie"></i>
-                <input type="text" placeholder="Pon tu apellido"  name="surname" required ngModel>
+                <input type="text" placeholder="Pon tu apellido" formControlName="surname" required>
               </div>
               <div class="inputBox">
                 <i class="fas fa-school"></i>
-                <input type="text" placeholder="Pon tu centro de estudios" name="school" required ngModel>
+                <input type="text" placeholder="Pon tu centro de estudios" formControlName="center" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-calendar"></i>
+                <input type="date" placeholder="Pon tu fecha de cumpleaños" formControlName="birthday" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-camera"></i>
+                <input type="file" accept="image/" formControlName="image" required>
               </div>
               <div class="button inputBox">
-                <input type="submit" value="Sumbit">
+                <input type="submit" value="Sumbit"  [disabled]="!validateUser.valid" (click)="passwordMatchValidator()">
               </div>
               <div class="text signupText">Ya tienes una cuenta? <label for="flip">Logeate</label></div>
             </div>
-      </form>
-    </div>
-    </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </body>
-

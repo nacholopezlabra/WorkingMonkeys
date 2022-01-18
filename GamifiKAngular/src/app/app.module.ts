@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -10,6 +10,7 @@ import { RegisterTeachersComponent } from './pages/register-teachers/register-te
 import { LoginTeachersComponent } from './pages/login-teachers/login-teachers.component';
 import { LoginStudentsComponent } from './pages/login-students/login-students.component';
 import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +21,12 @@ import { RegisterStudentsComponent } from './pages/register-students/register-st
     RegisterStudentsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   providers: [],
