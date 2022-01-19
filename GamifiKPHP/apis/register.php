@@ -8,6 +8,11 @@ header('Content-Type: application/json');
 require('../Controlers/bd.php');
 $bd = new bd();
 $con = $bd->getConnection();
+
+$data = json_decode(file_get_contents('php://input'), true);
+
+
+echo $data->nickname;
 class Result
 {
   // $resultado;

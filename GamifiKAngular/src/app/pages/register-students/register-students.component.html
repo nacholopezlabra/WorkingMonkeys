@@ -20,71 +20,72 @@
         </div>
       </div>
     </div>
-    <div class="forms">
+    <div class="forms" >
       <div class="formContent">
         <div class="loginForm">
           <div class="title">Login</div>
-        <form action="#">
-          <div class="inputBoxes">
-            <div class="inputBox">
-              <i class="fas fa-envelope"></i>
-              <input type="text" placeholder="Pon tu correo" required>
+          <form action="#" [formGroup]="validateLog" (ngSubmit)="onSubmit()" novalidate>
+            <div class="inputBoxes">
+              <div class="inputBox">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Pon tu nick" formControlName="nickname" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Pon tu contraseña" formControlName="password" required>
+              </div>
+              <div class="text"><a href="#">Olvidaste tu contraseña?</a></div>
+              <div class="button inputBox">
+                <input type="submit" value="Sumbit"  [disabled]="!validateLog.valid" (click)="passwordMatchValidator()">
+              </div>
+              <div class="text signupText">No tienes una cuenta? <label for="flip">Registrate</label></div>
             </div>
-            <div class="inputBox">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Pon tu contraseña" required>
+          </form>
+        </div>
+        <div class="signupForm">
+          <div class="title">Signup</div>
+          <form action="#"[formGroup]="validateUser" (ngSubmit)="onSubmit()" novalidate>
+            <div class="inputBoxes">
+              <div class="inputBox">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Pon tu nick" formControlName="nickname" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Pon tu correo" formControlName="mail" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Pon tu contraseña" formControlName="password" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="repite tu contraseña" formControlName="password" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-user-tie"></i>
+                <input type="text" placeholder="Pon tu nombre" formControlName="name" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-user-tie"></i>
+                <input type="text" placeholder="Pon tu apellido" formControlName="surname" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-calendar"></i>
+                <input type="date" placeholder="Pon tu fecha de cumpleaños" formControlName="birthday" required>
+              </div>
+              <div class="inputBox">
+                <i class="fas fa-camera"></i>
+                <input type="file" accept="image/" formControlName="image" required>
+              </div>
+              <div class="button inputBox">
+                <input type="submit" value="Sumbit"  [disabled]="!validateUser.valid" (click)="passwordMatchValidator()">
+              </div>
+              <div class="text signupText">Ya tienes una cuenta? <label for="flip">Logeate</label></div>
             </div>
-            <div class="text"><a href="#">Olvidaste tu contraseña?</a></div>
-            <div class="button inputBox">
-              <input type="submit" value="Sumbit">
-            </div>
-            <div class="text signupText">No tienes una cuenta? <label for="flip">Registrate</label></div>
-          </div>
-      </form>
+          </form>
+        </div>
+      </div>
     </div>
-      <div class="signupForm">
-        <div class="title">Signup</div>
-      <form action="#">
-          <div class="inputBoxes">
-            <div class="inputBox">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Pon tu nombre de usuario" required>
-            </div>
-            <div class="inputBox">
-              <i class="fas fa-envelope"></i>
-              <input type="text" placeholder="Pon tu correo" required email>
-            </div>
-            <div class="inputBox">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Pon tu contraseña" required>
-            </div>
-            <div class="inputBox">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Repite tu contraseña" required>
-            </div>
-            <div class="inputBox">
-              <i class="fas fa-user-tie"></i>
-              <input type="password" placeholder="Pon tu nombre" required>
-            </div>
-            <div class="inputBox">
-              <i class="fas fa-user-tie"></i>
-              <input type="password" placeholder="Pon tu apellido" required>
-            </div>
-            <div class="inputBox">
-              <i class="fas fa-calendar"></i>
-              <input type="date" placeholder="Pon tu fecha de nacimiento" required>
-            </div>
-            <div class="button inputBox">
-              <input type="submit" value="Sumbit">
-            </div>
-            <div class="text signupText">Ya tienes una cuenta? <label for="flip">Logeate</label></div>
-          </div>
-    </form>
   </div>
-  </div>
-  </div>
-</div>
 </body>
-
-
-

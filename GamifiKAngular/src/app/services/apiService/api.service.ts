@@ -16,7 +16,7 @@ export class ApiService {
 
   logIn(user:string, pass:string): Observable<any>{
     let data= {user:user,pass:pass}
-    return  this.http.get(this.generateUrl("login.php?user="+user+"&pass="+pass));
+    return  this.http.get(this.generateUrl("modifyUser.php?user="+user+"&pass="+pass));
 
   }
 
