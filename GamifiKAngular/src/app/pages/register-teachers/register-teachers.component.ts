@@ -44,6 +44,25 @@ export class RegisterTeachersComponent implements OnInit {
 
   }
 
+  async apicall() {
+  let res: any;
+
+  await this.apiService.logIn(this.validateLog.get("nickname")?.value,this.validateLog.get("password")?.value ).subscribe(
+    (data) => {
+      res = data.data;
+      console.log(res);
+      this.userService.fetchCurrentUser(res);
+      this.router.navigate(['profile']);
+    },
+    (error) => {
+      console.log('Me ha dado error');
+    }
+  );
+}
+
+
+
+
   ngOnInit(): void {
 
   }
