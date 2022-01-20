@@ -39,8 +39,8 @@ export class RegisterTeachersComponent implements OnInit {
     this.user.password = this.validateUser.get('password')?.value;
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
-    this.user.center = this.validateUser.get('contrasena')?.value;
-    this.user.image = this.validateUser.get('confirmarcontrasena')?.value;
+    this.user.center = this.validateUser.get('password')?.value;
+    this.user.image = this.validateUser.get('image')?.value;
 
   }
 
