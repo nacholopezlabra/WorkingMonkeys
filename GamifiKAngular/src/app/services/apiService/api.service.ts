@@ -23,10 +23,10 @@ export class ApiService {
   logOut(){
 
   }
-  register(user:user, register: string):Observable<any>{
+  register(user:user):Observable<any>{
 
 
-    return this.http.get(this.generateUrl("register.php?nickname="+user.nickname+"&mail="+user.mail+"&password="+user.password+"&name="+user.name+"&surname"+user.surname+"&center="+user.center+"&image="+user.image+"birthday="+user.birthday));
+    return this.http.get(this.generateUrl("register.php?nickname="+user.nickname+"&mail="+user.mail+"&password="+user.password+"&name="+user.name+"&surname"+user.surname+"&center="+user.center+"&image="+user.image+"&birthday="+user.birthday+"&userType="+user.userType ));
   }
 
   generateUrl(path:string):string{

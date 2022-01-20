@@ -47,7 +47,7 @@ export class RegisterTeachersComponent implements OnInit {
   async apicall() {
   let res: any;
 
-  await this.apiService.logIn(this.validateLog.get("nickname")?.value,this.validateLog.get("password")?.value ).subscribe(
+  await this.apiService.register(this.user).subscribe(
     (data) => {
       res = data.data;
       console.log(res);
