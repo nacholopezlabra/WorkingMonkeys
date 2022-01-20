@@ -32,17 +32,24 @@ export class RegisterStudentsComponent implements OnInit {
   //REGISTRO
 
   onSubmit() {
-    this.user.nickname = this.validateUser.get('nick')?.value;
+    this.user.nickname = this.validateUser.get('nickname')?.value;
     this.user.mail = this.validateUser.get('mail')?.value;
     this.user.password = this.validateUser.get('password')?.value;
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
-    this.user.image = this.validateUser.get('confirmarcontrasena')?.value;
+    this.user.image = this.validateUser.get('image')?.value;
+    this.user.birthday = this.validateUser.get('birthday')?.value;
   }
 
   ngOnInit(): void {
 
   }
+  //REGISTER
+
+
+
+
+
 
   //LOGIN
   async passwordMatchValidator() {
