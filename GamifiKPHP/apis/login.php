@@ -18,37 +18,37 @@ class Result
   // $resultado;
   // $mensaje;
 }
-while ($row = $res->fetch_assoc()) {
-  if ($_GET['user'] == $row["nickname"] && $_GET['pass'] == $row["password"]) {
-    $response = new Result();
-    $response->resultado = 'OK';
-    $response->mensaje = 'SE HA LOGEADO EXITOSAMENTE EL USUARIO';
-    $userData = new User();
-    $userData->id = $row['id'] ;
-    $userData->nickname = $row['nickname'];
-    $userData->mail = $row['mail'];
-    $userData->name =  $row['name'];
-    $userData->surname = $row['surname'];
-    $userData->center = $row['center'];
-    $userData->birthday= $row['birthday'];
-    $userData->userType = $row['userType'];
-    $userData->image = $row['image'];
-    json_encode($userData);
-    $response->data = $userData;
 
+fetchResult($res,$bd);
+  
 
+function fetchResult($res,$bd){
+    while ($row = $res->fetch_assoc()) {
 
-    header('Content-Type: application/json');
-
-    echo json_encode($response);
-  } else {
+      if ($_GET['user'] == $row["nickname"] && $_GET['pass'] == $row["password"]) {
+        $response = new Result();
+        $response->resultado = 'OK';
+        $response->mensaje = 'SE HA LOGEADO EXITOSAMENTE EL USUARIO';
+        $userData = new User();
+        $userData->id = $row['id'] ;
+        $userData->nickname = $row['nickname'];
+        $userData->mail = $row['mail'];
+        $userData->name =  $row['name'];
+        $userData->surname = $row['surname'];
+        $userData->center = $row['center'];
+        $userData->birthday= $row['birthday'];
+        $userData->userType = $row['userType'];
+        $userData->image = $row['image'];
+        json_encode($userData);
+        $response->data = $userData;
+        echo json_encode($response);
+        return;
+      }
+  }
     $response = new Result();
     $response->resultado = 'Error';
     $response->mensaje = 'NO SE HA PODIDO LOGEAR EL USUARIO';
-    $response->data = "0";
-
-
-
     echo json_encode($response);
-  }
+    
+  return;
 }
