@@ -48,7 +48,6 @@ function fetchResult($res,$bd){
     $response = new Result();
     $response->resultado = 'Error';
     $response->mensaje = 'NO SE HA PODIDO LOGEAR EL USUARIO';
-    $response->data = $bd->getBDErrors();
     echo json_encode($response);
     
   return;
