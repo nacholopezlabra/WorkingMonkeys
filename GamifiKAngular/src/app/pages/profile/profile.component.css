@@ -1,39 +1,74 @@
-.profileImage{
-  border-radius: 50px;
-  width: 100px;
-  height: 100px;
-}
-.imageCardContainer{
-  text-align: center;
-}
+body {
 
-.imageCard{
-  float: left;
-  margin-right: 10px;
-}
-.cardBox{
+  height: 100vh;
+  background-image: url(../../../assets/backgroundimg/wallpaperbetter.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-  align-self: center;
-  margin-top: 30px;
-}
-.infoCard{
-  margin-left: 10px;
-  float:right;
-  width:fit-content;
   align-items: center;
-  text-align: left;
+  justify-content: center;
+}
 
 
+
+
+.profileImage {
+  width: 400px;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+
 }
-.standarCard{
-  border-radius: 20px;
-  border: 1px solid rgba(92, 92, 92, 0.301);
-  height: fit-content;
-  padding:15px;
+
+.imageCardContainer {
+  background-color: #2c3a47;
+  padding: 60px 40px;
 }
-.rankingCard{
-  width:fit-content;
+
+
+
+.pic {
+  display: inline-block;
+  padding: 6px;
+  background-size: 200% 200%;
+  background: linear-gradient(70deg, black, #e66767);
+  animation: animated-gradient 0.5s  infinite ease-in-out  ;
+  margin: auto;
+  border-radius: 50%;
+
 }
+
+.pic img {
+  border-radius: 50%;
+  display: block;
+  align-self: center;
+}
+
+@keyframes animated-gradient {
+  20% {
+    background: linear-gradient(70deg, #74baff, #e66767);
+  }
+  40% {
+    background: linear-gradient(140deg, #74baff, #e66767);
+  }
+  60% {
+    background: linear-gradient(210deg, #74baff, #e66767);
+  }
+  80% {
+    background: linear-gradient(280deg, #74b9ff, #e66767);
+  }
+  100% {
+    background: linear-gradient(360deg, #74baff, #e66767);
+  }
+}
+
+
+.imageCard {}
+
+.cardBox {}
+
+.infoCard {}
+
+.standarCard {}
+
+.rankingCard {}
