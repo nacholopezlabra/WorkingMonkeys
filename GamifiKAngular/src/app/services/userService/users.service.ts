@@ -18,7 +18,7 @@ export class UsersService {
   public fetchCurrentUser(data?:user):void{ //hardcoded user;
 
     //this.currentUser = {id:1, nickname:"wotroyer",mail:"joelhervera@gmail.com",password:"1234",name:"Joel",surname:"Hervera",birthday:new Date("17/09/1999"),userType:0,image:""};
-    this.currentUser = {id:2, nickname:"fonsiii1",mail:"fonsi@gmail.com",password:"1234",name:"fonsi",surname:"Garcia",birthday:new Date("17/09/1999"),userType:1,image:""};
+    this.currentUser = {id:2, nickname:"fonsiii1",mail:"fonsi@gmail.com",password:"1234",name:"fonsi",surname:"Garcia",birthday:"17/09/1999",userType:1,image:""};
     if(!!data){
       this.currentUser = data;
       console.log(this.currentUser);
