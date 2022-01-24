@@ -1,42 +1,44 @@
-
 <html>
-  <body>
-  <div class="cardBox">
+
+<body>
+  <div>
     <div class="imageCard standarCard">
       <div class="imageCardContainer">
-        <div class="pic" >
-        <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
-        <img class="profileImage" *ngIf="user?.image == ''" src="../../../assets/placeholders/userPlaceholder.jpg">
-      </div>
-        <p *ngIf="user?.userType == 1" >Profesor</p>
-        <p *ngIf="user?.userType == 0">Estudiante</p>
-        
-      </div>
-    </div>
-    <div class="infoCard standarCard">
-      <p class="nick">usuario:{{user?.nickname}}</p>
-      <p>nombre:{{user?.name}}</p>
-      <p>correo:{{user?.mail}}</p>
-      <p>contraseña: <button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button> <span *ngIf="passwordShowed">{{user?.password}}</span> </p>
+        <div class="pic">
+          <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
+          <img class="profileImage" *ngIf="user?.image == ''" src="../../../assets/placeholders/userPlaceholder.jpg">
+        </div>
+        <div class="titulo">
+          <p *ngIf="user?.userType == 1">Profesor</p>
+          <p *ngIf="user?.userType == 0">Estudiante</p>
+        </div>
+        <div class="info">
+          <p class="nick">usuario:{{user?.nickname}}</p>
+          <p>nombre:{{user?.name}}</p>
+          <p>correo:{{user?.mail}}</p>
+          <p>contraseña: <button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button> <span
+              *ngIf="passwordShowed">{{user?.password}}</span> </p>
+        </div>
+     
     </div>
 
   </div>
   <div class="cardBox">
-    <div class="standarCard">
+    <p class="tittleRanking">Ranking</p>
+    <div>
       <ng-container *ngIf="user?.userType == 1">
-        <div *ngFor="let rank of rankingService.fetchTeacherRankings(user?.id)">
+        <div class="standarCard" *ngFor="let rank of rankingService.fetchTeacherRankings(user?.id)">
           {{rank.name}} {{rank.memberCount}}
         </div>
       </ng-container>
       <ng-container *ngIf="user?.userType == 0">
-        <div *ngFor="let rank of rankingService.fetchStudentRankings(user?.id)">
+        <div  class="standarCard" *ngFor="let rank of rankingService.fetchStudentRankings(user?.id)">
           {{rank.name}}
         </div>
       </ng-container>
     </div>
-
   </div>
-
-  <button (click)="logUser()">login</button>
+</div>
 </body>
+
 </html>

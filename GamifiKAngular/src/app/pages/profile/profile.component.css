@@ -13,7 +13,7 @@ body {
 
 
 .profileImage {
-  width: 400px;
+  width: 100px;
   text-align: center;
   border-radius: 8px;
   overflow: hidden;
@@ -22,20 +22,25 @@ body {
 
 .imageCardContainer {
   background-color: #2c3a47;
-  padding: 60px 40px;
+  padding: 60px 42px;
+  overflow: hidden;
+  border-radius: 8px;
+  z-index: 1;
+  position: relative;
+  text-align: center;
 }
 
 
 
 .pic {
   display: inline-block;
-  padding: 6px;
+  padding: 3px;
   background-size: 200% 200%;
-  background: linear-gradient(70deg, black, #e66767);
+  background: linear-gradient(70deg, #74baff, #e66767);
   animation: animated-gradient 0.5s  infinite ease-in-out  ;
   margin: auto;
   border-radius: 50%;
-
+  
 }
 
 .pic img {
@@ -61,14 +66,68 @@ body {
     background: linear-gradient(360deg, #74baff, #e66767);
   }
 }
+.titulo{
+color: #f2f2f2;
+font-size:28;
+font-weight: 600;
+margin: 10px 0;
+
+}
 
 
-.imageCard {}
+.cardBox {
+  
+  background-color: #f2f2f2;
+  padding: 60px 8px;
+  border-radius: 11px;
+  overflow: hidden;
+  z-index: 2;
+  margin-top:-20px;
+  width: auto;
 
-.cardBox {}
+}
 
-.infoCard {}
+.containerSecond {
+  display: flex;
+flex-direction: column;
+}
+.info{
+  color: #f2f2f2;
+  font-size:28;
+  font-weight: 600;
+  margin: 10px 0;
 
-.standarCard {}
+}
 
-.rankingCard {}
+button {
+background-color: #2c3a47;
+  display: inline-block;
+  padding: 12px 50px;
+  color:#f2f2f2;
+  border:2px solid #f2f2f2;
+}
+button:hover{
+
+  background: #f2f2f2;
+  color: #2c3a47;
+}
+.rankingCard {
+  display:flex;
+  justify-content: center;
+  margin:20px 0;
+
+}
+.standarCard{
+display: flex;
+flex-direction: column;
+width: auto;
+text-align: center;
+
+}
+.tittleRanking {
+text-align: center;
+font-size:30px;
+font-weight: 600;
+margin: 10px 0;
+color:#2c3a47;
+}
