@@ -24,7 +24,7 @@ if($res){
 }else{
     $response->resultado = 'ERROR';
     $response->mensaje = 'NO SE HA REGISTRADO EXITOSAMENTE EL USUARIO';
-    $response->data = $bd->getBDErrors();
+     
 }
     ECHO json_encode($response);
 

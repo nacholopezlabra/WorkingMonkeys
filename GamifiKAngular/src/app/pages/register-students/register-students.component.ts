@@ -16,6 +16,7 @@ export class RegisterStudentsComponent implements OnInit {
     nickname: new FormControl('', [Validators.required]),
     mail: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
+    confrimPassword: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required]),
@@ -39,12 +40,31 @@ export class RegisterStudentsComponent implements OnInit {
     this.user.surname = this.validateUser.get('surname')?.value;
     this.user.image = this.validateUser.get('image')?.value;
     this.user.birthday = this.validateUser.get('birthday')?.value;
+    this.user.userType = 0;
   }
 
   ngOnInit(): void {
 
   }
   //REGISTER
+  async apicall() {
+    let res: any;
+    if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
+      await this.apiService.register(this.user).subscribe(
+        (data) => {
+          res = data.data;
+          console.log(res);
+          this.userService.fetchCurrentUser(res);
+          this.router.navigate(['profile']);
+        },
+        (error) => {
+          console.log('Me ha dado error');
+        }
+      );
+    }else{
+      console.log("la password no es igual");
+    }
+  }
 
 
 
