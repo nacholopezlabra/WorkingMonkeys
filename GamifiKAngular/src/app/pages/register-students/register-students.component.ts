@@ -16,7 +16,7 @@ export class RegisterStudentsComponent implements OnInit {
     nickname: new FormControl('', [Validators.required]),
     mail: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
-    confrimPassword: new FormControl('', [Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required]),
