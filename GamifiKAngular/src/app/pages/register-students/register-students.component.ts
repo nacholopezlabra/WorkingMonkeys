@@ -38,26 +38,22 @@ export class RegisterStudentsComponent implements OnInit {
     this.user.password = this.validateUser.get('password')?.value;
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
+    this.user.center = this.validateUser.get('center')?.value;
     this.user.image = this.validateUser.get('image')?.value;
     this.user.birthday = this.validateUser.get('birthday')?.value;
     this.user.userType = 0;
+    this.register();
   }
 
-  ngOnInit(): void {
-
-  }
-  //REGISTER
-  async apicall() {
+  async register() {
     let res: any;
     if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
       await this.apiService.register(this.user).subscribe(
         (data) => {
-          res = data.data;
-          console.log(res);
-          this.userService.fetchCurrentUser(res);
-          this.router.navigate(['profile']);
+          this.logIn(this.user.nickname,this.user.password);
         },
         (error) => {
+          console.log(error)
           console.log('Me ha dado error');
         }
       );
@@ -66,30 +62,34 @@ export class RegisterStudentsComponent implements OnInit {
     }
   }
 
-
-
-
-
+  ngOnInit(): void {}
 
   //LOGIN
-  async passwordMatchValidator() {
-
-
-    console.log(this.validateLog.get('password'));
-    let controlForm: boolean = true;
-
+  async logIn(user?:string, pass?:string) {
+    console.log(user,pass);
     let res: any;
+    if(user != undefined && pass != undefined){ //el login del usuario cuando se registra
+      await this.apiService.logIn(user,pass).subscribe((data) => {
+          res = data.data;
+          console.log(res);
+          this.userService.fetchCurrentUser(res);
+          this.router.navigate(['profile']);
+        },(error) => {
+          console.log('Me ha dado error');
+        }
+      );
+    }else{ //el login del usuario utilizando el html
+      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.validateLog.get('password')?.value)
+      .subscribe((data) => {
+          res = data.data;
+          console.log(res);
+          this.userService.fetchCurrentUser(res);
+          this.router.navigate(['profile']);
+        },(error) => {
+          console.log('Me ha dado error');
+        }
+      );
+    }
 
-    await this.apiService.logIn(this.validateLog.get("nickname")?.value,this.validateLog.get("password")?.value ).subscribe(
-      (data) => {
-        res = data.data;
-        console.log(res);
-        this.userService.fetchCurrentUser(res);
-        this.router.navigate(['profile']);
-      },
-      (error) => {
-        console.log('Me ha dado error');
-      }
-    );
   }
 }

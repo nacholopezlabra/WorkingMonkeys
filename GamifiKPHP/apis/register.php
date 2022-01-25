@@ -9,22 +9,22 @@ require('../Controlers/bd.php');
 $bd = new bd();
 $con = $bd->getConnection();
 
-$data = json_decode(file_get_contents('php://input'), true);
-
-
-echo $data->nickname;
 class Result
 {
   // $resultado;
   // $mensaje;
 }
+$query2 = "SELECT * FROM users where nickname =".$_GET['nickname'];
+
 
 $query = "INSERT INTO users(id, nickname, mail, password, name, surname, center, birthday, userType, image) VALUES (null,".$_GET['nickname'].",".$_GET['mail'].",".$_GET['password'].",".$_GET['name'].",".$_GET['surname'].",".$_GET['center'].",".$_GET['birthday'].",".$_GET['userType'].",".$_GET['image'].")";
+
 $res = mysqli_query($con,$query);
 $response = new Result();
 if($res){
     $response->resultado = 'OK';
     $response->mensaje = 'SE HA REGISTRADO EXITOSAMENTE EL USUARIO';
+    $response->data = "todo gucci";
     
 }else{
     $response->resultado = 'ERROR';

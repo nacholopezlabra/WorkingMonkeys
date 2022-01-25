@@ -25,7 +25,12 @@ export class ApiService {
   register(user:user):Observable<any>{
 
     console.log(user);
-    return this.http.get(this.generateUrl("register.php?nickname="+user.nickname+"&mail="+user.mail+"&password="+user.password+"&name="+user.name+"&surname"+user.surname+"&center="+user.center+"&image="+/*user.image*/"NULL"+"&birthday="+user.birthday+"&userType="+user.userType ));
+    let userData = user;
+    //console.log(this.generateUrl("register.php?nickname="+user.nickname+"&mail="+user.mail+"&password="+user.password+"&name="+user.name+"&surname"+user.surname+"&center="+user.center+"&image="+/*user.image*/"NULL"+"&birthday="+user.birthday+"&userType="+user.userType));
+
+    return this.http.get(this.generateUrl("register.php?nickname='"+userData.nickname+"'&mail='"+userData.mail+"'&password='"+userData.password+"'&name='"+user.name+"'&surname='"+userData.surname+"'&center='"+userData.center+"'&image="+/*user.image*/"null"+"&birthday='"+userData.birthday+"'&userType="+userData.userType ));
+
+
   }
 
   generateUrl(path:string):string{

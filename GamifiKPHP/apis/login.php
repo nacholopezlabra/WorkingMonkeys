@@ -11,8 +11,6 @@ $con = $bd->getConnection();
 $query = "SELECT * from users where 1";
 $res = mysqli_query($con, $query);
 
-$user = "wotroyer";
-$pass = 1234;
 class Result
 {
   // $resultado;

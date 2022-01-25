@@ -58,19 +58,18 @@ export class RegisterTeachersComponent implements OnInit {
     this.user.image = this.validateUser.get('image')?.value;
     this.user.birthday = this.validateUser.get('birthday')?.value;
     this.user.userType = 1;
+    this.register();
   }
 
-  async apicall() {
+  async register() {
     let res: any;
     if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
       await this.apiService.register(this.user).subscribe(
         (data) => {
-          res = data.data;
-          console.log(res);
-          this.userService.fetchCurrentUser(res);
-          this.router.navigate(['profile']);
+          this.logIn(this.user.nickname,this.user.password);
         },
         (error) => {
+          console.log(error)
           console.log('Me ha dado error');
         }
       );
@@ -82,27 +81,31 @@ export class RegisterTeachersComponent implements OnInit {
   ngOnInit(): void {}
 
   //LOGIN
-  async passwordMatchValidator() {
-    console.log(this.validateLog.get('password'));
-    let controlForm: boolean = true;
-
+  async logIn(user?:string, pass?:string) {
+    console.log(user,pass);
     let res: any;
-
-    await this.apiService
-      .logIn(
-        this.validateLog.get('nickname')?.value,
-        this.validateLog.get('password')?.value
-      )
-      .subscribe(
-        (data) => {
+    if(user != undefined && pass != undefined){ //el login del usuario cuando se registra
+      await this.apiService.logIn(user,pass).subscribe((data) => {
           res = data.data;
           console.log(res);
           this.userService.fetchCurrentUser(res);
           this.router.navigate(['profile']);
-        },
-        (error) => {
+        },(error) => {
           console.log('Me ha dado error');
         }
       );
+    }else{ //el login del usuario utilizando el html
+      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.validateLog.get('password')?.value)
+      .subscribe((data) => {
+          res = data.data;
+          console.log(res);
+          this.userService.fetchCurrentUser(res);
+          this.router.navigate(['profile']);
+        },(error) => {
+          console.log('Me ha dado error');
+        }
+      );
+    }
+
   }
 }

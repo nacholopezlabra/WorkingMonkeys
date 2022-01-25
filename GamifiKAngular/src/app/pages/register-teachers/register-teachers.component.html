@@ -24,7 +24,7 @@
       <div class="formContent">
         <div class="loginForm">
           <div class="title">Login</div>
-          <form action="#" [formGroup]="validateLog" (ngSubmit)="onSubmit()" novalidate>
+          <form action="#" [formGroup]="validateLog" novalidate>
             <div class="inputBoxes">
               <div class="inputBox">
                 <i class="fas fa-user"></i>
@@ -36,7 +36,7 @@
               </div>
               <div class="text"><a href="#">Olvidaste tu contraseña?</a></div>
               <div class="button inputBox">
-                <input type="submit" value="Sumbit"  [disabled]="!validateLog.valid" (click)="passwordMatchValidator()">
+                <input type="submit" value="Sumbit"  [disabled]="!validateLog.valid" (click)="logIn()">
               </div>
               <div class="text signupText">No tienes una cuenta? <label for="flip">Registrate</label></div>
             </div>
@@ -83,7 +83,7 @@
                 <input type="file" accept="image/" formControlName="image" required>
               </div>
               <div class="button inputBox">
-                <input type="submit" value="Sumbit"  [disabled]="!validateUser.valid" (click)="apicall()">
+                <input type="submit" value="Sumbit"  [disabled]="!validateUser.valid">
               </div>
               <div class="text signupText">Ya tienes una cuenta? <label for="flip">Logeate</label></div>
             </div>

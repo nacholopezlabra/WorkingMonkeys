@@ -6,7 +6,7 @@
       <div class="imageCardContainer">
         <div class="pic">
           <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
-          <img class="profileImage" *ngIf="user?.image == ''" src="../../../assets/placeholders/userPlaceholder.jpg">
+          <img class="profileImage" *ngIf="user?.image == '' || user?.image == null" src="../../../assets/placeholders/userPlaceholder.jpg">
         </div>
         <div class="titulo">
           <p *ngIf="user?.userType == 1">Profesor</p>
@@ -19,7 +19,7 @@
           <p>contraseña: <button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button> <span
               *ngIf="passwordShowed">{{user?.password}}</span> </p>
         </div>
-     
+
     </div>
 
   </div>
