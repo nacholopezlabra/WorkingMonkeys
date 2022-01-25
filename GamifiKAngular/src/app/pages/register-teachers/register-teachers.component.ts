@@ -66,7 +66,15 @@ export class RegisterTeachersComponent implements OnInit {
     if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
       await this.apiService.register(this.user).subscribe(
         (data) => {
-          this.logIn(this.user.nickname,this.user.password);
+          console.log(data);
+          if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
+            this.logIn(this.user.nickname,this.user.password);
+          }else if(data.data == 2){ //el dos lo usamos para decir que el correo que el usuario a puesta ya esta en uso
+            console.log("email ya en uso");
+          }else if(data.data == 1){ // el uno lo usamos para decir que el nickname del usuario ya existe
+            console.log("usuario ya existe")
+          }
+
         },
         (error) => {
           console.log(error)
