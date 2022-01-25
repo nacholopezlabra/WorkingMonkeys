@@ -6,7 +6,7 @@ export interface user{
   name:string;
   surname:string;
   center?:string;
-  birthday:Date;
+  birthday:string;
   userType:number;
   image:string;
 }

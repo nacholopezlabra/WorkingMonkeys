@@ -35,7 +35,7 @@ export class RegisterTeachersComponent implements OnInit {
     name: '',
     surname: '',
     center: '',
-    birthday: new Date(),
+    birthday: "",
     userType: 0,
     image: '',
   };

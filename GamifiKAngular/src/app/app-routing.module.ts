@@ -7,11 +7,11 @@ import { LoginStudentsComponent } from './pages/login-students/login-students.co
 import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
 
 const routes: Routes = [
-  { path: 'registerTeachers', component: RegisterTeachersComponent },
+  { path: '', component: RegisterTeachersComponent },
   { path: 'registerStudents', component: RegisterStudentsComponent },
   { path: 'loginTeachers', component: LoginTeachersComponent },
   { path: 'loginStudents', component: LoginStudentsComponent },
-  { path: '', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

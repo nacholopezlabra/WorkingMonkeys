@@ -26,7 +26,7 @@ export class RegisterStudentsComponent implements OnInit {
     nickname: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
-  user: user = { id: 0, nickname: "", mail: "", password: "", name: "", surname: "", birthday: new Date(), userType: 0, image: "" };
+  user: user = { id: 0, nickname: "", mail: "", password: "", name: "", surname: "", birthday: "", userType: 0, image: "" };
 
   constructor(private router: Router, private apiService: ApiService, private userService: UsersService) { }
 
