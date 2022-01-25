@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
+import * as sha512 from 'js-sha512';
+
 
 @Component({
   selector: 'app-register-teachers',
@@ -43,7 +45,8 @@ export class RegisterTeachersComponent implements OnInit {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private userService: UsersService
+    private userService: UsersService,
+    
   ) {}
 
   //REGISTRO
@@ -51,15 +54,20 @@ export class RegisterTeachersComponent implements OnInit {
   onSubmit() {
     this.user.nickname = this.validateUser.get('nickname')?.value;
     this.user.mail = this.validateUser.get('mail')?.value;
-    this.user.password = this.validateUser.get('password')?.value;
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
     this.user.center = this.validateUser.get('center')?.value;
     this.user.image = this.validateUser.get('image')?.value;
     this.user.birthday = this.validateUser.get('birthday')?.value;
     this.user.userType = 1;
+    this.user.password = this.cifrar(this.validateUser.get('password')?.value);
     this.register();
+    console.log(this.user.password);
   }
+cifrar(pass:string){
+   return sha512.sha512(pass);
+}
+
 
   async register() {
     let res: any;
@@ -103,7 +111,7 @@ export class RegisterTeachersComponent implements OnInit {
         }
       );
     }else{ //el login del usuario utilizando el html
-      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.validateLog.get('password')?.value)
+      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.cifrar(this.validateLog.get('password')?.value))
       .subscribe((data) => {
           res = data.data;
           console.log(res);
