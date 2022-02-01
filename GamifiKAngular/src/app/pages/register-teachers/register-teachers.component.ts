@@ -42,11 +42,16 @@ export class RegisterTeachersComponent implements OnInit {
     image: '',
   };
 
+  imgBase64Path: string = '';
+  isImageSaved: boolean = false;
+  cardImageBase64: string = '';
+
+
   constructor(
     private router: Router,
-    private apiService: ApiService,
+    public apiService: ApiService,
     private userService: UsersService,
-    
+
   ) {}
 
   //REGISTRO
@@ -57,7 +62,6 @@ export class RegisterTeachersComponent implements OnInit {
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
     this.user.center = this.validateUser.get('center')?.value;
-    this.user.image = this.validateUser.get('image')?.value;
     this.user.birthday = this.validateUser.get('birthday')?.value;
     this.user.userType = 1;
     this.user.password = this.cifrar(this.validateUser.get('password')?.value);
@@ -86,7 +90,6 @@ cifrar(pass:string){
         },
         (error) => {
           console.log(error)
-          console.log('Me ha dado error');
         }
       );
     }else{
@@ -124,4 +127,23 @@ cifrar(pass:string){
     }
 
   }
+
+  fileChangeEvent(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs) => {
+          this.imgBase64Path = e.target.result;
+          this.cardImageBase64 = this.imgBase64Path;
+          this.isImageSaved = true;
+          this.user.image = this.cardImageBase64;
+          console.log(this.user)
+        };
+      };
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
+
 }

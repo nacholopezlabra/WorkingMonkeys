@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
 const HOST: string = "http://localhost:8080/apis/";
-
+const LOGINURL : string = "login.php?";
+const REGISTERURL : string = "register.php";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class ApiService {
 
   logIn(user:string, pass:string): Observable<any>{
     let data= {user:user,pass:pass}
-    return  this.http.get(this.generateUrl("login.php?user="+user+"&pass="+pass));
+    return  this.http.get(this.generateUrl(LOGINURL+"user="+user+"&pass="+pass));
 
   }
 
@@ -26,11 +28,19 @@ export class ApiService {
 
     console.log(user);
     let userData = user;
-    //console.log(this.generateUrl("register.php?nickname="+user.nickname+"&mail="+user.mail+"&password="+user.password+"&name="+user.name+"&surname"+user.surname+"&center="+user.center+"&image="+/*user.image*/"NULL"+"&birthday="+user.birthday+"&userType="+user.userType));
+    console.log(userData.password?.length);
+    return this.http.post(this.generateUrl(REGISTERURL),userData,{responseType:'json'});
 
-    return this.http.get(this.generateUrl("register.php?nickname='"+userData.nickname+"'&mail='"+userData.mail+"'&password='"+userData.password+"'&name='"+user.name+"'&surname='"+userData.surname+"'&center='"+userData.center+"'&image="+/*user.image*/"null"+"&birthday='"+userData.birthday+"'&userType="+userData.userType ));
+
+  }
 
 
+  post(){
+    //let json = {"id":2, "nickname":"fonsiii1","mail":"fonsi@gmail.com","password":"1234","name":"fonsi","surname":"Garcia","birthday":"17/09/1999","userType":1,"image":""};
+    let json = {name:1};
+    return this.http.post(this.generateUrl('tempRegister.php'), json,{responseType: 'json'}).subscribe((data)=>{
+      console.log(data);
+    })
   }
 
   generateUrl(path:string):string{

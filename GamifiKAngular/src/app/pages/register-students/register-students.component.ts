@@ -27,6 +27,9 @@ export class RegisterStudentsComponent implements OnInit {
     password: new FormControl('', [Validators.required])
   });
   user: user = { id: 0, nickname: "", mail: "", password: "", name: "", surname: "", birthday: "", userType: 0, image: "" };
+  imgBase64Path: string = '';
+  isImageSaved: boolean = false;
+  cardImageBase64: string = '';
 
   constructor(private router: Router, private apiService: ApiService, private userService: UsersService) { }
 
@@ -39,7 +42,6 @@ export class RegisterStudentsComponent implements OnInit {
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
     this.user.center = this.validateUser.get('center')?.value;
-    this.user.image = this.validateUser.get('image')?.value;
     this.user.birthday = this.validateUser.get('birthday')?.value;
     this.user.userType = 0;
     this.register();
@@ -74,9 +76,10 @@ export class RegisterStudentsComponent implements OnInit {
 
   //LOGIN
   async logIn(user?:string, pass?:string) {
-    console.log(user,pass);
+
     let res: any;
     if(user != undefined && pass != undefined){ //el login del usuario cuando se registra
+
       await this.apiService.logIn(user,pass).subscribe((data) => {
           res = data.data;
           console.log(res);
@@ -86,7 +89,9 @@ export class RegisterStudentsComponent implements OnInit {
           console.log('Me ha dado error');
         }
       );
+
     }else{ //el login del usuario utilizando el html
+
       await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.validateLog.get('password')?.value)
       .subscribe((data) => {
           res = data.data;
@@ -97,7 +102,29 @@ export class RegisterStudentsComponent implements OnInit {
           console.log('Me ha dado error');
         }
       );
+
     }
 
   }
+
+
+  fileChangeEvent(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs) => {
+          this.imgBase64Path = e.target.result;
+          this.cardImageBase64 = this.imgBase64Path;
+          this.isImageSaved = true;
+          this.user.image = this.cardImageBase64;
+          console.log(this.user)
+        };
+      };
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
+
+
 }

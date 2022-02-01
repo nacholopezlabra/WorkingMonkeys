@@ -76,7 +76,7 @@
               </div>
               <div class="inputBox">
                 <i class="fas fa-camera"></i>
-                <input type="file" accept="image/" formControlName="image" required>
+                <input type="file" accept="image/"  formControlName="image" (change)="fileChangeEvent($event)" #fileInput required>
               </div>
               <div class="button inputBox">
                 <input type="submit" value="Sumbit"  [disabled]="!validateUser.valid">
