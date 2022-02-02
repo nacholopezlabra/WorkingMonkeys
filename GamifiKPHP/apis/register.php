@@ -2,12 +2,16 @@
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header("Content-Type: text/html; charset-UTF 8");
-header('Content-Type: application/json');
 
-require('../Controlers/bd.php');
+
+include_once('../Controlers/bd.php');
 $bd = new bd();
 $con = $bd->getConnection();
+
+$inputJSON = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
+$decoded = json_decode($inputJSON, true);
+$response = array();
+$response['test'] = $decoded;
 
 class Result
 {
@@ -15,16 +19,15 @@ class Result
   // $mensaje;
 }
 $response = new Result();
-$query = "SELECT * FROM users where nickname =".$_GET['nickname'];
+$query = "SELECT * FROM users where nickname = '" .$decoded['nickname']."'";
 $res = mysqli_query($con,$query);
+
 if(mysqli_num_rows($res) == 0){
-    $query ="SELECT * FROM users where mail =".$_GET['mail'];
+    $query ="SELECT * FROM users where mail ='".$decoded['mail']."'";
     $res = mysqli_query($con,$query);
     if(mysqli_num_rows($res) == 0){
-        $query = "INSERT INTO users(id, nickname, mail, password, name, surname, center, birthday, userType, image) VALUES (null,".$_GET['nickname'].",".$_GET['mail'].",".$_GET['password'].",".$_GET['name'].",".$_GET['surname'].",".$_GET['center'].",".$_GET['birthday'].",".$_GET['userType'].",".$_GET['image'].")";
-
+        $query = "INSERT INTO users(id, nickname, mail, password, name, surname, center, birthday, userType, image) VALUES (null, '".$decoded['nickname']."','".$decoded['mail']."','".$decoded['password']."','".$decoded['name']."','".$decoded['surname']."','".$decoded['center']."','".$decoded['birthday']."',".$decoded['userType'].",'".$decoded['image']."')";
         $res = mysqli_query($con,$query);
-        
         if($res){
             $response->resultado = 'OK';
             $response->mensaje = 'SE HA REGISTRADO EXITOSAMENTE EL USUARIO';
@@ -49,7 +52,7 @@ if(mysqli_num_rows($res) == 0){
     $response->data = 1;
 }
 
-    ECHO json_encode($response);
+   ECHO json_encode($response);
 
 
 ?>
