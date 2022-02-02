@@ -41,7 +41,7 @@ export class RegisterStudentsComponent implements OnInit {
     this.user.password = this.validateUser.get('password')?.value;
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
-    this.user.center = this.validateUser.get('center')?.value;
+    this.user.center = null;
     this.user.birthday = this.validateUser.get('birthday')?.value;
     this.user.userType = 0;
     this.register();

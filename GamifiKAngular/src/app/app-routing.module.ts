@@ -7,8 +7,8 @@ import { LoginStudentsComponent } from './pages/login-students/login-students.co
 import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
 
 const routes: Routes = [
-  { path: '', component: RegisterTeachersComponent },
-  { path: 'registerStudents', component: RegisterStudentsComponent },
+  { path: 'registerTeachers', component: RegisterTeachersComponent },
+  { path: '', component: RegisterStudentsComponent },
   { path: 'loginTeachers', component: LoginTeachersComponent },
   { path: 'loginStudents', component: LoginStudentsComponent },
   { path: 'profile', component: ProfileComponent },
