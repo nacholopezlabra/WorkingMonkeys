@@ -9,8 +9,7 @@ export class RankingService {
   rankings:ranking[]=[{id:1,name:"daw2",memberCount:1,members:[1],teacher:2},{id:2,name:"daw1",memberCount:0,members:[],teacher:2},{id:3,name:"dam2",memberCount:0,members:[],teacher:2},{id:1,name:"dam1",memberCount:0,members:[],teacher:2}];
 
   constructor() { }
-
-
+  
   fetchStudentRankings(id:number|undefined){
 
     if(id != undefined){
