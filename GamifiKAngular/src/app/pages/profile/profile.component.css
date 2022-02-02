@@ -40,7 +40,7 @@ body {
   animation: animated-gradient 0.5s  infinite ease-in-out  ;
   margin: auto;
   border-radius: 50%;
-  
+
 }
 
 .pic img {
@@ -76,7 +76,7 @@ margin: 10px 0;
 
 
 .cardBox {
-  
+
   background-color: #f2f2f2;
   padding: 60px 8px;
   border-radius: 11px;
@@ -130,4 +130,31 @@ font-size:30px;
 font-weight: 600;
 margin: 10px 0;
 color:#2c3a47;
+}
+.inputBox{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+.inputBox input:focus, .inputBox input:valid{
+  border-color: #333;
+}
+.inputBox i{
+  position: absolute;
+  color: #333;
+  font-size: 17px;
+}
+.inputBox{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
 }

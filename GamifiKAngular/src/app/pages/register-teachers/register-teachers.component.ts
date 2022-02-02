@@ -118,8 +118,13 @@ cifrar(pass:string){
       .subscribe((data) => {
           res = data.data;
           console.log(res);
+        if(res.id){
           this.userService.fetchCurrentUser(res);
           this.router.navigate(['profile']);
+        }else if (res == 2){
+          console.log("la contraseña o el usuario no son validos");
+        }
+
         },(error) => {
           console.log('Me ha dado error');
         }

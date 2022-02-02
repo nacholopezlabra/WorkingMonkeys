@@ -17,13 +17,13 @@ class Result
   // $mensaje;
 }
 
-fetchResult($res,$bd);
+fetchResult($res,$_GET['user'],$_GET['pass']);
   
 
-function fetchResult($res,$bd){
+function fetchResult($res,$user,$pass){
     while ($row = $res->fetch_assoc()) {
 
-      if ($_GET['user'] == $row["nickname"] && $_GET['pass'] == $row["password"]) {
+      if ($user == $row["nickname"] && $pass == $row["password"]) {
         $response = new Result();
         $response->resultado = 'OK';
         $response->mensaje = 'SE HA LOGEADO EXITOSAMENTE EL USUARIO';
@@ -46,6 +46,7 @@ function fetchResult($res,$bd){
     $response = new Result();
     $response->resultado = 'Error';
     $response->mensaje = 'NO SE HA PODIDO LOGEAR EL USUARIO';
+    $response->data = 2;
     echo json_encode($response);
     
   return;

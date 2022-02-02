@@ -12,6 +12,11 @@ import { UsersService } from 'src/app/services/userService/users.service';
 export class ProfileComponent implements OnInit {
   user: user | undefined = undefined;
   passwordShowed: boolean = false;
+  lastPassword : string = "";
+  newPassword: string = "";
+  repeatNewPassword: string = "";
+
+
   constructor(
     private usersService: UsersService,
     public rankingService: RankingService,
@@ -19,6 +24,9 @@ export class ProfileComponent implements OnInit {
   ) {
     this.user = this.usersService.getCurrentUser();
   }
+
+
+
 
   ngOnInit(): void {}
 
@@ -29,6 +37,8 @@ export class ProfileComponent implements OnInit {
       this.passwordShowed = false;
     }
   }
+  changePassword(){
 
+  }
 
 }
