@@ -13,6 +13,13 @@ $decoded = json_decode($inputJSON, true);
 $response = array();
 $response['test'] = $decoded;
 
+
+date_default_timezone_set('America/Los_Angeles');
+$bdate=$decoded['birthday'];
+$bdate=date("Y-m-d", strtotime($bdate));
+
+
+
 class Result
 {
   // $resultado;
@@ -26,7 +33,7 @@ if(mysqli_num_rows($res) == 0){
     $query ="SELECT * FROM users where mail ='".$decoded['mail']."'";
     $res = mysqli_query($con,$query);
     if(mysqli_num_rows($res) == 0){
-        $query = "INSERT INTO users(id, nickname, mail, password, name, surname, center, birthday, userType, image) VALUES (null, '".$decoded['nickname']."','".$decoded['mail']."','".$decoded['password']."','".$decoded['name']."','".$decoded['surname']."','".$decoded['center']."','".$decoded['birthday']."',".$decoded['userType'].",'".$decoded['image']."')";
+        $query = "INSERT INTO users(id, nickname, mail, password, name, surname, center, birthday, userType, image) VALUES (null, '".$decoded['nickname']."','".$decoded['mail']."','".$decoded['password']."','".$decoded['name']."','".$decoded['surname']."','".$decoded['center']."','".$bdate."',".$decoded['userType'].",'".$decoded['image']."')";
         $res = mysqli_query($con,$query);
         if($res){
             $response->resultado = 'OK';

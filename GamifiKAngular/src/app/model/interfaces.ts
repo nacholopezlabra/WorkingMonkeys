@@ -5,7 +5,7 @@ export interface user{
   password?:string;
   name:string;
   surname:string;
-  center?:string;
+  center?:string|null;
   birthday:string;
   userType:number;
   image:string;
