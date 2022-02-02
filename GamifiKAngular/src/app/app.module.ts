@@ -11,6 +11,7 @@ import { LoginTeachersComponent } from './pages/login-teachers/login-teachers.co
 import { LoginStudentsComponent } from './pages/login-students/login-students.component';
 import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
 import { CommonModule } from '@angular/common';
+import { RankingComponent } from './pages/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
     RegisterTeachersComponent,
     LoginTeachersComponent,
     LoginStudentsComponent,
-    RegisterStudentsComponent
+    RegisterStudentsComponent,
+    RankingComponent
   ],
   imports: [
     CommonModule,
