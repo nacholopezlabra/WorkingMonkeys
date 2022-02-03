@@ -87,8 +87,13 @@ export class RegisterStudentsComponent implements OnInit {
       await this.apiService.logIn(user,pass).subscribe((data) => {
           res = data.data;
           console.log(res);
-          this.userService.fetchCurrentUser(res);
-          this.router.navigate(['profile']);
+          if(res.id){
+            this.userService.fetchCurrentUser(res);
+            this.router.navigate(['profile']);
+          }else if (res == 2){
+            console.log("la contraseña o el usuario no son validos");
+          }
+
         },(error) => {
           console.log('Me ha dado error');
         }
@@ -100,8 +105,13 @@ export class RegisterStudentsComponent implements OnInit {
       .subscribe((data) => {
           res = data.data;
           console.log(res);
-          this.userService.fetchCurrentUser(res);
-          this.router.navigate(['profile']);
+          if(res.id){
+            this.userService.fetchCurrentUser(res);
+            this.router.navigate(['profile']);
+          }else if (res == 2){
+            console.log("la contraseña o el usuario no son validos");
+          }
+
         },(error) => {
           console.log('Me ha dado error');
         }

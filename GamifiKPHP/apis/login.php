@@ -3,8 +3,11 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header("Content-Type: text/html; charset-UTF 8");
 header('Content-Type: application/json');
-require('../Controlers/bd.php');
-require('../Models/user.php');
+
+include_once('../Controlers/bd.php');
+include_once('../Models/user.php');
+
+
 $bd = new bd();
 $con = $bd->getConnection();
 
