@@ -7,6 +7,7 @@ import { user } from 'src/app/model/interfaces';
 const HOST: string = "http://localhost:8080/apis/";
 const LOGINURL : string = "login.php?";
 const REGISTERURL : string = "register.php";
+const CHANGEPASS : string = "changePassword.php";
 
 @Injectable({
   providedIn: 'root'
@@ -34,13 +35,8 @@ export class ApiService {
 
   }
 
-
-  post(){
-    //let json = {"id":2, "nickname":"fonsiii1","mail":"fonsi@gmail.com","password":"1234","name":"fonsi","surname":"Garcia","birthday":"17/09/1999","userType":1,"image":""};
-    let json = {name:1};
-    return this.http.post(this.generateUrl('tempRegister.php'), json,{responseType: 'json'}).subscribe((data)=>{
-      console.log(data);
-    })
+  changePassword(data:any):Observable<any>{
+    return this.http.post(this.generateUrl(CHANGEPASS),data,{responseType:'json'});
   }
 
   generateUrl(path:string):string{

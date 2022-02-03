@@ -18,11 +18,7 @@ $bdate=date("Y-m-d", strtotime($bdate));
 
 
 
-class Result
-{
-  // $resultado;
-  // $mensaje;
-}
+class Result{}
 $response = new Result();
 $query = "SELECT * FROM users where nickname = '" .$decoded['nickname']."'";
 $res = mysqli_query($con,$query);
