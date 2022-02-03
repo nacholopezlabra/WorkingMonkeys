@@ -84,7 +84,7 @@
                 <input type="file" accept="image/" formControlName="image" (change)="fileChangeEvent($event)" #fileInput required>
               </div>
               <div class="button inputBox">
-                <input type="submit" value="Sumbit" [disabled]="!validateUser.valid">
+                <input type="submit" value="Enviar" [disabled]="!validateUser.valid">
               </div>
               <div class="text signupText">Ya tienes una cuenta? <label for="flip">Logeate</label></div>
               <div class="text signupText">Eres estudiante? <label for="flip" routerLink="registerStudents">Haz click aqui</label></div>

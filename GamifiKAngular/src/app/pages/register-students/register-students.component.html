@@ -36,7 +36,7 @@
               </div>
               <div class="text"><a href="#">Olvidaste tu contraseña?</a></div>
               <div class="button inputBox">
-                <input type="submit" value="Sumbit"  [disabled]="!validateLog.valid" (click)="logIn()">
+                <input type="submit" value="Enviar"  [disabled]="!validateLog.valid" (click)="logIn()">
               </div>
               <div class="text signupText">No tienes una cuenta? <label for="flip">Registrate</label></div>
               <div class="text signupText">Eres profesor? <label for="flip" routerLink="">haz click aqui</label></div>
@@ -80,7 +80,7 @@
                 <input type="file" accept="image/"  formControlName="image" (change)="fileChangeEvent($event)" #fileInput required>
               </div>
               <div class="button inputBox">
-                <input type="submit" value="Sumbit"  [disabled]="!validateUser.valid">
+                <input type="submit" value="Enviar"  [disabled]="!validateUser.valid">
               </div>
               <div class="text signupText">Ya tienes una cuenta? <label for="flip">Logeate</label></div>
               <div class="text signupText">Eres profesor? <label for="flip" routerLink="">haz click aqui</label></div>
