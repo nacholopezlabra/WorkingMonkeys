@@ -18,9 +18,9 @@
           <p>correo:{{user?.mail}}</p>
           <p>contraseña: <button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button>
           <div *ngIf="passwordShowed">
-           <input class="inputBox" type="password" [ngModel]="lastPassword" placeholder="Introduzca su contraseña">
-           <input class="inputBox" type="password" [ngModel]="newPassword" placeholder="Introduzca una contraseña nueva">
-           <input class="inputBox" type="password" [ngModel]="repeatNewPassword" placeholder="Introduzca la contraseña nueva de nuevo">
+           <input class="inputBox" type="password" [(ngModel)]="lastPassword" placeholder="Introduzca su contraseña">
+           <input class="inputBox" type="password" [(ngModel)]="newPassword" placeholder="Introduzca una contraseña nueva">
+           <input class="inputBox" type="password" [(ngModel)]="repeatNewPassword" placeholder="Introduzca la contraseña nueva de nuevo">
           <button (click)="changePassword()">Cambiar contraseña</button>
           </div>
         </div>

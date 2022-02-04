@@ -14,6 +14,8 @@ class Result
   // $mensaje;
 }
 
+
+
 $query = "UPDATE users SET nickname=".$_GET['nickname'].", mail=".$_GET['mail'].", name=".$_GET['name'].",surname=".$_GET['surname'].",center=".$_GET['center'].",birthday=".$_GET['birthday'].",image=".$_GET['image']." where ID='".$_GET['id']."'";
 $res = mysqli_query($con,$query);
 $response = new Result();

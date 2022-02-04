@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
+import * as sha512 from 'js-sha512';
 
 @Component({
   selector: 'app-register-students',
@@ -38,7 +39,7 @@ export class RegisterStudentsComponent implements OnInit {
   onSubmit() {
     this.user.nickname = this.validateUser.get('nickname')?.value;
     this.user.mail = this.validateUser.get('mail')?.value;
-    this.user.password = this.validateUser.get('password')?.value;
+    this.user.password = this.cifrar(this.validateUser.get('password')?.value);
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
     this.user.center = null;
@@ -46,6 +47,9 @@ export class RegisterStudentsComponent implements OnInit {
     this.user.userType = 0;
     this.register();
   }
+  cifrar(pass:string){
+    return sha512.sha512(pass);
+ }
 
   async register() {
     let res: any;
@@ -83,8 +87,13 @@ export class RegisterStudentsComponent implements OnInit {
       await this.apiService.logIn(user,pass).subscribe((data) => {
           res = data.data;
           console.log(res);
-          this.userService.fetchCurrentUser(res);
-          this.router.navigate(['profile']);
+          if(res.id){
+            this.userService.fetchCurrentUser(res);
+            this.router.navigate(['profile']);
+          }else if (res == 2){
+            console.log("la contraseña o el usuario no son validos");
+          }
+
         },(error) => {
           console.log('Me ha dado error');
         }
@@ -96,8 +105,13 @@ export class RegisterStudentsComponent implements OnInit {
       .subscribe((data) => {
           res = data.data;
           console.log(res);
-          this.userService.fetchCurrentUser(res);
-          this.router.navigate(['profile']);
+          if(res.id){
+            this.userService.fetchCurrentUser(res);
+            this.router.navigate(['profile']);
+          }else if (res == 2){
+            console.log("la contraseña o el usuario no son validos");
+          }
+
         },(error) => {
           console.log('Me ha dado error');
         }

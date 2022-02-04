@@ -10,8 +10,6 @@ $con = $bd->getConnection();
 
 $inputJSON = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
 $decoded = json_decode($inputJSON, true);
-$response = array();
-$response['test'] = $decoded;
 
 
 date_default_timezone_set('America/Los_Angeles');
@@ -20,11 +18,7 @@ $bdate=date("Y-m-d", strtotime($bdate));
 
 
 
-class Result
-{
-  // $resultado;
-  // $mensaje;
-}
+class Result{}
 $response = new Result();
 $query = "SELECT * FROM users where nickname = '" .$decoded['nickname']."'";
 $res = mysqli_query($con,$query);
