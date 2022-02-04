@@ -1,0 +1,161 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #333;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.wrapper{
+	width: fit-content ;
+	height: fit-content;
+}
+.img {
+    
+    display: inline-block;
+  padding: 3px;
+  background-size: 200% 200%;
+  background: linear-gradient(70deg, #74baff, #e66767);
+  animation: animated-gradient 0.5s  infinite ease-in-out  ;
+  margin: auto;
+  border-radius: 50%;
+
+}
+
+
+.img img{
+    border-radius: 50%;
+  display: block;
+  align-self: center;
+}
+@keyframes animated-gradient {
+    20% {
+      background: linear-gradient(70deg, #74baff, #e66767);
+    }
+    40% {
+      background: linear-gradient(140deg, #74baff, #e66767);
+    }
+    60% {
+      background: linear-gradient(210deg, #74baff, #e66767);
+    }
+    80% {
+      background: linear-gradient(280deg, #74b9ff, #e66767);
+    }
+    100% {
+      background: linear-gradient(360deg, #74baff, #e66767);
+    }
+  }
+.lboard_section{
+	width: 500px;
+	height: 400px;
+	
+	background: #ffff;
+	padding: 25px 40px;
+	position: relative;
+	border-radius: 5px;
+}
+
+.lboard_section .lboard_tabs ul{
+	display: flex;
+}
+
+.lboard_section .lboard_tabs ul li{
+	margin-right: 50px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #3a3d51;
+	cursor: pointer;
+}
+
+.lboard_section .lboard_tabs ul li:hover,
+.lboard_section .lboard_tabs ul li.active{
+	color: #fff;
+}
+
+.lboard_wrap{
+	position: absolute;
+	top: 70px;
+	left: 40px;
+	background: #3a3d51;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.lboard_wrap .lboard_item{
+	padding: 25px;
+}
+
+.lboard_wrap .lboard_mem{
+	display: flex;
+	align-items: center;
+	padding: 15px 0;
+	border-bottom: 1px solid #fff;
+}
+
+.lboard_wrap .lboard_mem:first-child{
+	padding-top: 0;
+}
+
+.lboard_wrap .lboard_mem:last-child{
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.lboard_wrap .lboard_mem .img{
+	width: 50px;
+}
+
+.lboard_wrap .lboard_mem img{
+	display: block;
+	width: 100%;
+}
+
+.lboard_wrap .lboard_mem .name_bar{
+	margin: 0 20px;
+	width: calc(100% - 150px);
+}
+
+.lboard_wrap .lboard_mem .name_bar p{
+	color: #fff;
+}
+
+.lboard_wrap .lboard_mem .name_bar p span{
+	margin-right: 5px;
+}
+
+.lboard_wrap .lboard_mem .points{
+	width: 100px;
+	color: #fff;
+}
+
+.lboard_wrap .lboard_mem .name_bar .bar_wrap{
+	width: 100%;
+	height: 5px;
+	background: #515570;
+	margin-top: 5px;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.lboard_wrap .lboard_mem .name_bar .bar_wrap .inner_bar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	background: #fff;
+	border-radius: 5px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
