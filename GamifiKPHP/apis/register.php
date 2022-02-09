@@ -5,6 +5,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 
 include_once('../Controlers/bd.php');
+include_once('../Models/result.php');
 $bd = new bd();
 $con = $bd->getConnection();
 
@@ -18,7 +19,7 @@ $bdate=date("Y-m-d", strtotime($bdate));
 
 
 
-class Result{}
+
 $response = new Result();
 $query = "SELECT * FROM users where nickname = '" .$decoded['nickname']."'";
 $res = mysqli_query($con,$query);

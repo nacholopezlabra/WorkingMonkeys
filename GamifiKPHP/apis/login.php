@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 include_once('../Controlers/bd.php');
 include_once('../Models/user.php');
-
+include_once('../Models/result.php');
 
 $bd = new bd();
 $con = $bd->getConnection();
@@ -13,11 +13,7 @@ $con = $bd->getConnection();
 $query = "SELECT * from users where 1";
 $res = mysqli_query($con, $query);
 
-class Result
-{
-  // $resultado;
-  // $mensaje;
-}
+
 
 fetchResult($res,$_GET['user'],$_GET['pass']);
   
