@@ -17,7 +17,7 @@ $decoded = json_decode($inputJSON,true);
 
 
 
-$query = "SELECT * FROM rankings where name ='".$decoded['name']."' AND id_teacher = ".$decoded;
+$query = "SELECT * FROM rankings where name ='".$decoded['name']."' AND id_teacher = ".$decoded['id_teacher'];
 $res = mysqli_query($con,$query);
 
 if(mysqli_num_rows($res) == 0){

@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 
 include_once('../Controlers/bd.php');
 include_once('../Models/ranking.php');
-
+include_once('../Models/result.php');
 $bd = new bd();
 $con = $bd->getConnection();
 
@@ -16,7 +16,7 @@ $query = "SELECT * from rankings where ".$_GET['id'];
 $res = mysqli_query($con, $query);
 
 
-class Result {}
+
 
 $response = new Result();
 if(mysqli_num_rows($res)>0){
