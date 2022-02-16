@@ -5,14 +5,11 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 header("Content-Type: text/html; charset-UTF 8");
 header('Content-Type: application/json');
 
-require('../Controlers/bd.php');
+include_once('../Controlers/bd.php');
+include_once('../Models/result.php');
 $bd = new bd();
 $con = $bd->getConnection();
-class Result
-{
-  // $resultado;
-  // $mensaje;
-}
+
 
 
 

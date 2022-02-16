@@ -3,6 +3,9 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 include_once('../Controlers/bd.php');
+include_once('../Models/result.php');
+include_once('../Models/ranking.php');
+
 $bd = new bd();
 $con = $bd->getConnection();
 
@@ -17,31 +20,23 @@ if (mysqli_num_rows($res) == 0) {
     echo json_encode($response);
 }
 else {
-    while ($row = $res->fetch_assoc()) {  
+    $array =  array();
+    while ($row = $res->fetch_assoc()) {          
+        $query2 = "SELECT * from rankings where id_ranking=".$row['id_ranking'];
+        $res2 = mysqli_query($con, $query2);
+        while ($row = $res2->fetch_assoc()) {  
+            $rankingData = new ranking();
+            $rankingData->id_ranking = $row['id_ranking'];
+            $rankingData->name = $row['name'];
+            $rankingData->code = $row['code'];
+            $array[] = $rankingData;
+        }
+    }  
         $response = new Result();
         $response->resultado = 'OK';
-        $response->mensaje = 'RANKINGS RECOGIDOS CORRECTAMENTE';
-        $response->data = 0;
-        
-        $query2 = "SELECT * from rankings where id_ranking=".$row['id_ranking'];
-        $res2 = mysqli_query($con, $query);
-        $rankingData = new Ranking();
-        $rankingData->id = $row['id'];
-        $rankingData->name = $row['name'];
-        $rankingData->code = $row['code'];
-        json_encode($rankingData);
-        $response->data = $rankingData;
+        $response->mensaje = 'RANKINGS RECOGIDOS CORRECTAMENTE'; 
+        $response->data = $array;
         echo json_encode($response);
-               
     }
-}
-
-class Result
-{
-  // $resultado;
-  // $mensaje;
-
-}
-
-
 ?>
+      
