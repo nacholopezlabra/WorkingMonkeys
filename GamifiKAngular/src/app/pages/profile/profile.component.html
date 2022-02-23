@@ -4,10 +4,15 @@
   <div>
     <div class="imageCard standarCard">
       <div class="imageCardContainer">
+
         <div class="pic">
+          <div class="editPic">
+            <img class="icon" src="../../../assets/icons/editIcon.png">
+          </div>
           <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
           <img class="profileImage" *ngIf="user?.image == '' || user?.image == null" src="../../../assets/placeholders/userPlaceholder.jpg">
         </div>
+
         <div class="titulo">
           <p *ngIf="user?.userType == 1">Profesor</p>
           <p *ngIf="user?.userType == 0">Estudiante</p>
