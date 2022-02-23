@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
 const HOST: string = "http://localhost:8080/apis/";
-const LOGINURL : string = "login.php?";
-const REGISTERURL : string = "register.php";
-const CHANGEPASS : string = "changePassword.php";
+const LOGINURL : string = "user/login.php?";
+const REGISTERURL : string = "user/register.php";
+const CHANGEPASS : string = "user/changePassword.php";
 
 @Injectable({
   providedIn: 'root'

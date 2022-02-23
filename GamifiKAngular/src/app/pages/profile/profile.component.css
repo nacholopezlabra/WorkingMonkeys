@@ -17,6 +17,22 @@ body {
 }
 
 
+.icon{
+  width: 20px;
+  height: 20px;
+
+
+}
+.editPic{
+  position: absolute;
+  align-items: center;
+  align-self: center;
+  /*background-color: aqua;
+
+  padding: 0 2px 2px 2px;
+  padding-bottom: 2px;
+  margin: 0;*/
+}
 
 
 .profileImage {
@@ -26,7 +42,7 @@ body {
   overflow: hidden;
 
 }
-.profileImage:hover{
+.pic:hover{
   src: "../../../assets/placeholders/changeImagePlaceholder.png";
 }
 .imageCardContainer {

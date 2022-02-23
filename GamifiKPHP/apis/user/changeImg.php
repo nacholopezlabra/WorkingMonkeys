@@ -4,8 +4,8 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 
-include_once('../Controlers/bd.php');
-include_once('../Models/result.php');
+include_once('../../Controlers/bd.php');
+include_once('../../Models/result.php');
 $bd = new bd();
 $con = $bd->getConnection();
 
