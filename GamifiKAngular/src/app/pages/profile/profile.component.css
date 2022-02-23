@@ -26,7 +26,9 @@ body {
   overflow: hidden;
 
 }
-
+.profileImage:hover{
+  src: "../../../assets/placeholders/changeImagePlaceholder.png";
+}
 .imageCardContainer {
   background-color: #2c3a47;
   padding: 60px 42px;

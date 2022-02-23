@@ -11,11 +11,16 @@ import { UsersService } from 'src/app/services/userService/users.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  user: user | undefined = undefined;
+  user: user;
   passwordShowed: boolean = false;
   lastPassword : string = "";
   newPassword: string = "";
   repeatNewPassword: string = "";
+
+  imgBase64Path: string = '';
+  isImageSaved: boolean = false;
+  cardImageBase64: string = '';
+
 
 
   constructor(
@@ -64,4 +69,22 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+
+  fileChangeEvent(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs) => {
+          this.imgBase64Path = e.target.result;
+          this.cardImageBase64 = this.imgBase64Path;
+          this.isImageSaved = true;
+          this.user.image = this.cardImageBase64;
+          console.log(this.user)
+        };
+      };
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
 }

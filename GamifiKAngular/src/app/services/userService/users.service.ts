@@ -8,7 +8,7 @@ import { DbService } from '../Database/db.service';
 export class UsersService {
 
   students:user[] = [];//array that fetch all students from database;
-  currentUser:user|undefined = undefined; //we use this var for the logged user(can be a teacher or a student);
+  currentUser:user = {id:0, nickname:"",mail:"",password:"",name:"",surname:"",birthday:"",userType:0,image:""}; //we use this var for the logged user(can be a teacher or a student);
 
 
   constructor(private db: DbService) {
@@ -26,15 +26,11 @@ export class UsersService {
 
   }
 
-  public getCurrentUser():user|undefined{
-    if(this.currentUser){
-      return this.currentUser;
-    }
-    return;
-
+  public getCurrentUser():user{
+    return this.currentUser;
   }
   public logOut(){
-    this.currentUser = undefined;
+    this.currentUser = {id:0, nickname:"",mail:"",password:"",name:"",surname:"",birthday:"",userType:0,image:""};
   }
 
 }

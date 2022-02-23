@@ -20,19 +20,19 @@ if(mysqli_num_rows($res) == 0){
     $res = mysqli_query($con,$query);
     if($res){
         $response->resultado = 'OK';
-        $response->mensaje = 'SE HA AÑADIDO EL USUARIO EXITOSAMENTE';
+        $response->mensaje = 'SE HA AÑADIDO EL USUARIO EXITOSAMENTE DEL RANKING';
         $response->data = 3;
         echo json_encode($response);
     }else{
         $response->resultado = 'ERROR';
-        $response->mensaje = 'NO SE HA AÑADIDO EL USUARIO EXITOSAMENTE';
+        $response->mensaje = 'NO SE HA AÑADIDO EL USUARIO EXITOSAMENTE DEL RANKING';
         $response->data = 2;
         echo json_encode($response);
     }
     
 }else{
     $response->resultado = 'ERROR';
-    $response->mensaje = 'EL USUARIO YA EXISTE';
+    $response->mensaje = 'EL USUARIO YA EXISTE EN EL RANKING';
     $response->data = 1;
     echo json_encode($response);
 }
