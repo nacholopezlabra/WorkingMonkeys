@@ -13,10 +13,10 @@
           <p *ngIf="user?.userType == 0">Estudiante</p>
         </div>
         <div class="info">
-          <p class="nick">usuario:{{user?.nickname}}</p>
-          <p>nombre:{{user?.name}}</p>
-          <p>correo:{{user?.mail}}</p>
-          <p>contraseña: <button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button>
+          <p class="nick">usuario:  {{user?.nickname}}</p>
+          <p>nombre:  {{user?.name}}</p>
+          <p>correo:  {{user?.mail}}</p>
+          <p>contraseña: <br><button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button>
           <div *ngIf="passwordShowed">
            <input class="inputBox" type="password" [(ngModel)]="lastPassword" placeholder="Introduzca su contraseña">
            <input class="inputBox" type="password" [(ngModel)]="newPassword" placeholder="Introduzca una contraseña nueva">
