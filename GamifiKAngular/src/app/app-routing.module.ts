@@ -8,11 +8,11 @@ import { RegisterStudentsComponent } from './pages/register-students/register-st
 import { RankingComponent } from './pages/ranking/ranking.component';
 
 const routes: Routes = [
-  { path: '', component: RegisterTeachersComponent },
+  { path: 'registerTeachers', component: RegisterTeachersComponent },
   { path: 'registerStudents', component: RegisterStudentsComponent },
   { path: 'loginTeachers', component: LoginTeachersComponent },
   { path: 'loginStudents', component: LoginStudentsComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: '', component: ProfileComponent },
   { path: 'rankings', component: RankingComponent }
 ];
 

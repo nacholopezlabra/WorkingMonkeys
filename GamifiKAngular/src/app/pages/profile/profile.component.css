@@ -8,7 +8,7 @@
 body {
 
   height: 100vh;
-  background-image: url(../../../assets/backgroundimg/wallpaperbetter.jpg);
+  background-image: url(../../../assets/backgroundimg/wallpaperprofile.png);
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -43,7 +43,7 @@ body {
   display: inline-block;
   padding: 3px;
   background-size: 200% 200%;
-  background: linear-gradient(70deg, #74baff, #e66767);
+  background: linear-gradient(70deg, #ffcc2f, #ef5734);
   animation: animated-gradient 0.5s  infinite ease-in-out  ;
   margin: auto;
   border-radius: 50%;
@@ -58,19 +58,19 @@ body {
 
 @keyframes animated-gradient {
   20% {
-    background: linear-gradient(70deg, #74baff, #e66767);
+    background: linear-gradient(70deg, #ffcc2f, #ef5734);
   }
   40% {
-    background: linear-gradient(140deg, #74baff, #e66767);
+    background: linear-gradient(140deg, #ffcc2f, #ef5734);
   }
   60% {
-    background: linear-gradient(210deg, #74baff, #e66767);
+    background: linear-gradient(210deg, #ffcc2f, #ef5734);
   }
   80% {
-    background: linear-gradient(280deg, #74b9ff, #e66767);
+    background: linear-gradient(280deg, #ffcc2f, #ef5734);
   }
   100% {
-    background: linear-gradient(360deg, #74baff, #e66767);
+    background: linear-gradient(360deg, #ffcc2f, #ef5734);
   }
 }
 .titulo{
