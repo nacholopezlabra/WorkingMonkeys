@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   lastPassword : string = "";
   newPassword: string = "";
   repeatNewPassword: string = "";
-
+  canChangeImg : boolean = false;
   imgBase64Path: string = '';
   isImageSaved: boolean = false;
   cardImageBase64: string = '';
