@@ -27,14 +27,13 @@ if(mysqli_num_rows($res)>0){
     $rank->name = $row['name'];
     $rank->id_teacher = $row['id_teacher'];
     $rank->code = $row['code'];
-    $rank->id_task = $row['id_task'];
     
     $leaderboard[] = json_encode($rank);
     }
     
     $response->resultado='OK';
     $response->mensaje ='RANKING MOSTRADO EXITOSAMENTE';
-    $response->data=json_encode($leaderboard);
+    $response->data=$leaderboard;
     echo json_encode($response);
     
 } else if(mysqli_num_rows($res)==0){
