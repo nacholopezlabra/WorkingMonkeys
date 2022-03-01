@@ -6,6 +6,7 @@ header("Content-Type: text/html; charset-UTF 8");
 
 include_once('../../Controlers/bd.php'); 
 include_once('../../Models/result.php');
+include_once('../../Models/score.php');
 $bd = new bd();
 $con = $bd->getConnection();
 
@@ -21,11 +22,11 @@ while ($row = $res->fetch_assoc()) {
    $scores->id_task=$row['id_task'];
    $scores->score=$row['score'];
 
-   $scored[]= json_encode($scores);
+   $scored[]=$scores;
 }
 $response->resultado='OK';
 $response->mensaje ='SCORE MOSTRADO EXITOSAMENTE';
-$response->data=json_encode($scored);
+$response->data=$scored;
 echo json_encode($response);
 } else if(mysqli_num_rows($res)==0){
     $response->resultado = 'ERROR';
