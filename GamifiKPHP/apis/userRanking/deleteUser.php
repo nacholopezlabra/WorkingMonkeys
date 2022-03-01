@@ -16,7 +16,7 @@ $response = new Result();
 $query = "SELECT * FROM ranking_students WHERE id_student = ".$_GET['id_user']." AND id_ranking = ".$_GET['id_ranking'];
 $res = mysqli_query($con,$query);
 
-if(mysqli_num_rows($res) == 0){
+if(mysqli_num_rows($res) == 1){
     $query = " DELETE FROM ranking_students WHERE id_student = ".$_GET['id_user']." AND id_ranking = ".$_GET['id_ranking'];
     //DELETE FROM rankings WHERE id_ranking=".$_GET['id_ranking']."AND id_teacher =".$_GET['id_teacher']
     $res = mysqli_query($con,$query);

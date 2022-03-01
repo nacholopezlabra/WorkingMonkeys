@@ -16,7 +16,7 @@ $query = "SELECT * FROM ranking_students WHERE id_student = ".$_GET['id_user']."
 $res = mysqli_query($con,$query);
 
 if(mysqli_num_rows($res) == 0){
-    $query = "INSERT INTO ranking_students(id_ranking,id_student) VALUES (".$_GET['id_ranking'].",".$_GET['id_student'].")";
+    $query = "INSERT INTO ranking_students(id_ranking,id_student) VALUES (".$_GET['id_ranking'].",".$_GET['id_user'].")";
     $res = mysqli_query($con,$query);
     if($res){
         $response->resultado = 'OK';
