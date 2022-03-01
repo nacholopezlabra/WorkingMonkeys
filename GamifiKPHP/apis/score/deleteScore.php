@@ -11,12 +11,12 @@ include_once('../../Models/result.php');
 $bd = new bd();
 $con = $bd->getConnection();
 
-$query = "SELECT * FROM scores where id_student=".$_GET['id_student']."AND id_task=".$_GET['id_task'];
+$query = "SELECT * FROM scores where id_student= '".$_GET['id_student']."' AND id_task= '".$_GET['id_task']."'";
 $res = mysqli_query($con,$query);
 
 if(mysqli_num_rows($res) > 0){
     
-    $queRy = "DELETE FROM scores WHERE id_student=".$_GET['id_student']."AND id_task =".$_GET['id_task'];
+    $queRy = "DELETE FROM scores WHERE id_student= '".$_GET['id_student']."' AND id_task = '".$_GET['id_task']."'";
     $res = mysqli_query($con,$query);
     $response = new Result();
     if($res){
