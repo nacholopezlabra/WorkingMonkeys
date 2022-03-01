@@ -28,7 +28,7 @@ if(mysqli_num_rows($res)>0){
     $rank->id_teacher = $row['id_teacher'];
     $rank->code = $row['code'];
     
-    $leaderboard[] = json_encode($rank);
+    $leaderboard[] = $rank;
     }
     
     $response->resultado='OK';

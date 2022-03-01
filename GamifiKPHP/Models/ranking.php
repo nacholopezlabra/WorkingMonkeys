@@ -5,6 +5,6 @@ public $id_ranking;
 public $name;
 public $id_teacher;
 public $code;
-public $id_task;
+
 }
 ?>
