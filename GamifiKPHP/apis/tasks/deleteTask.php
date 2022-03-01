@@ -8,8 +8,7 @@ include_once('../../Models/ranking.php');
 
 $bd = new bd();
 $con = $bd->getConnection();
-
-$query = "SELECT * FROM tasks where name ='".$decoded['name']."' AND id_ranking = ".$decoded['id_ranking'];
+$query = "SELECT * FROM tasks where id_task = '".$_GET['id_task']."'";
 $res = mysqli_query($con,$query);
 
 if(mysqli_num_rows($res) > 0){

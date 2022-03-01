@@ -4,7 +4,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 include_once('../../Controlers/bd.php');
 include_once('../../Models/result.php');
-include_once('../../Models/ranking.php');
+include_once('../../Models/task.php');
 
 $bd = new bd();
 $con = $bd->getConnection();
@@ -22,9 +22,10 @@ if (mysqli_num_rows($res) == 0) {
 else {
     $array = array();
         while ($row = $res->fetch_assoc()) {
-            $taskData = new ranking();
+            $taskData = new task();
             $taskData->id_task = $row['id_task'];
             $taskData->name = $row['name'];
+            $taskData->id_ranking = $_GET['id_ranking'];
             $array[] = $taskData;
         } 
         $response = new Result();
