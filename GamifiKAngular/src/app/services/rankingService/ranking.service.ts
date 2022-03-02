@@ -6,10 +6,11 @@ import { ranking } from 'src/app/model/interfaces';
 })
 export class RankingService {
 
-  rankings:ranking[]=[{id:1,name:"daw2",memberCount:1,members:[1],teacher:2},{id:2,name:"daw1",memberCount:0,members:[],teacher:2},{id:3,name:"dam2",memberCount:0,members:[],teacher:2},{id:1,name:"dam1",memberCount:0,members:[],teacher:2}];
+  rankings:ranking[]=[{id_ranking:1,name:"daw2",memberCount:1, members:[1],id_teacher:2, code:0},{id_ranking:2,name:"daw1",memberCount:0,members:[],id_teacher:2, code:0},{id_ranking:3,name:"dam2",memberCount:0,members:[],id_teacher:2, code:0},{id_ranking:1,name:"dam1",memberCount:0,members:[],id_teacher:2, code:0}]
 
-  constructor() { }
-  
+  constructor() {
+  }
+
   fetchStudentRankings(id:number|undefined){
 
     if(id != undefined){
@@ -32,7 +33,7 @@ export class RankingService {
     if(id != undefined){
       let userRanking: ranking[]=[];
       this.rankings.forEach(ranking => {
-          if(ranking.teacher == id){
+          if(ranking.id_teacher == id){
             userRanking.push(ranking);
           }
       });
@@ -40,5 +41,14 @@ export class RankingService {
       return userRanking;
     }
     return;
+  }
+
+  randomNumberRanking(){
+    let min = 0;
+    let max = 99999999;
+    let code: number;
+    code = min + Math.floor(Math.random()*max);
+
+    console.log(code.toString().padStart(8,"0"));
   }
 }

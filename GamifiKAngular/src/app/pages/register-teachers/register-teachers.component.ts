@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 import * as sha512 from 'js-sha512';
+import { RankingService } from 'src/app/services/rankingService/ranking.service';
 
 
 @Component({
@@ -51,8 +52,12 @@ export class RegisterTeachersComponent implements OnInit {
     private router: Router,
     public apiService: ApiService,
     private userService: UsersService,
+    private rankingService:RankingService
 
-  ) {}
+  ) {
+
+    this.rankingService.randomNumberRanking();
+  }
 
   //REGISTRO
 
