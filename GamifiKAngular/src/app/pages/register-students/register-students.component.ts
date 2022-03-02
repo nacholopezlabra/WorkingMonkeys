@@ -60,8 +60,20 @@ export class RegisterStudentsComponent implements OnInit {
           if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
             this.logIn(this.user.nickname,this.user.password);
           }else if(data.data == 2){ //el dos lo usamos para decir que el correo que el usuario a puesta ya esta en uso
+            Swal.fire({
+              icon: 'error',
+              title: 'Email ya en uso',
+              showConfirmButton: false,
+              timer: 1000
+            })
             console.log("email ya en uso");
           }else if(data.data == 1){ // el uno lo usamos para decir que el nickname del usuario ya existe
+            Swal.fire({
+              icon: 'error',
+              title: 'El usuario ya existe',
+              showConfirmButton: false,
+              timer: 1000
+            })
             console.log("usuario ya existe")
           }
 
@@ -89,8 +101,22 @@ export class RegisterStudentsComponent implements OnInit {
           console.log(res);
           if(res.id){
             this.userService.fetchCurrentUser(res);
-            this.router.navigate(['profile']);
+            Swal.fire({
+              icon: 'success',
+              title: 'Usuario Logeado',
+              showConfirmButton: false,
+              timer: 1000
+            }).then((result)=>{
+              this.router.navigate(['profile']);
+            })
+
           }else if (res == 2){
+            Swal.fire({
+              icon: 'error',
+              title: 'Contraseña o el usuario no son validos',
+              showConfirmButton: false,
+              timer: 1000
+            })
             console.log("la contraseña o el usuario no son validos");
           }
 
@@ -101,14 +127,27 @@ export class RegisterStudentsComponent implements OnInit {
 
     }else{ //el login del usuario utilizando el html
 
-      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.validateLog.get('password')?.value)
+      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.cifrar(this.validateLog.get('password')?.value))
       .subscribe((data) => {
           res = data.data;
           console.log(res);
           if(res.id){
             this.userService.fetchCurrentUser(res);
-            this.router.navigate(['profile']);
+            Swal.fire({
+              icon: 'success',
+              title: 'Usuario Logeado',
+              showConfirmButton: false,
+              timer: 1000
+            }).then((result)=>{
+              this.router.navigate(['profile']);
+            })
           }else if (res == 2){
+            Swal.fire({
+              icon: 'error',
+              title: 'Contraseña o el usuario no son validos',
+              showConfirmButton: false,
+              timer: 1000
+            })
             console.log("la contraseña o el usuario no son validos");
           }
 
