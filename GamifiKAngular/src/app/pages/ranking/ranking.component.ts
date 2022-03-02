@@ -7,24 +7,19 @@ import { UsersService } from 'src/app/services/userService/users.service';
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.css']
+  styleUrls: ['./ranking.component.css'],
 })
 export class RankingComponent implements OnInit {
-  user:user;
+  user: user;
+  imgBase64Path: string = '';
 
-
-
-
-  constructor(   private usersService: UsersService,
+  constructor(
+    private usersService: UsersService,
     public rankingService: RankingService,
     private apiService: ApiService
   ) {
     this.user = this.usersService.getCurrentUser();
   }
 
-  ngOnInit(): void {
-  }
-
-
-
+  ngOnInit(): void {}
 }
