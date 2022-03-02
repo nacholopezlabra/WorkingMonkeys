@@ -77,8 +77,10 @@ cifrar(pass:string){
 }
 
 
+
   async register() {
-    let res: any;
+
+
     if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
       await this.apiService.register(this.user).subscribe(
         (data) => {

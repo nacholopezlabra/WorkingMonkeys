@@ -24,11 +24,12 @@
 
 
     <div class="imageCard standarCard">
+      <button class="editPic"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
       <div class="imageCardContainer">
 
         <div class="pic">
           <!--<div class="editPic">-->
-            <button class="editPic"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+
           <!--</div>-->
           <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
           <img class="profileImage" *ngIf="user?.image == '' || user?.image == null" src="../../../assets/placeholders/userPlaceholder.jpg">

@@ -15,7 +15,7 @@ $decoded = json_decode($inputJSON,true);
 
 $response = new Result();
 
-$query = "UPDATE `scores` SET score='".$decoded['score']."' WHERE id_student=".$decoded['id_student']." AND  id_task=".$decoded['id_task'];
+$query = "UPDATE scores SET score = '".$decoded['score']."' WHERE id_student = '".$decoded['id_student']."' AND  id_task = '".$decoded['id_task']."'";
 $res = mysqli_query($con,$query);
 if($res){
     $response->resultado = 'OK';

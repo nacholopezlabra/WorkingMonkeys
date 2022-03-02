@@ -8,7 +8,7 @@ const HOST: string = "http://localhost:8080/apis/";
 const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
 const CHANGEPASS : string = "user/changePassword.php";
-
+const UPDATERANKING : string = "ranking/updateRanking.php";
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +42,15 @@ export class ApiService {
   generateUrl(path:string):string{
     console.log(HOST+path);
     return HOST+path;
+  }
+
+  updateRanking(){
+    let data = {
+      name:"taska2",
+      id_ranking:2,
+      code:1234567
+    }
+    return this.http.post(this.generateUrl(UPDATERANKING),data,{responseType:'json'});
   }
 
 }
