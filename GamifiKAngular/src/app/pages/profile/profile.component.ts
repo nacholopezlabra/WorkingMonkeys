@@ -4,6 +4,7 @@ import { user } from 'src/app/model/interfaces';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -30,10 +31,18 @@ export class ProfileComponent implements OnInit {
     return sha512.sha512(pass);
  }
 
+<<<<<<< Updated upstream
 
   ngOnInit(): void {
 
   }
+=======
+  ngOnInit(): void {
+    Swal.fire({
+      icon: 'success',
+      title: 'Usuario Logeado',
+    })}
+>>>>>>> Stashed changes
 
   showPassword(): void {
     if (!this.passwordShowed) {
