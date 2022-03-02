@@ -17,13 +17,17 @@ $decoded = json_decode($inputJSON,true);
 
 $response = new Result();
 
-$query = "UPDATE `users` SET name= '".$decoded['name']."', code='".$decoded['code']."' WHERE id_ranking=".$decoded['id_ranking'];
+$query = "UPDATE rankings SET name = '".$decoded['name']."' , code= '".$decoded['code']."' WHERE id_ranking= '".$decoded['id_ranking']."'";
 $res = mysqli_query($con,$query);
 
 if($res){
     $response->resultado = 'OK';
     $response->mensaje = 'SE HA MODIFICADO EL RANKING EXITOSAMENTE';
-    $response->data = 3;
+    $query = "SELECT * FROM rankings where id_ranking = ".$decoded['id_ranking'];
+    $res = mysqli_query($con,$query);
+    $row = $res->fetch_assoc();
+
+    $response->data = $row;
     echo json_encode($response);
 }else{
     $response->resultado = 'ERROR';
