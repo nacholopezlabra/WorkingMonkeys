@@ -4,6 +4,7 @@ import { user } from 'src/app/model/interfaces';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -22,12 +23,7 @@ export class ProfileComponent implements OnInit {
   cardImageBase64: string = '';
 
 
-
-  constructor(
-    private usersService: UsersService,
-    public rankingService: RankingService,
-    private apiService: ApiService
-  ) {
+  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService) {
     this.user = this.usersService.getCurrentUser();
   }
 
@@ -35,8 +31,9 @@ export class ProfileComponent implements OnInit {
     return sha512.sha512(pass);
  }
 
+  ngOnInit(): void {
+   }
 
-  ngOnInit(): void {}
 
   showPassword(): void {
     if (!this.passwordShowed) {
