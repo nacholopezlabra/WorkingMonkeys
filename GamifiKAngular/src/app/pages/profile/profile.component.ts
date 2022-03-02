@@ -22,12 +22,7 @@ export class ProfileComponent implements OnInit {
   cardImageBase64: string = '';
 
 
-
-  constructor(
-    private usersService: UsersService,
-    public rankingService: RankingService,
-    private apiService: ApiService
-  ) {
+  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService) {
     this.user = this.usersService.getCurrentUser();
   }
 
@@ -36,7 +31,9 @@ export class ProfileComponent implements OnInit {
  }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   showPassword(): void {
     if (!this.passwordShowed) {
