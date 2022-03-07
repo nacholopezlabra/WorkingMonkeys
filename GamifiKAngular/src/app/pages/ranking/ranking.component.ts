@@ -16,7 +16,6 @@ export class RankingComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     public rankingService: RankingService,
-    private apiService: ApiService
   ) {
     this.user = this.usersService.getCurrentUser();
   }

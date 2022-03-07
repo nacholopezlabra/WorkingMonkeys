@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 	font-family: 'Montserrat', sans-serif;
 }
+.hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
 
 body {
   height: 100vh;

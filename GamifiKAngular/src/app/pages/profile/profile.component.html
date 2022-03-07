@@ -30,7 +30,7 @@
 
       <div class="imageCardContainer">
 
-        <div class="pic">
+        <div class="pic" *ngIf="!editMode">
           <!--<div class="editPic">-->
 
           <!--</div>-->
@@ -39,6 +39,17 @@
 
 
         </div>
+        <div class="pic" *ngIf="editMode">
+          <!--<div class="editPic">-->
+
+          <!--</div>-->
+          <img class="profileImage" (click)="fileChangeOpen()" *ngIf="user?.image != ''" src="{{user?.image}}">
+          <img class="profileImage" (click)="fileChangeOpen()" *ngIf="user?.image == '' || user?.image == null" src="../../../assets/placeholders/userPlaceholder.jpg">
+
+
+
+        </div>
+        <input class="hidden" type="file" id="upload-file" name="upload-file" (change)="fileChangeEvent($event)">
 
         <div class="titulo">
           <p *ngIf="user?.userType == 1">Profesor</p>
@@ -56,6 +67,7 @@
           <button (click)="changePassword()">Cambiar contraseña</button>
           </div>
         </div>
+
         <div class="info" *ngIf="editMode">
 
 
