@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as sha512 from 'js-sha512';
 import { user } from 'src/app/model/interfaces';
 import { ApiService } from 'src/app/services/apiService/api.service';
+import { CommonService } from 'src/app/services/commonService/common.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 import Swal from 'sweetalert2';
@@ -23,7 +24,7 @@ export class ProfileComponent implements OnInit {
   cardImageBase64: string = '';
   editMode:boolean = false;
   alteredUser:user ;
-  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService) {
+  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService, private  commonService: CommonService) {
     this.user = this.usersService.getCurrentUser();
     this.alteredUser = this.usersService.getCurrentUser();
   }
@@ -67,15 +68,11 @@ inputimage(){
     this.apiService.changePassword(data).subscribe(
       (data) => {
         if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
-          //TODO aqui va swal
-          console.log("se ha cambiado la contraseña correctamente");
+          this.commonService.sweetalert("success", "Se ha cambiado la contraseña correctamente");
         }else if(data.data == 2){ //el dos lo usamos para decir que el correo que el usuario a puesta ya esta en uso
-
-          //TODO aqui va swal
-          console.log("las contraseñas nuevas no concuerdan");
+          this.commonService.sweetalert("error", "Las contraseñas nuevas no concuerdan");
         }else if(data.data == 1){ // el uno lo usamos para decir que el nickname del usuario ya existe
-          //TODO aqui va swal
-          console.log("la contraseña anterior no concuerda")
+          this.commonService.sweetalert("error", "La contraseña anterior no concuerda");
         }
       });
   }

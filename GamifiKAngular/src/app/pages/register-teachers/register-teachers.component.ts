@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { user } from 'src/app/model/interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 import * as sha512 from 'js-sha512';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
+import { CommonService } from 'src/app/services/commonService/common.service';
 
 
 @Component({
@@ -52,7 +53,8 @@ export class RegisterTeachersComponent implements OnInit {
     private router: Router,
     public apiService: ApiService,
     private userService: UsersService,
-    private rankingService:RankingService
+    private rankingService:RankingService,
+    private commonService: CommonService
 
   ) {
 
@@ -133,12 +135,7 @@ cifrar(pass:string){
           console.log(res);
           if(res.id){
             this.userService.fetchCurrentUser(res);
-            Swal.fire({
-              icon: 'success',
-              title: 'Usuario Logeado',
-              showConfirmButton: false,
-              timer: 1000
-            }).then((result)=>{
+            this.commonService.sweetalert("error","correo no valido").then((result)=>{
               this.router.navigate(['profile']);
             })
           }else if (res == 2){
@@ -205,5 +202,7 @@ cifrar(pass:string){
       reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
+
+
 
 }

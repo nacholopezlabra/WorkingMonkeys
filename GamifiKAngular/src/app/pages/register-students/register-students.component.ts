@@ -3,6 +3,7 @@ import { user } from 'src/app/model/interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/services/commonService/common.service';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 import * as sha512 from 'js-sha512';
@@ -32,7 +33,7 @@ export class RegisterStudentsComponent implements OnInit {
   isImageSaved: boolean = false;
   cardImageBase64: string = '';
 
-  constructor(private router: Router, private apiService: ApiService, private userService: UsersService) { }
+  constructor(private router: Router, private apiService: ApiService, private userService: UsersService, private  commonService: CommonService ) { }
 
   //REGISTRO
 
@@ -60,20 +61,10 @@ export class RegisterStudentsComponent implements OnInit {
           if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
             this.logIn(this.user.nickname,this.user.password);
           }else if(data.data == 2){ //el dos lo usamos para decir que el correo que el usuario a puesta ya esta en uso
-            Swal.fire({
-              icon: 'error',
-              title: 'Email ya en uso',
-              showConfirmButton: false,
-              timer: 1000
-            })
+            this.commonService.sweetalert("error", "Email ya en uso");
             console.log("email ya en uso");
           }else if(data.data == 1){ // el uno lo usamos para decir que el nickname del usuario ya existe
-            Swal.fire({
-              icon: 'error',
-              title: 'El usuario ya existe',
-              showConfirmButton: false,
-              timer: 1000
-            })
+            this.commonService.sweetalert("error", "El usuario ya existe");
             console.log("usuario ya existe")
           }
 
@@ -84,6 +75,7 @@ export class RegisterStudentsComponent implements OnInit {
         }
       );
     }else{
+      this.commonService.sweetalert("error", "La password no es igual");
       console.log("la password no es igual");
     }
   }
@@ -101,22 +93,11 @@ export class RegisterStudentsComponent implements OnInit {
           console.log(res);
           if(res.id){
             this.userService.fetchCurrentUser(res);
-            Swal.fire({
-              icon: 'success',
-              title: 'Usuario Logeado',
-              showConfirmButton: false,
-              timer: 1000
-            }).then((result)=>{
+            this.commonService.sweetalert("success","Usuario Logeado").then((result)=>{
               this.router.navigate(['profile']);
             })
-
           }else if (res == 2){
-            Swal.fire({
-              icon: 'error',
-              title: 'Contraseña o el usuario no son validos',
-              showConfirmButton: false,
-              timer: 1000
-            })
+            this.commonService.sweetalert("error", "La contraseña o el usuario no son validos");
             console.log("la contraseña o el usuario no son validos");
           }
 
@@ -133,21 +114,11 @@ export class RegisterStudentsComponent implements OnInit {
           console.log(res);
           if(res.id){
             this.userService.fetchCurrentUser(res);
-            Swal.fire({
-              icon: 'success',
-              title: 'Usuario Logeado',
-              showConfirmButton: false,
-              timer: 1000
-            }).then((result)=>{
+            this.commonService.sweetalert("success","Usuario Logeado").then((result)=>{
               this.router.navigate(['profile']);
             })
           }else if (res == 2){
-            Swal.fire({
-              icon: 'error',
-              title: 'Contraseña o el usuario no son validos',
-              showConfirmButton: false,
-              timer: 1000
-            })
+            this.commonService.sweetalert("error", "La contraseña o el usuario no son validos");
             console.log("la contraseña o el usuario no son validos");
           }
 
