@@ -10,6 +10,13 @@ import { RegisterTeachersComponent } from './pages/register-teachers/register-te
 import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
 import { CommonModule } from '@angular/common';
 import { RankingComponent } from './pages/ranking/ranking.component';
+import { AddRankingsComponent } from './modals/add-rankings/add-rankings.component';
+import { AddScoresComponent } from './modals/add-scores/add-scores.component';
+import { UpdateRankingComponent } from './modals/update-ranking/update-ranking.component';
+import { UpdateScoresComponent } from './modals/update-scores/update-scores.component';
+import { AddTasksComponent } from './modals/add-tasks/add-tasks.component';
+import { UpdateTaskComponent } from './modals/update-task/update-task.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,7 +24,13 @@ import { RankingComponent } from './pages/ranking/ranking.component';
     ProfileComponent,
     RegisterTeachersComponent,
     RegisterStudentsComponent,
-    RankingComponent
+    RankingComponent,
+    AddRankingsComponent,
+    AddScoresComponent,
+    UpdateRankingComponent,
+    UpdateScoresComponent,
+    AddTasksComponent,
+    UpdateTaskComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +39,8 @@ import { RankingComponent } from './pages/ranking/ranking.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

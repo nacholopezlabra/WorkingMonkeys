@@ -4,12 +4,14 @@ import { RegisterTeachersComponent } from './pages/register-teachers/register-te
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
+import { AddRankingsComponent } from './modals/add-rankings/add-rankings.component';
 
 const routes: Routes = [
   { path: '', component: RegisterTeachersComponent },
   { path: 'registerStudents', component: RegisterStudentsComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'ranking', component: RankingComponent }
+  { path: 'ranking', component: RankingComponent },
+  { path: 'addranking', component: AddRankingsComponent}
 ];
 
 @NgModule({
