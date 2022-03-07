@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 	font-family: 'Montserrat', sans-serif;
 }
+.hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
 
 body {
   height: 100vh;
@@ -94,11 +99,14 @@ font-size: 1.8vw;
   text-align: center;
   border-radius: 8px;
   overflow: hidden;
-
 }
 .pic:hover{
   src: "../../../assets/placeholders/changeImagePlaceholder.png";
 }
+#file{
+  display:none;
+}
+
 .imageCardContainer {
   background-color: #2c3a47;
   padding: 60px 42px;
@@ -237,3 +245,5 @@ color:#2c3a47;
   margin: 10px 0;
   position: relative;
 }
+
+

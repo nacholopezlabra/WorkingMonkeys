@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { user } from 'src/app/model/interfaces';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import Swal, { SweetAlertIcon } from 'sweetalert2';
-import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 import * as sha512 from 'js-sha512';
-import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { CommonService } from 'src/app/services/commonService/common.service';
 
 
@@ -50,15 +46,11 @@ export class RegisterTeachersComponent implements OnInit {
 
 
   constructor(
-    private router: Router,
-    public apiService: ApiService,
     private userService: UsersService,
-    private rankingService:RankingService,
     private commonService: CommonService
 
   ) {
 
-    this.rankingService.randomNumberRanking();
   }
   //REGISTRO
 
@@ -70,11 +62,11 @@ export class RegisterTeachersComponent implements OnInit {
     this.user.center = this.validateUser.get('center')?.value;
     this.user.birthday = this.validateUser.get('birthday')?.value;
     this.user.userType = 1;
-    this.user.password = this.cifrar(this.validateUser.get('password')?.value);
+    this.user.password = this.encode(this.validateUser.get('password')?.value);
     this.register();
     console.log(this.user.password);
   }
-cifrar(pass:string){
+encode(pass:string){
    return sha512.sha512(pass);
 }
 
@@ -82,107 +74,23 @@ cifrar(pass:string){
 
   async register() {
 
-
     if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
-      await this.apiService.register(this.user).subscribe(
-        (data) => {
-          console.log(data);
-          if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
-            this.logIn(this.user.nickname,this.user.password);
-          }else if(data.data == 2){ //el dos lo usamos para decir que el correo que el usuario a puesta ya esta en uso
-            Swal.fire({
-              icon: 'error',
-              title: 'Email ya en uso',
-              showConfirmButton: false,
-              timer: 1000
-            })
-            console.log("email ya en uso");
-          }else if(data.data == 1){ // el uno lo usamos para decir que el nickname del usuario ya existe
-            Swal.fire({
-              icon: 'error',
-              title: 'El usuario ya existe',
-              showConfirmButton: false,
-              timer: 1000
-            })
-            console.log("usuario ya existe")
-          }
-
-        },
-        (error) => {
-          console.log(error)
-        }
-      );
+      this.userService.registerUser(this.user);
     }else{
-      Swal.fire({
-        icon: 'error',
-        title: 'La password no es igual',
-        showConfirmButton: false,
-        timer: 1000
-      })
-      console.log("la password no es igual");
+      this.commonService.sweetalert("error","La contraseña no es la misma");
     }
+
   }
 
   ngOnInit(): void {}
 
   //LOGIN
-  async logIn(user?:string, pass?:string) {
-    console.log(user,pass);
-    let res: any;
-    if(user != undefined && pass != undefined){ //el login del usuario cuando se registra
-      await this.apiService.logIn(user,pass).subscribe((data) => {
-          res = data.data;
-          console.log(res);
-          if(res.id){
-            this.userService.fetchCurrentUser(res);
-            this.commonService.sweetalert("error","correo no valido").then((result)=>{
-              this.router.navigate(['profile']);
-            })
-          }else if (res == 2){
-            Swal.fire({
-              icon: 'error',
-              title: 'Contraseña o el usuario no son validos',
-              showConfirmButton: false,
-              timer: 1000
-            })
-            console.log("la contraseña o el usuario no son validos");
-          }
-
-        },(error) => {
-          console.log('Me ha dado error');
-        }
-      );
-    }else{ //el login del usuario utilizando el html
-      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.cifrar(this.validateLog.get('password')?.value))
-      .subscribe((data) => {
-          res = data.data;
-          console.log(res);
-        if(res.id){
-          this.userService.fetchCurrentUser(res);
-          Swal.fire({
-            icon: 'success',
-            title: 'Usuario Logeado',
-            showConfirmButton: false,
-            timer: 1000
-          }).then((result)=>{
-            this.router.navigate(['profile']);
-          })
-        }else if (res == 2){
-          Swal.fire({
-            icon: 'error',
-            title: 'Contraseña o el usuario no son validos',
-            showConfirmButton: false,
-            timer: 1000
-          })
-          console.log("la contraseña o el usuario no son validos");
-        }
-
-        },(error) => {
-          console.log('Me ha dado error');
-        }
-      );
+  async logIn() {
+    let data = {
+      user:this.validateLog.get('nickname')?.value,
+      pass:this.encode(this.validateLog.get('password')?.value)
     }
-
+    this.userService.logIn(data.user,data.pass);
   }
 
   fileChangeEvent(fileInput: any) {

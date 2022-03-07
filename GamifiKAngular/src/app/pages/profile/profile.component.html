@@ -27,16 +27,29 @@
 
     <div class="imageCard standarCard">
       <button (click)="openEditMode()"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+
       <div class="imageCardContainer">
 
-        <div class="pic">
+        <div class="pic" *ngIf="!editMode">
           <!--<div class="editPic">-->
 
           <!--</div>-->
           <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
           <img class="profileImage" *ngIf="user?.image == '' || user?.image == null" src="../../../assets/placeholders/userPlaceholder.jpg">
 
+
         </div>
+        <div class="pic" *ngIf="editMode">
+          <!--<div class="editPic">-->
+
+          <!--</div>-->
+          <img class="profileImage" (click)="fileChangeOpen()" *ngIf="user?.image != ''" src="{{user?.image}}">
+          <img class="profileImage" (click)="fileChangeOpen()" *ngIf="user?.image == '' || user?.image == null" src="../../../assets/placeholders/userPlaceholder.jpg">
+
+
+
+        </div>
+        <input class="hidden" type="file" id="upload-file" name="upload-file" (change)="fileChangeEvent($event)">
 
         <div class="titulo">
           <p *ngIf="user?.userType == 1">Profesor</p>
@@ -54,7 +67,10 @@
           <button (click)="changePassword()">Cambiar contraseña</button>
           </div>
         </div>
+
         <div class="info" *ngIf="editMode">
+
+
 
           <p class="nick">usuario: <input type="text" [(ngModel)]="alteredUser.nickname" readonly></p>
           <p>nombre: <input type="text" [(ngModel)]="alteredUser.name"></p>
@@ -81,6 +97,8 @@
     </div>
   </div>
 </div>
+
+<script src="app.js"></script>
 </body>
 
 </html>

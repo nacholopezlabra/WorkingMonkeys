@@ -5,7 +5,7 @@ import { ApiService } from 'src/app/services/apiService/api.service';
 import { CommonService } from 'src/app/services/commonService/common.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-profile',
@@ -33,9 +33,9 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  cifrar(pass:string){
+  encode(pass:string){
     return sha512.sha512(pass);
- }
+  }
 
  openEditMode(){
    if(this.editMode){
@@ -55,21 +55,12 @@ export class ProfileComponent implements OnInit {
   changePassword(){
     let data= {
       id:this.user?.id,
-      lastPassword:this.cifrar(this.lastPassword),
-      newPassword:this.cifrar(this.newPassword),
-      repeatNewPassword:this.cifrar(this.repeatNewPassword)
+      lastPassword:this.encode(this.lastPassword),
+      newPassword:this.encode(this.newPassword),
+      repeatNewPassword:this.encode(this.repeatNewPassword)
     }
-    console.log(data);
-    this.apiService.changePassword(data).subscribe(
-      (data) => {
-        if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
-          this.commonService.sweetalert("success", "Se ha cambiado la contraseña correctamente");
-        }else if(data.data == 2){ //el dos lo usamos para decir que el correo que el usuario a puesta ya esta en uso
-          this.commonService.sweetalert("error", "Las contraseñas nuevas no concuerdan");
-        }else if(data.data == 1){ // el uno lo usamos para decir que el nickname del usuario ya existe
-          this.commonService.sweetalert("error", "La contraseña anterior no concuerda");
-        }
-      });
+    this.usersService.changePassword(data);
+
   }
 
 
@@ -78,6 +69,9 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  fileChangeOpen(){
+    document.getElementById('upload-file')?.click();
+  }
 
 
   fileChangeEvent(fileInput: any) {

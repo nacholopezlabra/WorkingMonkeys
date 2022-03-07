@@ -40,7 +40,7 @@ export class RegisterStudentsComponent implements OnInit {
   onSubmit() {
     this.user.nickname = this.validateUser.get('nickname')?.value;
     this.user.mail = this.validateUser.get('mail')?.value;
-    this.user.password = this.cifrar(this.validateUser.get('password')?.value);
+    this.user.password = this.encode(this.validateUser.get('password')?.value);
     this.user.name = this.validateUser.get('name')?.value;
     this.user.surname = this.validateUser.get('surname')?.value;
     this.user.center = null;
@@ -48,86 +48,28 @@ export class RegisterStudentsComponent implements OnInit {
     this.user.userType = 0;
     this.register();
   }
-  cifrar(pass:string){
+  encode(pass:string){
     return sha512.sha512(pass);
  }
 
-  async register() {
-    let res: any;
+  register(): void {
     if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
-      await this.apiService.register(this.user).subscribe(
-        (data) => {
-          console.log(data);
-          if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
-            this.logIn(this.user.nickname,this.user.password);
-          }else if(data.data == 2){ //el dos lo usamos para decir que el correo que el usuario a puesta ya esta en uso
-            this.commonService.sweetalert("error", "Email ya en uso");
-            console.log("email ya en uso");
-          }else if(data.data == 1){ // el uno lo usamos para decir que el nickname del usuario ya existe
-            this.commonService.sweetalert("error", "El usuario ya existe");
-            console.log("usuario ya existe")
-          }
-
-        },
-        (error) => {
-          console.log(error)
-          console.log('Me ha dado error');
-        }
-      );
+      this.userService.registerUser(this.user);
     }else{
       this.commonService.sweetalert("error", "La password no es igual");
-      console.log("la password no es igual");
     }
   }
 
   ngOnInit(): void {}
 
   //LOGIN
-  async logIn(user?:string, pass?:string) {
+  async logIn() {
 
-    let res: any;
-    if(user != undefined && pass != undefined){ //el login del usuario cuando se registra
-
-      await this.apiService.logIn(user,pass).subscribe((data) => {
-          res = data.data;
-          console.log(res);
-          if(res.id){
-            this.userService.fetchCurrentUser(res);
-            this.commonService.sweetalert("success","Usuario Logeado").then((result)=>{
-              this.router.navigate(['profile']);
-            })
-          }else if (res == 2){
-            this.commonService.sweetalert("error", "La contraseña o el usuario no son validos");
-            console.log("la contraseña o el usuario no son validos");
-          }
-
-        },(error) => {
-          console.log('Me ha dado error');
-        }
-      );
-
-    }else{ //el login del usuario utilizando el html
-
-      await this.apiService.logIn(this.validateLog.get('nickname')?.value,this.cifrar(this.validateLog.get('password')?.value))
-      .subscribe((data) => {
-          res = data.data;
-          console.log(res);
-          if(res.id){
-            this.userService.fetchCurrentUser(res);
-            this.commonService.sweetalert("success","Usuario Logeado").then((result)=>{
-              this.router.navigate(['profile']);
-            })
-          }else if (res == 2){
-            this.commonService.sweetalert("error", "La contraseña o el usuario no son validos");
-            console.log("la contraseña o el usuario no son validos");
-          }
-
-        },(error) => {
-          console.log('Me ha dado error');
-        }
-      );
-
+    let data = {
+      user:this.validateLog.get('nickname')?.value,
+      pass:this.encode(this.validateLog.get('password')?.value)
     }
+    this.userService.logIn(data.user,data.pass);
 
   }
 
