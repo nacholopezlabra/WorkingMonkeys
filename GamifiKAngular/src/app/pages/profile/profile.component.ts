@@ -21,19 +21,28 @@ export class ProfileComponent implements OnInit {
   imgBase64Path: string = '';
   isImageSaved: boolean = false;
   cardImageBase64: string = '';
-
-
+  editMode:boolean = false;
+  alteredUser:user ;
   constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService) {
     this.user = this.usersService.getCurrentUser();
+    this.alteredUser = this.usersService.getCurrentUser();
   }
+
+  ngOnInit(): void {
+  }
+
 
   cifrar(pass:string){
     return sha512.sha512(pass);
  }
 
-  ngOnInit(): void {
+ openEditMode(){
+   if(this.editMode){
+     this.editMode = false;
+   }else{
+     this.editMode = true;
    }
-
+ }
 
   showPassword(): void {
     if (!this.passwordShowed) {
@@ -67,6 +76,13 @@ export class ProfileComponent implements OnInit {
   }
 
 
+
+  editProfileData(){
+
+  }
+
+
+
   fileChangeEvent(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
       const reader = new FileReader();
@@ -84,4 +100,5 @@ export class ProfileComponent implements OnInit {
       reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
+
 }

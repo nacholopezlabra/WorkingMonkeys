@@ -5,17 +5,17 @@
   </div>
   <div class="menu">
     <a href="#" class="link">
-      <div class="title">About</div>
+      <div class="title">Rankings</div>
       <div class="bar"></div>
     </a>
     <a href="#" class="link">
-      <div class="title">Work</div>
+      <div class="title">Cerrar sesion</div>
       <div class="bar"></div>
     </a>
-    <a href="#" class="link">
+    <!--<a href="#" class="link">
       <div class="title">Contact</div>
       <div class="bar"></div>
-    </a>
+    </a>-->
   </div>
 </header>
 <body>
@@ -24,7 +24,7 @@
 
 
     <div class="imageCard standarCard">
-      <button class="editPic"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+      <button (click)="openEditMode()"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
       <div class="imageCardContainer">
 
         <div class="pic">
@@ -40,10 +40,10 @@
           <p *ngIf="user?.userType == 1">Profesor</p>
           <p *ngIf="user?.userType == 0">Estudiante</p>
         </div>
-        <div class="info">
-          <p class="nick">usuario:  {{user?.nickname}}</p>
-          <p>nombre:  {{user?.name}}</p>
-          <p>correo:  {{user?.mail}}</p>
+        <div class="info" *ngIf="!editMode">
+          <p class="nick">usuario: {{user?.nickname}}</p>
+          <p>nombre: {{user?.name}}</p>
+          <p>correo: {{user?.mail}}</p>
           <p>contraseña: <br><button *ngIf="!passwordShowed" (click)="showPassword()">Mostar contraseña</button>
           <div *ngIf="passwordShowed">
            <input class="inputBox" type="password" [(ngModel)]="lastPassword" placeholder="Introduzca su contraseña">
@@ -52,7 +52,14 @@
           <button (click)="changePassword()">Cambiar contraseña</button>
           </div>
         </div>
+        <div class="info" *ngIf="editMode">
 
+          <p class="nick">usuario: <input type="text" [(ngModel)]="alteredUser.nickname" readonly></p>
+          <p>nombre: <input type="text" [(ngModel)]="alteredUser.name"></p>
+          <p>correo: <input type="text" [(ngModel)]="alteredUser.nickname"></p>
+
+          <button (click)="editProfileData()"></button>
+        </div>
     </div>
 
   </div>
