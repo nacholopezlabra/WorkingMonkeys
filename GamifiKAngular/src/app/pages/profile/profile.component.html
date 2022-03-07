@@ -27,6 +27,7 @@
 
     <div class="imageCard standarCard">
       <button (click)="openEditMode()"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+
       <div class="imageCardContainer">
 
         <div class="pic">
@@ -35,6 +36,7 @@
           <!--</div>-->
           <img class="profileImage" *ngIf="user?.image != ''" src="{{user?.image}}">
           <img class="profileImage" *ngIf="user?.image == '' || user?.image == null" src="../../../assets/placeholders/userPlaceholder.jpg">
+
 
         </div>
 
@@ -55,6 +57,8 @@
           </div>
         </div>
         <div class="info" *ngIf="editMode">
+
+
 
           <p class="nick">usuario: <input type="text" [(ngModel)]="alteredUser.nickname" readonly></p>
           <p>nombre: <input type="text" [(ngModel)]="alteredUser.name"></p>
@@ -81,6 +85,8 @@
     </div>
   </div>
 </div>
+
+<script src="app.js"></script>
 </body>
 
 </html>

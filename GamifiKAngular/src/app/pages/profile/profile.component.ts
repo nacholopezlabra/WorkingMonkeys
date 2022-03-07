@@ -36,6 +36,11 @@ export class ProfileComponent implements OnInit {
     return sha512.sha512(pass);
  }
 
+inputimage(){
+
+}
+
+
  openEditMode(){
    if(this.editMode){
      this.editMode = false;
