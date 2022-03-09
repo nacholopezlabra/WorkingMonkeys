@@ -14,9 +14,6 @@ export interface user{
 export interface ranking{
   id_ranking:number;
   name:string;
-  memberCount:number;
-  members:number[];
-  //teacher:number;
   id_teacher: number;
   code: number;
 

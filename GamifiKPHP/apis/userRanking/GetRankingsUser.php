@@ -22,9 +22,9 @@ if (mysqli_num_rows($res) == 0) {
 else {
     $array =  array();
     while ($row = $res->fetch_assoc()) {          
-        $query2 = "SELECT * from rankings where id_ranking=".$row['id_ranking'];
-        $res2 = mysqli_query($con, $query2);
-        while ($row = $res2->fetch_assoc()) {  
+        $query = "SELECT * from rankings where id_ranking=".$row['id_ranking'];
+        $res = mysqli_query($con, $query);
+        while ($row = $res->fetch_assoc()) {  
             $rankingData = new ranking();
             $rankingData->id_ranking = $row['id_ranking'];
             $rankingData->name = $row['name'];

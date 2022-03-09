@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as sha512 from 'js-sha512';
 import { user } from 'src/app/model/interfaces';
-import { ApiService } from 'src/app/services/apiService/api.service';
-import { CommonService } from 'src/app/services/commonService/common.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 
@@ -24,14 +22,23 @@ export class ProfileComponent implements OnInit {
   cardImageBase64: string = '';
   editMode:boolean = false;
   alteredUser:user ;
-  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService, private  commonService: CommonService) {
+  constructor(private usersService: UsersService, public rankingService: RankingService) {
     this.user = this.usersService.getCurrentUser();
     this.alteredUser = this.usersService.getCurrentUser();
+    this.getRanking();
   }
 
   ngOnInit(): void {
   }
 
+  getRanking(){
+    let data = {
+      userType:this.user.userType,
+      id:this.user.id
+    }
+    this.rankingService.fetchRankings(data);
+
+  }
 
   encode(pass:string){
     return sha512.sha512(pass);

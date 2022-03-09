@@ -9,6 +9,9 @@ const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
 const CHANGEPASS : string = "user/changePassword.php";
 const UPDATERANKING : string = "ranking/updateRanking.php";
+const GETRANKINGSTEACHER : string = "ranking/rankingTeacher.php?id=";
+const GETRANKINGSUSER : string = "userRanking/getRankingUser.php?id=";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +36,15 @@ export class ApiService {
   updateRanking(data:any){
     return this.http.post(this.generateUrl(UPDATERANKING),data,{responseType:'json'});
   }
+
+  getRankings(data:any){
+    if(data.userType == 1){
+      return this.http.get(this.generateUrl(GETRANKINGSTEACHER+data.id));
+    }
+    return this.http.get(this.generateUrl(GETRANKINGSUSER+data.id));
+
+  }
+
 
   generateUrl(path:string):string{
     return HOST+path;

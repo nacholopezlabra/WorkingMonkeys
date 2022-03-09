@@ -24,7 +24,6 @@
   <div ng-init="sweetalert()"></div>
   <div>
 
-
     <div class="imageCard standarCard">
       <button (click)="openEditMode()"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
 
@@ -85,14 +84,14 @@
     <p class="tittleRanking">Ranking</p>
     <div>
       <ng-container *ngIf="user?.userType == 1">
-        <div class="standarCard" *ngFor="let rank of rankingService.fetchTeacherRankings(user?.id)">
+       <!-- <div class="standarCard" *ngFor="let rank of rankingService.fetchTeacherRankings(user?.id)">
           {{rank.name}} {{rank.memberCount}}
-        </div>
+        </div>-->
       </ng-container>
       <ng-container *ngIf="user?.userType == 0">
-        <div  class="standarCard" *ngFor="let rank of rankingService.fetchStudentRankings(user?.id)">
+        <!--<div  class="standarCard" *ngFor="let rank of rankingService.fetchStudentRankings(user?.id)">
           {{rank.name}}
-        </div>
+        </div>-->
       </ng-container>
     </div>
   </div>
