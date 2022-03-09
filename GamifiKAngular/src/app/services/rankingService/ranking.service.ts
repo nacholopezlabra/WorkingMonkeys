@@ -26,6 +26,6 @@ export class RankingService {
     let code: number;
     code = min + Math.floor(Math.random()*max);
 
-    console.log(code.toString().padStart(8,"0"));
+    return code.toString().padStart(8,"0");
   }
 }

@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,22 +10,19 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AddRankingsComponent {
 
-  @ViewChild("myModalInfo", {static: false}) myModalInfo: TemplateRef<any> | undefined;
-  @ViewChild("myModalConf", {static: false}) myModalConf: TemplateRef<any> | undefined;
+  validateLog: FormGroup = new FormGroup({
+    rankingname: new FormControl('', [Validators.required]),
+  });
+
+
+  @ViewChild("addranking", {static: false}) addranking: TemplateRef<any> | undefined;
 
   constructor(private modalService: NgbModal){
 
   }
 
-  mostrarModalInfo(){
-    this.modalService.open(this.myModalInfo);
-  }
+  addRanking(){
+    this.modalService.open(this.addranking);
 
-  mostrarModalConf(){
-    this.modalService.open(this.myModalConf).result.then( r => {
-      console.log("Tu respuesta ha sido: " + r);
-    }, error => {
-      console.log(error);
-    });
   }
 }
