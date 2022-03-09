@@ -1,27 +1,11 @@
-<div class="text-center">
-  <p>Haz click en el boton para lanzar el modal deseado</p>
-  <p><button (click)="addRanking()">Modal de confirmacion</button></p>
-</div>
-
-<ng-template #addranking let-modal>
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Crear nuevo ranking</h5>
-    </div>
-
-    <form action="#" [formGroup]="validateLog" novalidate>
-      <div class="modal-body">
-      <div class="inputBox">
-        ¿Quieres crear un nuevo ranking?
-        <label for="">Nombre
-        <input type="text" placeholder="Pon el nombre del ranking" formControlName="rankingname" required></label>
-      </div>
-      </div>
-    </form>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('Cancelar')">Cancelar</button>
-      <button type="button" class="btn btn-primary" (click)="modal.close('Crear')">Crear</button>
-    </div>
+<div style="padding: 20px">
+  <div class="text-center">
+     <h2><b>¿Quieres crear un nuevo ranking?</b></h2>
+     <h3>Nombre del ranking</h3>
+    <input [(ngModel)]="name" type="text" size="55" placeholder="Pon el nombre del ranking" required>
+    <div style="padding: 20px">
+      <button (click)="crearRanking()">Crear</button>
+      <button (click)="closeDialog()">Cerrar</button>
   </div>
-</ng-template>
+  </div>
+</div>

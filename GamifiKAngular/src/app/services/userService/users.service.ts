@@ -67,7 +67,7 @@ export class UsersService {
       let res = data.data;
       if(res.id){
         this.fetchCurrentUser(res);
-        this.commonService.sweetalert("error","correo no valido").then((result)=>{
+        this.commonService.sweetalert("success","Usuario logeado").then((result)=>{
           this.router.navigate(['profile']);
         })
       }else if (res == 2){

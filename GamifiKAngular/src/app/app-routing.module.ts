@@ -10,8 +10,7 @@ const routes: Routes = [
   { path: '', component: RegisterTeachersComponent },
   { path: 'registerStudents', component: RegisterStudentsComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'ranking', component: RankingComponent },
-  { path: 'addranking', component: AddRankingsComponent}
+  { path: 'ranking', component: RankingComponent }
 ];
 
 @NgModule({

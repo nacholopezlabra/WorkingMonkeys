@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, TemplateRef } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
+import { CommonService } from 'src/app/services/commonService/common.service';
 
 
 @Component({
@@ -9,20 +10,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-rankings.component.css']
 })
 export class AddRankingsComponent {
+  name = "";
 
-  validateLog: FormGroup = new FormGroup({
-    rankingname: new FormControl('', [Validators.required]),
-  });
+  constructor(private modal:BsModalService, private commonService: CommonService){
+  }
 
+  closeDialog(){
+    this.modal.hide();
+  }
 
-  @ViewChild("addranking", {static: false}) addranking: TemplateRef<any> | undefined;
+  crearRanking(){
+    console.log(this.name);
+    if (this.name=="") {
+      this.commonService.sweetalert("error","Has de introduir un nombre de ranking");
+    }
+    else{
+      this.commonService.sweetalert("success","Ranking creado correctamente").then((result)=>{
+      this.modal.hide();
+      })
+    }
 
-  constructor(private modalService: NgbModal){
 
   }
 
-  addRanking(){
-    this.modalService.open(this.addranking);
-
-  }
 }

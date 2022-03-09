@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as sha512 from 'js-sha512';
 import { user } from 'src/app/model/interfaces';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
+import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.component';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class ProfileComponent implements OnInit {
   cardImageBase64: string = '';
   editMode:boolean = false;
   alteredUser:user ;
-  constructor(private usersService: UsersService, public rankingService: RankingService) {
+  constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
     this.user = this.usersService.getCurrentUser();
     this.alteredUser = this.usersService.getCurrentUser();
     this.getRanking();
@@ -74,6 +76,10 @@ export class ProfileComponent implements OnInit {
 
   editProfileData(){
 
+  }
+
+  openDetails(){
+    let modalcom: BsModalRef = this.modal.show(AddRankingsComponent);
   }
 
   fileChangeOpen(){

@@ -17,6 +17,7 @@ import { UpdateScoresComponent } from './modals/update-scores/update-scores.comp
 import { AddTasksComponent } from './modals/add-tasks/add-tasks.component';
 import { UpdateTaskComponent } from './modals/update-task/update-task.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -40,9 +41,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    ModalModule
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

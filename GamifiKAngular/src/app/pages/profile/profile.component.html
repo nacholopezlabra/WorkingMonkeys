@@ -83,6 +83,7 @@
   <div class="cardBox">
     <p class="tittleRanking">Ranking</p>
     <div>
+      <button (click)="openDetails()">Crear</button>
       <ng-container *ngIf="user?.userType == 1">
        <!-- <div class="standarCard" *ngFor="let rank of rankingService.fetchTeacherRankings(user?.id)">
           {{rank.name}} {{rank.memberCount}}
