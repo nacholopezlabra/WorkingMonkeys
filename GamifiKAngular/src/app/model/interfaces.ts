@@ -15,7 +15,11 @@ export interface ranking{
   id_ranking:number;
   name:string;
   id_teacher: number;
-  code: number;
+  code: string;
+}
 
-
+export interface task {
+  id_task: number;
+  name: string;
+  id_ranking: number;
 }

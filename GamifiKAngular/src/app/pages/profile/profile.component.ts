@@ -7,6 +7,7 @@ import { UsersService } from 'src/app/services/userService/users.service';
 import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.component';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { CommonService } from 'src/app/services/commonService/common.service';
+import { AddTasksComponent } from 'src/app/modals/add-tasks/add-tasks.component';
 
 
 @Component({
@@ -83,8 +84,13 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  openDetails(){
-    let modalcom: BsModalRef = this.modal.show(AddRankingsComponent);
+  createRanking(){
+    this.modal.show(AddRankingsComponent);
+  }
+
+
+  createTask(){
+    this.modal.show(AddTasksComponent);
   }
 
   fileChangeOpen(){

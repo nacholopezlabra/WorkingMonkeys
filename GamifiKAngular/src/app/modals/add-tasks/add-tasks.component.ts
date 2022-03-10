@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { task } from 'src/app/model/interfaces';
+import { CommonService } from 'src/app/services/commonService/common.service';
 
 @Component({
   selector: 'app-add-tasks',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTasksComponent implements OnInit {
 
-  constructor() { }
+  task: task = {id_task:0, name:"", id_ranking:0}
 
-  ngOnInit(): void {
+  constructor(private modal:BsModalService, private commonService: CommonService){}
+
+  ngOnInit():void {
   }
 
+  closeDialog(){
+    this.modal.hide();
+  }
+
+  crearRanking(){
+
+    if (this.task.name=="") {
+      this.commonService.sweetalert("error","Has de introduir un nombre de tarea");
+    }
+    else{
+      this.commonService.sweetalert("success","Tarea creada correctamente").then((result)=>{
+        console.log(this.task);
+        this.modal.hide();
+      })
+    }
+
+
+  }
 }
+
+

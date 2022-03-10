@@ -1,0 +1,24 @@
+.button1 {
+  background-color: #4ec200;
+  display: inline-block;
+  padding: 12px 50px;
+  color:#f2f2f2;
+  border:2px solid #f2f2f2;
+}
+.button1:hover{
+  background: #f2f2f2;
+  color: #000000;
+  border:2px solid #000000;
+}
+.button2 {
+  background-color: #ca0000;
+  display: inline-block;
+  padding: 12px 50px;
+  color:#f2f2f2;
+  border:2px solid #f2f2f2;
+}
+.button2:hover{
+  background: #f2f2f2;
+  color: #000000;
+  border:2px solid #000000;
+}
