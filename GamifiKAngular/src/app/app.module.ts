@@ -18,6 +18,7 @@ import { AddTasksComponent } from './modals/add-tasks/add-tasks.component';
 import { UpdateTaskComponent } from './modals/update-task/update-task.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { RankingDetailComponent } from './rankingDetail/ranking-detail/ranking-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
     UpdateRankingComponent,
     UpdateScoresComponent,
     AddTasksComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    RankingDetailComponent
   ],
   imports: [
     CommonModule,
