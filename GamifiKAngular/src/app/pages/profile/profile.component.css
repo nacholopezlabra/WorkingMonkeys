@@ -196,7 +196,8 @@ background-color: #2c3a47;
 button:hover{
 
   background: #f2f2f2;
-  color: #2c3a47;
+  color: #000000;
+  border:2px solid #000000;
 }
 .rankingCard {
   display:flex;
