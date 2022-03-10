@@ -11,7 +11,6 @@ import { UsersService } from 'src/app/services/userService/users.service';
 })
 export class RankingComponent implements OnInit {
   user: user;
-  imgBase64Path: string = '';
 
   constructor(
     private usersService: UsersService,

@@ -4,12 +4,10 @@ import { user } from 'src/app/model/interfaces';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
-<<<<<<< Updated upstream
 import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.component';
+import { ApiService } from 'src/app/services/apiService/api.service';
+import { CommonService } from 'src/app/services/commonService/common.service';
 
-=======
-import { FormControl, FormGroup, Validators } from '@angular/forms';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'app-profile',
@@ -28,18 +26,10 @@ export class ProfileComponent implements OnInit {
   cardImageBase64: string = '';
   editMode:boolean = false;
   alteredUser:user ;
-<<<<<<< Updated upstream
-  constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
-=======
 
-  validateUser: FormGroup = new FormGroup({
-    mail: new FormControl('', [Validators.required, Validators.email]),
-    name: new FormControl('', [Validators.required]),
-    surname: new FormControl('', [Validators.required]),
-    image: new FormControl('', [Validators.required])
-  });
-  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService, private  commonService: CommonService) {
->>>>>>> Stashed changes
+
+  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService,
+     private commonService: CommonService, private modal:BsModalService) {
     this.user = this.usersService.getCurrentUser();
     this.alteredUser = this.usersService.getCurrentUser();
     this.getRanking();
@@ -119,11 +109,7 @@ export class ProfileComponent implements OnInit {
       reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
-  onsubmit(){
-    this.user.name = this.validateUser.get('name')?.value;
-    this.user.surname = this.validateUser.get('surname')?.value;
-    this.user.mail = this.validateUser.get('mail')?.value;
-  }
+
 
 
 

@@ -4,11 +4,11 @@
    <img class="logoo" src="../../../assets/backgroundimg/logomonke.png">
   </div>
   <div class="menu">
-    <a href="#" class="link">
+    <a routerLink="../profile" class="link">
       <div class="title">Profile</div>
       <div class="bar"></div>
     </a>
-    <a href="#" class="link">
+    <a routerLink="../ranking" class="link">
       <div class="title">Ranking</div>
       <div class="bar"></div>
     </a>
@@ -84,16 +84,12 @@
     <p class="tittleRanking">Ranking</p>
     <div>
       <button (click)="openDetails()">Crear</button>
-      <ng-container *ngIf="user?.userType == 1">
-       <!-- <div class="standarCard" *ngFor="let rank of rankingService.fetchTeacherRankings(user?.id)">
-          {{rank.name}} {{rank.memberCount}}
-        </div>-->
-      </ng-container>
-      <ng-container *ngIf="user?.userType == 0">
-        <!--<div  class="standarCard" *ngFor="let rank of rankingService.fetchStudentRankings(user?.id)">
+
+       <div class="standarCard" *ngFor="let rank of rankingService.getRankings()">
           {{rank.name}}
-        </div>-->
-      </ng-container>
+        </div>
+
+
     </div>
   </div>
 </div>

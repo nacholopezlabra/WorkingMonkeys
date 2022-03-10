@@ -15,10 +15,12 @@ export class RankingService {
   async fetchRankings(data:any){
       await this.apiService.getRankings(data).subscribe((data:any)=>{
         let res = data.data;
-        console.log(res);
+        this.rankings = res;
       });
   }
-
+  getRankings(){
+    return this.rankings;
+  }
 
   randomNumberRanking(){
     let min = 0;
