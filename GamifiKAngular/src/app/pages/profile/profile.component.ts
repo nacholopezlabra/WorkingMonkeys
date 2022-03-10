@@ -81,6 +81,7 @@ export class ProfileComponent implements OnInit {
 
   editProfileData(){
 
+    this.usersService.changeUserprofile(this.alteredUser);
   }
 
   openDetails(){

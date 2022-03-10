@@ -93,4 +93,20 @@ export class UsersService {
         }
       });
   }
+
+  public async changeUserprofile(data:any)  {
+
+    await this.apiService.modifyuser(data).subscribe(
+      (data) => {
+        if(data.data == 1){//el primero lo usamos para comprobar que la peticion se ha hecho correctamente
+          this.commonService.sweetalert("success", "Se ha modificado el usuario correctamente");
+        }else if(data.data == 2){ //el dos lo usamos para decir que el usuario no se ha modificado.
+          this.commonService.sweetalert("error", "No se ha podido modificar");
+        }else if(data.data == 3){ // el tres lo usamos para decir que el correo del usuario ya esta en uso
+          this.commonService.sweetalert("error", "El correo ya esta en uso");
+        }
+    });
+
+  }
+
 }

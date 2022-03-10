@@ -7,10 +7,12 @@ import { user } from 'src/app/model/interfaces';
 const HOST: string = "http://localhost:8080/apis/";
 const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
+const MODIFYUSER :string = "user/modifyUser.php";
 const CHANGEPASS : string = "user/changePassword.php";
 const UPDATERANKING : string = "ranking/updateRanking.php";
 const GETRANKINGSTEACHER : string = "ranking/rankingTeacher.php?id=";
 const GETRANKINGSUSER : string = "userRanking/getRankingUser.php?id=";
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,11 @@ export class ApiService {
     let userData = user;
     return this.http.post(this.generateUrl(REGISTERURL),userData,{responseType:'json'});
   }
+
+  modifyuser(data:any):Observable<any>{
+    return this.http.post(this.generateUrl(MODIFYUSER),data,{responseType:'json'});
+  }
+
 
   changePassword(data:any):Observable<any>{
     return this.http.post(this.generateUrl(CHANGEPASS),data,{responseType:'json'});
