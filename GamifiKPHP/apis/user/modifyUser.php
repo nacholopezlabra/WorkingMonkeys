@@ -9,15 +9,17 @@ include_once('../../Controlers/bd.php');
 include_once('../../Models/result.php');
 $bd = new bd();
 $con = $bd->getConnection();
+$inputJSON = file_get_contents('php://input'); 
+$decoded = json_decode($inputJSON, true);
 
 
-
-$query = "SELECT * FROM users where mail = '".$_GET['mail']."'";
+$query = "SELECT * FROM users where mail = '".$decoded['mail']."'";
 $res = mysqli_query($con,$query);
+$response = new Result();
 if($res){
-    $query = "UPDATE users SET mail = '".$_GET['mail']."', name = '".$_GET['name']."',surname = '".$_GET['surname']."',center = '".$_GET['center']."',birthday = '".$_GET['birthday']."' ,image = '".$_GET['image']."' where ID = '".$_GET['id']."'";
+    $query = "UPDATE users SET mail = '".$decoded['mail']."', name = '".$decoded['name']."',surname = '".$decoded['surname']."' ,image = '".$decoded['image']."' where ID = '".$decoded['id']."'";
     $res = mysqli_query($con,$query);
-    $response = new Result();
+    
     if($res){
         $response->resultado = 'OK';
         $response->mensaje = 'SE HA REGISTRADO EXITOSAMENTE EL USUARIO';
