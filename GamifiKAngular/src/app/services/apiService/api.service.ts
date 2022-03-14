@@ -12,6 +12,7 @@ const CHANGEPASS : string = "user/changePassword.php";
 const UPDATERANKING : string = "ranking/updateRanking.php";
 const GETRANKINGSTEACHER : string = "ranking/rankingTeacher.php?id=";
 const GETRANKINGSUSER : string = "userRanking/getRankingUser.php?id=";
+const DELETERANKING : string = "ranking/deleteRanking.php?";
 
 
 @Injectable({
@@ -52,6 +53,10 @@ export class ApiService {
 
   }
 
+  deleteRankings(data: any){
+    console.log(data.id_ranking, data.id_teacher)
+    return this.http.get(this.generateUrl(DELETERANKING+"id_ranking="+data.id_ranking+"&id_teacher="+data.id_teacher));
+  }
 
   generateUrl(path:string):string{
     return HOST+path;
