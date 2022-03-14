@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.component';
 import Swal from 'sweetalert2';
+import { UpdateRankingComponent } from 'src/app/modals/update-ranking/update-ranking.component';
 
 @Component({
   selector: 'app-ranking',
@@ -49,5 +50,9 @@ export class RankingComponent implements OnInit {
         })
       }
     })
+  }
+
+  editarRanking(){
+    this.modal.show(UpdateRankingComponent);
   }
 }

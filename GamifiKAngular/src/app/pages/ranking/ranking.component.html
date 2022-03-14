@@ -37,11 +37,11 @@
             </div>
             <div class="name_bar">
               <!--nombre usuario-->
-              <p><span>{{i+1}}.</span>{{item.name}} </p>
+              <p><span>{{i+1}}.</span>{{item.name}}</p>
             </div>
             <!--editar boton-->
             <div class="edit">
-              <button>Editar</button>
+              <button (click)="editarRanking()">Editar</button>
               <button (click)="borrarRanking({id_ranking:1,id_teacher:17})">Borrar</button>
             </div>
           </div>

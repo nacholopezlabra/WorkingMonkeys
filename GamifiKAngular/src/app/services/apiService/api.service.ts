@@ -54,7 +54,7 @@ export class ApiService {
   }
 
   deleteRankings(data: any){
-    console.log(data.id_ranking, data.id_teacher)
+    console.log(this.generateUrl(DELETERANKING+"id_ranking="+data.id_ranking+"&id_teacher="+data.id_teacher))
     return this.http.get(this.generateUrl(DELETERANKING+"id_ranking="+data.id_ranking+"&id_teacher="+data.id_teacher));
   }
 
