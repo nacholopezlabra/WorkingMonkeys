@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ranking } from 'src/app/model/interfaces';
+import { ranking, task } from 'src/app/model/interfaces';
 import { ApiService } from '../apiService/api.service';
 
 @Injectable({
@@ -9,6 +9,8 @@ export class RankingService {
 
   rankings:ranking[]=[];
   currentRanking: any;
+  tasks:task[] = [];
+
   constructor(private apiService:ApiService) {}
 
 
@@ -38,7 +40,17 @@ export class RankingService {
   setCurrentRanking(ranking:ranking){
     this.currentRanking = ranking;
   }
-  getCurrentRanking(){
+
+  getCurrentRanking():ranking{
     return this.currentRanking;
   }
+
+  getTasks(){
+    this.apiService.getTasksById(this.currentRanking.id_ranking).subscribe((data:any)=>{
+      if(data.data){
+        this.tasks = data.data;
+      }
+    })
+  }
+
 }

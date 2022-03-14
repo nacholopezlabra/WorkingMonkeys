@@ -5,11 +5,12 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 include_once('../../Controlers/bd.php');
 include_once('../../Models/result.php');
 include_once('../../Models/ranking.php');
+include_once('../../Models/user.php');
 
 $bd = new bd();
 $con = $bd->getConnection();
 
-$query = "SELECT * from ranking_students where id_student='".$_GET['id']."'";
+$query = "SELECT * from ranking_students where id_ranking='".$_GET['id']."'";
 $res = mysqli_query($con, $query);
 
 if (mysqli_num_rows($res) == 0) {
@@ -22,13 +23,15 @@ if (mysqli_num_rows($res) == 0) {
 else {
     $array =  array();
     while ($row = $res->fetch_assoc()) {          
-        $query = "SELECT * from rankings where id_ranking=".$row['id_ranking'];
+        $query = "SELECT * from users where id=".$row['id_student'];
         $res = mysqli_query($con, $query);
         while ($row = $res->fetch_assoc()) {  
-            $rankingData = new ranking();
-            $rankingData->id_ranking = $row['id_ranking'];
+            $rankingData = new User();
+            $rankingData->nickname = $row['nickname'];
             $rankingData->name = $row['name'];
-            $rankingData->code = $row['code'];
+            $rankingData->surname = $row['surname'];
+            $rankingData->id = $row['id'];
+            $rankingData->mail = $row['mail'];
             $array[] = $rankingData;
         }
     }  

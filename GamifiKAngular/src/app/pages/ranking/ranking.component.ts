@@ -8,6 +8,7 @@ import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.c
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { UpdateRankingComponent } from 'src/app/modals/update-ranking/update-ranking.component';
+import { UserRankingService } from 'src/app/services/userRankingService/user-ranking.service';
 
 @Component({
   selector: 'app-ranking',
@@ -18,7 +19,7 @@ export class RankingComponent implements OnInit {
   user: user;
   ranking:ranking[]=[];
   constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
-    private apiService:ApiService, private router:Router) {
+    private apiService:ApiService, private router:Router, private userRankingService:UserRankingService) {
     this.user = this.usersService.getCurrentUser();
     //if(this.usersService.isSession()){
       //this.ranking = this.rankingService.getRankings();
@@ -59,6 +60,8 @@ export class RankingComponent implements OnInit {
   toRankingDetails(rank:any){
 
     this.rankingService.setCurrentRanking(rank);
+    this.rankingService.getTasks();
+    this.userRankingService.getUsersById();
     this.router.navigate(['rankingDetails']);
 
   }

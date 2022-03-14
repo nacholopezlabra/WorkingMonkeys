@@ -20,6 +20,7 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { RankingDetailComponent } from './pages/ranking-detail/ranking-detail.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

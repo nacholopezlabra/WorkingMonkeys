@@ -11,10 +11,10 @@ const MODIFYUSER :string = "user/modifyUser.php";
 const CHANGEPASS : string = "user/changePassword.php";
 const UPDATERANKING : string = "ranking/updateRanking.php";
 const GETRANKINGSTEACHER : string = "ranking/rankingTeacher.php?id=";
-const GETRANKINGSUSER : string = "userRanking/getRankingUser.php?id=";
+const GETRANKINGSUSER : string = "userRanking/getUsersByRanking.php?id=";
 const DELETERANKING : string = "ranking/deleteRanking.php?";
 const GETTASKBYID : string = "tasks/getTasks.php?id_ranking=";
-
+const GETUSERSBYID: string = "userRanking/getRankingsUser.php?id=";
 
 @Injectable({
   providedIn: 'root'
@@ -60,8 +60,16 @@ export class ApiService {
   }
 
   getTasksById(id:number){
+    console.log(this.generateUrl(GETTASKBYID+id))
     return this.http.get(this.generateUrl(GETTASKBYID+id));
   }
+
+  getUsersById(id:number){
+    return this.http.get(this.generateUrl(GETRANKINGSUSER+id));
+  }
+
+
+
 
   generateUrl(path:string):string{
     return HOST+path;

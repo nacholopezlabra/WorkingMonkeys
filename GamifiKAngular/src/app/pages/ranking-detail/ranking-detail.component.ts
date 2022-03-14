@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ranking } from 'src/app/model/interfaces';
+import { RankingService } from 'src/app/services/rankingService/ranking.service';
 
 @Component({
   selector: 'app-ranking-detail',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RankingDetailComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private rankingService:RankingService) {
+
+   }
 
   ngOnInit(): void {
+
   }
 
 }
