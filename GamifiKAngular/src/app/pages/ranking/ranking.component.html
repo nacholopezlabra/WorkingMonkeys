@@ -23,14 +23,16 @@
     <div class="lboard_section">
       <div class="lboard_tabs">
         <div class="tabs">
+
           <ul>
             <li data-li="today">Rankings</li>
-              <button (click)="createRanking()">Crear Ranking</button>
-          </ul>
+            <button class="rankingbutton" (click)="createRanking()">addranking</button>
+            </ul>
         </div>
       </div>
       <div class="lboard_wrap">
-        <div class="lboard_item month" style="display: block;" *ngFor="let item of ranking; let i = index">
+
+        <div class="lboard_item month" style="display: block;">
           <div class="lboard_mem">
             <div class="img">
               <img src="../../../assets/placeholders/userPlaceholder.jpg">
