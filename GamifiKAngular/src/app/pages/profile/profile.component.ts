@@ -26,14 +26,15 @@ export class ProfileComponent implements OnInit {
   isImageSaved: boolean = false;
   cardImageBase64: string = '';
   editMode:boolean = false;
-  alteredUser:user ;
 
 
-  constructor(private usersService: UsersService, public rankingService: RankingService, private apiService: ApiService,
-     private commonService: CommonService, private modal:BsModalService) {
+
+  constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
     this.user = this.usersService.getCurrentUser();
-    this.alteredUser = this.usersService.getCurrentUser();
-    this.getRanking();
+    if(this.usersService.isSession()){
+      this.getRanking();
+    }
+
   }
 
   ngOnInit(): void {
@@ -78,11 +79,8 @@ export class ProfileComponent implements OnInit {
 
   }
 
-
-
   editProfileData(){
-
-    this.usersService.changeUserprofile(this.alteredUser);
+    this.usersService.changeUserprofile(this.user);
   }
 
   createRanking(){
@@ -100,6 +98,7 @@ export class ProfileComponent implements OnInit {
 
 
   fileChangeEvent(fileInput: any) {
+
     if (fileInput.target.files && fileInput.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
@@ -115,6 +114,7 @@ export class ProfileComponent implements OnInit {
       };
       reader.readAsDataURL(fileInput.target.files[0]);
     }
+
   }
 
 

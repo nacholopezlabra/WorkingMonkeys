@@ -9,7 +9,6 @@ import { DbService } from '../Database/db.service';
   providedIn: 'root',
 })
 export class UsersService {
-  students: user[] = []; //array that fetch all students from database;
   currentUser: user = {
     id: 0,
     nickname: '',
@@ -21,6 +20,7 @@ export class UsersService {
     userType: 0,
     image: '',
   }; //we use this var for the logged user(can be a teacher or a student);
+  private sessionToken:string= "";
 
   constructor(private db: DbService, private apiService: ApiService, private commonService:CommonService,
     private router:Router) {
@@ -39,6 +39,7 @@ export class UsersService {
   }
   public logOut() {
     this.currentUser = {id: 0,nickname: '',mail: '',password: '',name: '',surname: '',birthday: '',userType: 0,image: ''};
+    this.sessionToken = "";
   }
 
    public async registerUser(user: user) {
@@ -66,6 +67,8 @@ export class UsersService {
     await this.apiService.logIn(user,pass).subscribe((data) => {
       let res = data.data;
       if(res.id){
+        this.sessionToken = this.randomString(40, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        console.log(this.sessionToken)
         this.fetchCurrentUser(res);
         this.commonService.sweetalert("success","Usuario logeado").then((result)=>{
           this.router.navigate(['profile']);
@@ -105,8 +108,22 @@ export class UsersService {
         }else if(data.data == 3){ // el tres lo usamos para decir que el correo del usuario ya esta en uso
           this.commonService.sweetalert("error", "El correo ya esta en uso");
         }
-    });
+      });
 
+  }
+
+  private randomString(length: number, chars:string) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
+}
+  public isSession(){
+    if(this.sessionToken == ""){
+      this.router.navigate(['']);
+    }else{
+      return true;
+    }
+    return false;
   }
 
 }

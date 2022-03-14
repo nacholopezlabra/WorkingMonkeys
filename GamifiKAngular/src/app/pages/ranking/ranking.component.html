@@ -13,7 +13,7 @@
           <div class="bar"></div>
         </a>
         <a href="#" class="link" >
-          <div class="title">Login/Register</div>
+          <div class="title">cerrar sesion</div>
           <div class="bar"></div>
         </a>
       </div>
@@ -29,14 +29,14 @@
         </div>
       </div>
       <div class="lboard_wrap">
-        <div class="lboard_item month" style="display: block;">
+        <div class="lboard_item month" style="display: block;" *ngFor="let item of ranking; let i = index">
           <div class="lboard_mem">
             <div class="img">
               <img src="../../../assets/placeholders/userPlaceholder.jpg">
             </div>
             <div class="name_bar">
               <!--nombre usuario-->
-              <p><span>1.</span>DAW1 </p>
+              <p><span>{{i+1}}.</span>{{item.name}} </p>
             </div>
             <!--editar boton-->
             <div class="edit">

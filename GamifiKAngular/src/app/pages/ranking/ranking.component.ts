@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { user } from 'src/app/model/interfaces';
+import { ranking, user } from 'src/app/model/interfaces';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
@@ -11,12 +11,12 @@ import { UsersService } from 'src/app/services/userService/users.service';
 })
 export class RankingComponent implements OnInit {
   user: user;
-
-  constructor(
-    private usersService: UsersService,
-    public rankingService: RankingService,
-  ) {
+  ranking:ranking[]=[];
+  constructor(private usersService: UsersService, public rankingService: RankingService) {
     this.user = this.usersService.getCurrentUser();
+    if(this.usersService.isSession()){
+      this.ranking = this.rankingService.getRankings();
+    }
   }
 
   ngOnInit(): void {}
