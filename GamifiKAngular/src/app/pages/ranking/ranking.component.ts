@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 import { UpdateRankingComponent } from 'src/app/modals/update-ranking/update-ranking.component';
 
 @Component({
@@ -16,7 +17,8 @@ import { UpdateRankingComponent } from 'src/app/modals/update-ranking/update-ran
 export class RankingComponent implements OnInit {
   user: user;
   ranking:ranking[]=[];
-  constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService, private apiService:ApiService) {
+  constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
+    private apiService:ApiService, private router:Router) {
     this.user = this.usersService.getCurrentUser();
     if(this.usersService.isSession()){
       this.ranking = this.rankingService.getRankings();
@@ -30,8 +32,9 @@ export class RankingComponent implements OnInit {
   }
 
   borrarRanking(data:any){
+
     Swal.fire({
-      title: 'Estas segur?',
+      title: 'Estas seguro?',
       text: "¡No podrás revertir esto!",
       icon: 'warning',
       showCancelButton: true,
@@ -47,9 +50,17 @@ export class RankingComponent implements OnInit {
           icon:'success',
           showConfirmButton: false,
           timer: 1000
-        })
+        });
       }
-    })
+    });
+
+  }
+
+  toRankingDetails(rank:any){
+
+    this.rankingService.setCurrentRanking(rank);
+    this.router.navigate(['rankingDetails']);
+
   }
 
   editarRanking(){

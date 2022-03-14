@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterTeachersComponent } from './pages/register-teachers/register-teachers.component';
 import { RegisterStudentsComponent } from './pages/register-students/register-students.component';
 import { CommonModule } from '@angular/common';
-import { RankingComponent } from './pages/ranking/ranking.component';
 import { AddRankingsComponent } from './modals/add-rankings/add-rankings.component';
 import { AddScoresComponent } from './modals/add-scores/add-scores.component';
 import { UpdateRankingComponent } from './modals/update-ranking/update-ranking.component';
@@ -18,7 +17,8 @@ import { AddTasksComponent } from './modals/add-tasks/add-tasks.component';
 import { UpdateTaskComponent } from './modals/update-task/update-task.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
-import { RankingDetailComponent } from './rankingDetail/ranking-detail/ranking-detail.component';
+import { RankingDetailComponent } from './pages/ranking-detail/ranking-detail.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +26,14 @@ import { RankingDetailComponent } from './rankingDetail/ranking-detail/ranking-d
     ProfileComponent,
     RegisterTeachersComponent,
     RegisterStudentsComponent,
-    RankingComponent,
     AddRankingsComponent,
     AddScoresComponent,
     UpdateRankingComponent,
     UpdateScoresComponent,
     AddTasksComponent,
     UpdateTaskComponent,
-    RankingDetailComponent
+    RankingDetailComponent,
+    RankingComponent
   ],
   imports: [
     CommonModule,

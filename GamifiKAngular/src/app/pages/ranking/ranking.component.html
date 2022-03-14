@@ -31,8 +31,7 @@
         </div>
       </div>
       <div class="lboard_wrap">
-
-        <div class="lboard_item month" style="display: block;">
+        <div class="lboard_item month" style="display: block;" *ngFor="let item of ranking; let i = index" (click)="toRankingDetails(item)">
           <div class="lboard_mem">
             <div class="img">
               <img src="../../../assets/placeholders/userPlaceholder.jpg">

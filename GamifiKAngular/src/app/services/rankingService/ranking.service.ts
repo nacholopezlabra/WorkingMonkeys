@@ -8,26 +8,37 @@ import { ApiService } from '../apiService/api.service';
 export class RankingService {
 
   rankings:ranking[]=[];
-
+  currentRanking: any;
   constructor(private apiService:ApiService) {}
 
 
   async fetchRankings(data:any){
-      await this.apiService.getRankings(data).subscribe((data:any)=>{
-        let res = data.data;
-        this.rankings = res;
-      });
+
+    await this.apiService.getRankings(data).subscribe((data:any)=>{
+      let res = data.data;
+      this.rankings = res;
+    });
+
   }
+
   getRankings(){
     return this.rankings;
   }
 
   randomNumberRanking(){
+
     let min = 0;
     let max = 99999999;
     let code: number;
     code = min + Math.floor(Math.random()*max);
-
     return code.toString().padStart(8,"0");
+
+  }
+
+  setCurrentRanking(ranking:ranking){
+    this.currentRanking = ranking;
+  }
+  getCurrentRanking(){
+    return this.currentRanking;
   }
 }
