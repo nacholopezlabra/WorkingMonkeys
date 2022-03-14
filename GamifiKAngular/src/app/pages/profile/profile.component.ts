@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as sha512 from 'js-sha512';
 import { user } from 'src/app/model/interfaces';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.component';
-import { ApiService } from 'src/app/services/apiService/api.service';
-import { CommonService } from 'src/app/services/commonService/common.service';
 import { AddTasksComponent } from 'src/app/modals/add-tasks/add-tasks.component';
 
 
@@ -32,7 +30,7 @@ export class ProfileComponent implements OnInit {
   constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
     this.user = this.usersService.getCurrentUser();
     if(this.usersService.isSession()){
-      this.getRanking();
+     this.getRanking();
     }
 
   }
@@ -82,6 +80,10 @@ export class ProfileComponent implements OnInit {
   editProfileData(){
     this.usersService.changeUserprofile(this.user);
   }
+
+
+//TODO sacar las funciones de crear ranking i tareas del perfil y ponerlas donde tocan
+
 
   createRanking(){
     this.modal.show(AddRankingsComponent);

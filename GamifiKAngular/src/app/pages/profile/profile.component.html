@@ -85,13 +85,9 @@
   <div class="cardBox">
     <p class="tittleRanking">Ranking</p>
     <div>
-      <button (click)="createRanking()">Crear Ranking</button>
-      <button (click)="createTask()">Crear Tarea</button>
        <div class="standarCard" *ngFor="let rank of rankingService.getRankings()">
           {{rank.name}}
         </div>
-
-
     </div>
   </div>
 </div>
