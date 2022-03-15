@@ -32,8 +32,7 @@ export class RankingComponent implements OnInit {
     this.modal.show(AddRankingsComponent);
   }
 
-  borrarRanking(data:any){
-
+  borrarRanking(ranking:ranking){
     Swal.fire({
       title: 'Estas seguro?',
       text: "¡No podrás revertir esto!",
@@ -44,7 +43,7 @@ export class RankingComponent implements OnInit {
       confirmButtonText: '¡Sí, bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.apiService.deleteRankings(data);
+        this.apiService.deleteRankings(ranking.id_ranking, ranking.id_teacher);
         Swal.fire({
           title:'Eliminado!',
           text:'Su ranking ha sido eliminado.',

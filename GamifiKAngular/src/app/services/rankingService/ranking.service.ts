@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ranking, task } from 'src/app/model/interfaces';
 import { ApiService } from '../apiService/api.service';
+import { CommonService } from '../commonService/common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class RankingService {
   currentRanking: any;
   tasks:task[] = [];
 
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService:ApiService, private commonService: CommonService) {}
 
 
   async fetchRankings(data:any){
@@ -56,5 +57,23 @@ export class RankingService {
 
   getTasks(){
     return this.tasks;
+  }
+
+  createRanking(ranking:any){
+    this.apiService.createRanking(ranking).subscribe((data) =>{
+      if (data.data == 3) {
+        this.commonService.sweetalert("success","Ranking creado correctamente");
+      }
+      else if (data.data == 2) {
+        this.commonService.sweetalert("error","El codigo del ranking ya exite");
+      }
+      else if (data.data == 1){
+        this.commonService.sweetalert("error","El ranking ya existe");
+      }
+    },
+    (error) => {
+      console.log(error);
+    }
+    )
   }
 }

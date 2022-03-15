@@ -15,6 +15,7 @@ const GETRANKINGSUSER : string = "userRanking/getUsersByRanking.php?id=";
 const DELETERANKING : string = "ranking/deleteRanking.php?";
 const GETTASKBYID : string = "tasks/getTasks.php?id_ranking=";
 const GETSCORE: string = "score/getScore.php";
+const CREATERANKING: string = "ranking/createRanking.php?";
 
 @Injectable({
   providedIn: 'root'
@@ -54,9 +55,9 @@ export class ApiService {
 
   }
 
-  deleteRankings(data: any){
-    console.log(this.generateUrl(DELETERANKING+"id_ranking="+data.id_ranking+"&id_teacher="+data.id_teacher))
-    return this.http.get(this.generateUrl(DELETERANKING+"id_ranking="+data.id_ranking+"&id_teacher="+data.id_teacher));
+  deleteRankings(id_ranking:number, id_teacher: number){
+    console.log(this.generateUrl(DELETERANKING+"id_ranking="+id_ranking+"&id_teacher="+id_teacher))
+    return this.http.get(this.generateUrl(DELETERANKING+"id_ranking="+id_ranking+"&id_teacher="+id_teacher));
   }
 
   getTasksById(id:number){

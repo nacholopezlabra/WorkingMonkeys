@@ -42,7 +42,7 @@ if (mysqli_num_rows($res) == 0) {
 else{
     $response->resultado = 'ERROR';
     $response->mensaje = 'EL CODIGO DEL RANKING YA ESXITE';
-    $response->data = 1;
+    $response->data = 2;
     echo json_encode($response);
 }
 ?>

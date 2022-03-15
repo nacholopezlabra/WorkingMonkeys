@@ -13,7 +13,7 @@ import { UsersService } from 'src/app/services/userService/users.service';
 })
 export class AddRankingsComponent implements OnInit {
 
-  ranking: ranking = {id_ranking:0, name:"", id_teacher:0, code:""};
+  ranking: ranking = {id_ranking:1, name:"", id_teacher:17, code:""};
   apiService: any;
 
   constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,
@@ -34,11 +34,8 @@ export class AddRankingsComponent implements OnInit {
       this.commonService.sweetalert("error","Has de introduir un nombre de ranking");
     }
     else{
-      this.commonService.sweetalert("success","Ranking creado correctamente").then((result)=>{
-        console.log(this.ranking);
-        this.apiService.createRanking(this.ranking);
-        this.modal.hide();
-      })
+      this.rankingService.createRanking(this.ranking);
+      this.modal.hide();
     }
 
 
