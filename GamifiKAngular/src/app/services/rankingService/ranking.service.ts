@@ -45,7 +45,7 @@ export class RankingService {
     return this.currentRanking;
   }
 
-  getTasks(){
+  fetchTasks(){
     this.apiService.getTasksById(this.currentRanking.id_ranking).subscribe((data:any)=>{
       if(data.data){
         this.tasks = data.data;
@@ -53,4 +53,8 @@ export class RankingService {
     })
   }
 
+
+  getTasks(){
+    return this.tasks;
+  }
 }

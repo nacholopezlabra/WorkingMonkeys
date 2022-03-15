@@ -14,7 +14,7 @@ const GETRANKINGSTEACHER : string = "ranking/rankingTeacher.php?id=";
 const GETRANKINGSUSER : string = "userRanking/getUsersByRanking.php?id=";
 const DELETERANKING : string = "ranking/deleteRanking.php?";
 const GETTASKBYID : string = "tasks/getTasks.php?id_ranking=";
-const GETUSERSBYID: string = "userRanking/getRankingsUser.php?id=";
+const GETSCORE: string = "score/getScore.php";
 
 @Injectable({
   providedIn: 'root'
@@ -68,7 +68,9 @@ export class ApiService {
     return this.http.get(this.generateUrl(GETRANKINGSUSER+id));
   }
 
-
+  getScore(){
+    return this.http.get(this.generateUrl(GETSCORE));
+  }
 
 
   generateUrl(path:string):string{
