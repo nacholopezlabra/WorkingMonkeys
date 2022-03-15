@@ -1,0 +1,232 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body{
+
+    height: 100vh;
+	background: #333;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+header {
+  background-color: #2c3a47 ;
+  position: sticky;
+  font-family: 'Dosis';
+  font-weight: 300;
+  width: 100%;
+  border-bottom: 1px solid #2c3a47;
+  text-align: right;
+  top:0;
+
+
+  }
+  .logoo{
+  width: 7vw;
+  }
+  .logo{
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 26;
+
+  }
+  .link {
+    font-family: 'Dosis';
+  display: inline-block;
+  padding: 15px 0;
+  margin: 15px 25px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  font-weight: 800;
+  font-size: 1.8vw;
+  }
+  .bar {
+    width: 100%;
+    display: inline-block;
+    border-bottom: 5px solid white;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    opacity: 0;
+    transition: all 300ms;
+  }
+  .bar:hover{
+
+    opacity: 1;
+    bottom: 5px;
+
+  }
+
+.wrapper{
+	width: fit-content ;
+	height: fit-content;
+}
+.img {
+
+    display: inline-block;
+  padding: 3px;
+  background-size: 200% 200%;
+  background: linear-gradient(70deg, #ffcc2f, #ef5734);
+  animation: animated-gradient 0.5s  infinite ease-in-out  ;
+  margin: auto;
+  border-radius: 50%;
+
+}
+
+
+.img img{
+    border-radius: 50%;
+  display: block;
+  align-self: center;
+}
+@keyframes animated-gradient {
+    20% {
+      background: linear-gradient(70deg, #ffcc2f, #ef5734);
+    }
+    40% {
+      background: linear-gradient(140deg, #ffcc2f, #ef5734);
+    }
+    60% {
+      background: linear-gradient(210deg, #ffcc2f, #ef5734);
+    }
+    80% {
+      background: linear-gradient(280deg, #ffcc2f, #ef5734);
+    }
+    100% {
+      background: linear-gradient(360deg, #ffcc2f, #ef5734);
+    }
+  }
+.lboard_section{
+	width: 500px;
+	height: 400px;
+
+	background: #ffff;
+	padding: 25px 40px;
+	position: relative;
+	border-radius: 5px;
+}
+
+.lboard_section .lboard_tabs ul{
+	display: flex;
+}
+
+.lboard_section .lboard_tabs ul li{
+	margin-right: 197px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #3a3d51;
+	cursor: pointer;
+}
+
+.lboard_section .lboard_tabs ul li:hover,
+.lboard_section .lboard_tabs ul li.active{
+	color: #3a3d51;
+}
+
+.lboard_wrap{
+	position: absolute;
+	top: 70px;
+	left: 40px;
+	background: #3a3d51;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.lboard_wrap .lboard_item{
+	padding: 25px;
+}
+
+.lboard_wrap .lboard_mem{
+	display: flex;
+	align-items: center;
+	padding: 15px 0;
+	border-bottom: 1px solid #fff;
+}
+
+.lboard_wrap .lboard_mem:first-child{
+	padding-top: 0;
+}
+
+.lboard_wrap .lboard_mem:last-child{
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.lboard_wrap .lboard_mem .img{
+	width: 50px;
+}
+
+.lboard_wrap .lboard_mem img{
+	display: block;
+	width: 100%;
+}
+
+.lboard_wrap .lboard_mem .name_bar{
+	margin: 0 20px;
+	width: calc(100% - 150px);
+}
+
+.lboard_wrap .lboard_mem .name_bar p{
+	color: #fff;
+}
+
+.lboard_wrap .lboard_mem .name_bar p span{
+	margin-right: 5px;
+}
+
+.lboard_wrap .lboard_mem .points{
+	width: 100px;
+	color: #fff;
+}
+
+.lboard_wrap .lboard_mem .name_bar .bar_wrap{
+	width: 100%;
+	height: 5px;
+	background: #515570;
+	margin-top: 5px;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.lboard_wrap .lboard_mem .name_bar .bar_wrap .inner_bar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	background: #fff;
+	border-radius: 5px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.button {
+	background-color: #3a3d51;
+	  display: inline-block;
+	  padding: 12px 50px;
+	  color:#f2f2f2;
+	  border:2px solid #f2f2f2;
+	}
+ .rankingbutton{
+  background-color: #3a3d51;
+  display: inline-block;
+  padding: 12px 50px;
+  color:#f2f2f2;
+  border:2px solid #3a3d51;
+  border-left: 2px solid #f2f2f2;
+  border-top: 2px  solid #f2f2f2;
+
+}
