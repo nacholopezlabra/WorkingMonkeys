@@ -23,3 +23,12 @@ export interface task {
   name: string;
   id_ranking: number;
 }
+export interface scores {
+  id_student:number;
+  scores:score[];
+}
+
+export interface score{
+  id_task:number;
+  score:number;
+}

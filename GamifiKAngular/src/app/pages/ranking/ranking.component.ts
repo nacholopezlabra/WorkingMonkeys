@@ -21,9 +21,9 @@ export class RankingComponent implements OnInit {
   constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
     private apiService:ApiService, private router:Router, private userRankingService:UserRankingService) {
     this.user = this.usersService.getCurrentUser();
-    //if(this.usersService.isSession()){
-      //this.ranking = this.rankingService.getRankings();
-    //}
+    if(this.usersService.isSession()){
+      this.ranking = this.rankingService.getRankings();
+    }
   }
 
   ngOnInit(): void {}
@@ -60,7 +60,7 @@ export class RankingComponent implements OnInit {
   toRankingDetails(rank:any){
 
     this.rankingService.setCurrentRanking(rank);
-    this.rankingService.getTasks();
+    this.rankingService.fetchTasks();
     this.userRankingService.getUsersById();
     this.router.navigate(['rankingDetails']);
 

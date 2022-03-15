@@ -22,7 +22,8 @@ if (mysqli_num_rows($res) == 0) {
 }
 else {
     $array =  array();
-    while ($row = $res->fetch_assoc()) {          
+    while ($row = $res->fetch_assoc()) {    
+        //TODO solo pasa un valor arreglar      
         $query = "SELECT * from users where id=".$row['id_student'];
         $res = mysqli_query($con, $query);
         while ($row = $res->fetch_assoc()) {  
