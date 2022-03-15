@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { ranking } from 'src/app/model/interfaces';
 import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
@@ -75,4 +75,9 @@ export class ApiService {
     return HOST+path;
   }
 
+  createRanking(ranking:ranking):Observable<any>{
+    let rankingData = ranking;
+    console.log(this.generateUrl(CREATERANKING),rankingData,{responseType:'json'})
+    return this.http.post(this.generateUrl(CREATERANKING),rankingData,{responseType:'json'});
+  }
 }

@@ -14,6 +14,7 @@ import { UsersService } from 'src/app/services/userService/users.service';
 export class AddRankingsComponent implements OnInit {
 
   ranking: ranking = {id_ranking:0, name:"", id_teacher:0, code:""};
+  apiService: any;
 
   constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,
     private usersService: UsersService){
@@ -35,6 +36,7 @@ export class AddRankingsComponent implements OnInit {
     else{
       this.commonService.sweetalert("success","Ranking creado correctamente").then((result)=>{
         console.log(this.ranking);
+        this.apiService.createRanking(this.ranking);
         this.modal.hide();
       })
     }
