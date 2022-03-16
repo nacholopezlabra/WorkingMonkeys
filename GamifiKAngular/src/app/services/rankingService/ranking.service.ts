@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ranking, task } from 'src/app/model/interfaces';
 import { ApiService } from '../apiService/api.service';
 import { CommonService } from '../commonService/common.service';
+import { UsersService } from '../userService/users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class RankingService {
   currentRanking: any;
   tasks:task[] = [];
 
-  constructor(private apiService:ApiService, private commonService: CommonService) {}
+  constructor(private apiService:ApiService, private commonService: CommonService, private userService:UsersService) {}
 
 
   async fetchRankings(data:any){
@@ -90,6 +91,25 @@ export class RankingService {
       console.log(error);
     }
     )
+  }
+
+  addUserIntoRanking(code:string){
+    let data = {
+      code:code,
+      id_user:this.userService.getCurrentUser().id
+    }
+    this.apiService.addUserIntoRanking(data).then((data:any)=>{
+      let res = data.data;
+      if(res == 3){
+        this.commonService.sweetalert("success","Usuario añadido correctamente");
+      }else if(res == 2){
+        this.commonService.sweetalert("error","El usuario no se ha podido añadir correctamente");
+      }else if(res == 1){
+        this.commonService.sweetalert("error","El usuario ya esta dentro de este ranking");
+      }else if(res == 4){
+        this.commonService.sweetalert("error","Codigo inexistente");
+      }
+    });
   }
 
 }

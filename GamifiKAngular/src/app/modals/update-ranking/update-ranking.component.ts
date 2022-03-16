@@ -3,6 +3,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { ranking } from 'src/app/model/interfaces';
 import { CommonService } from 'src/app/services/commonService/common.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-ranking',
@@ -13,7 +14,7 @@ export class UpdateRankingComponent implements OnInit {
 
   ranking: ranking = {id_ranking: 0, name: '', id_teacher: 0,code: '' };
   apiService: any;
-  constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService)
+  constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,  private router:Router)
   {}
 
   ngOnInit(): void {

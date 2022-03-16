@@ -16,7 +16,7 @@ const DELETERANKING : string = "ranking/deleteRanking.php?";
 const GETTASKBYID : string = "tasks/getTasks.php?id_ranking=";
 const GETSCORE: string = "score/getScore.php";
 const CREATERANKING: string = "ranking/createRanking.php?";
-
+const ADDUSERINTORANKING : string = "userRanking/addUser.php?code=";
 @Injectable({
   providedIn: 'root'
 })
@@ -54,7 +54,6 @@ export class ApiService {
   }
 
   deleteRankings(id_ranking:number, id_teacher: number){
-    console.log(this.generateUrl(DELETERANKING+"id_ranking="+id_ranking+"&id_teacher="+id_teacher))
     return this.http.get(this.generateUrl(DELETERANKING+"id_ranking="+id_ranking+"&id_teacher="+id_teacher));
   }
 
@@ -78,14 +77,16 @@ export class ApiService {
 
   createRanking(ranking:ranking):Observable<any>{
     let rankingData = ranking;
-    console.log(this.generateUrl(CREATERANKING),rankingData,{responseType:'json'})
     return this.http.post(this.generateUrl(CREATERANKING),rankingData,{responseType:'json'});
   }
 
   updateRanking(ranking:ranking):Observable<any>{
     let rankingData = ranking;
-    console.log(this.generateUrl(UPDATERANKING),rankingData,{responseType:'json'})
-    return this.http.post(this.generateUrl(UPDATERANKING),rankingData,{responseType:'json'});
+        return this.http.post(this.generateUrl(UPDATERANKING),rankingData,{responseType:'json'});
+  }
+
+  addUserIntoRanking(data:any){
+    return this.http.get(this.generateUrl(ADDUSERINTORANKING+data.code+"&id_user="+data.id)).toPromise();
   }
 
 }
