@@ -29,9 +29,9 @@ export class ProfileComponent implements OnInit {
 
   constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
    this.user = this.usersService.getCurrentUser();
-    //if(this.usersService.isSession()){
-     //this.getRanking();
-   // }
+    if(this.usersService.isSession()){
+     this.getRanking();
+    }
 
   }
 

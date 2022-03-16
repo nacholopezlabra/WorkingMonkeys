@@ -25,8 +25,8 @@ else {
     while ($row = $res->fetch_assoc()) {    
         //TODO solo pasa un valor arreglar      
         $query = "SELECT * from users where id=".$row['id_student'];
-        $res = mysqli_query($con, $query);
-        while ($row = $res->fetch_assoc()) {  
+        $resp = mysqli_query($con, $query);
+        while ($row = $resp->fetch_assoc()) {  
             $rankingData = new User();
             $rankingData->nickname = $row['nickname'];
             $rankingData->name = $row['name'];

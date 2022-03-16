@@ -26,6 +26,7 @@ export interface task {
 export interface scores {
   id_student:number;
   scores:score[];
+  totalScore:number;
 }
 
 export interface score{

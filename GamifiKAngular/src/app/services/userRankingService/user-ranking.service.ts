@@ -9,48 +9,56 @@ import { RankingService } from '../rankingService/ranking.service';
 export class UserRankingService {
 
   currentRankingUsers:user[]=[];
-  score:scores[]=[];
+  private score:scores[]=[];
   constructor(private apiService:ApiService, private rankingService:RankingService) { }
 
   async getUsersById(){
-    await this.apiService.getUsersById(this.rankingService.currentRanking.id_ranking).subscribe((data:any)=>{
+    await this.apiService.getUsersById(this.rankingService.currentRanking.id_ranking).toPromise().then(async (data:any)=>{
      if(data.data){
        this.currentRankingUsers = data.data;
-       this.getUserScores()
+       await this.getUserScores();
+       console.log(this.currentRankingUsers);
      }
-    })
+    });
   }
 
-  async getUserScores(){
+  private async getUserScores(){
+
     let score:any[];
-    await this.apiService.getScore().subscribe((data:any)=>{
+    await this.apiService.getScore().toPromise().then((data:any)=>{
       let res = data.data;
       console.log(res)
       score = res;
-
       this.filterScore(score);
+
     });
 
 
   }
   filterScore(score:any[]){
+    this.score = [];
     this.currentRankingUsers.forEach(user =>{
-      let scor:scores;
-      console.log(user)
+      let scor:scores = {id_student:0,scores:[],totalScore:0};
+      scor.id_student = user.id;
       score.forEach(sc => {
-        console.log(sc)
         if(user.id == sc.id_student){
           this.rankingService.getTasks().forEach(task=>{
-            console.log(task);
             if(sc.id_task == task.id_task){
               let sco: score;
               sco = sc;
-              console.log(sco);
+              scor.totalScore = scor.totalScore + Number(sco.score);
+              scor.scores.push(sco);
             }
-          })
+          });
         }
       });
+      if(scor.id_student != 0){
+        this.score.push(scor);
+      }
     })
   }
 
+  getScore(){
+    return this.score;
+  }
 }

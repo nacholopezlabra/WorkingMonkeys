@@ -30,13 +30,14 @@
       </div>
       <div class="lboard_wrap">
         <div class="lboard_item month" style="display: block;">
-          <div class="lboard_mem">
+          <div class="lboard_mem" *ngFor="let user of user; let i = index">
+            <!-- quitar el botton de editar i ponerlo arriba junto con un desplegable para ver las tareas-->
             <div class="img">
               <img src="../../../assets/placeholders/userPlaceholder.jpg">
             </div>
             <div class="name_bar">
               <!--nombre usuario-->
-              <p><span>1.</span> Alex Mike</p>
+              <p><span>{{i}}.</span> {{user.name}} {{user.surname}} </p>
 
               <div class="bar_wrap">
                 <!--barra rango-->
@@ -45,12 +46,13 @@
             </div>
             <div class="points">
               <!--Puntuacion ranking-->
-              1195 points
+              {{findUserScore(user)}} puntos
             </div>
             <!--editar boton-->
-            <div class="edit">
-              <button>Editar</button>
-            </div>
+
+          </div>
+          <div class="edit">
+            <button>Editar</button>
           </div>
         </div>
       </div>
