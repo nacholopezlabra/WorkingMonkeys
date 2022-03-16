@@ -25,6 +25,13 @@
         <div class="tabs">
           <ul>
             <li data-li="today">LeaderBoard</li>
+
+            <button class="buttonA"><img class="icon" src="../../../assets/icons/editiconB.png"></button>
+
+            <select name="taskas" [(ngModel)]="currentTask">
+              <option [value]="item" *ngFor="let item of rankingService.getTasks()">{{item.name}}</option>
+
+              </select>
           </ul>
         </div>
       </div>
@@ -50,9 +57,6 @@
             </div>
             <!--editar boton-->
 
-          </div>
-          <div class="edit">
-            <button>Editar</button>
           </div>
         </div>
       </div>

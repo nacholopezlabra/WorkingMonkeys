@@ -12,9 +12,10 @@ import { UsersService } from 'src/app/services/userService/users.service';
 export class RankingDetailComponent implements OnInit {
   user:user[]=[];
   ranking:ranking = {id_ranking:0,id_teacher:0,name:"",code:""  }
+  currentTask:string = "";
 
 
-  constructor(private rankingService:RankingService, private UserRankingService:UserRankingService, private usersService:UsersService) {
+  constructor(public rankingService:RankingService, private UserRankingService:UserRankingService, private usersService:UsersService) {
     if(this.usersService.isSession()){
       this.ranking = this.rankingService.getCurrentRanking();
       this.getRankingUsers();

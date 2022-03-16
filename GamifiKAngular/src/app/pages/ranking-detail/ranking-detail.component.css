@@ -213,12 +213,11 @@ header {
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
 }
-.button {
-	background-color: #3a3d51;
+.buttonA {
+	background-color: #fff;
 	  display: inline-block;
-	  padding: 12px 50px;
-	  color:#f2f2f2;
-	  border:2px solid #f2f2f2;
+	  color:#fff;
+	  border:2px solid #fff;
 	}
  .rankingbutton{
   background-color: #3a3d51;
@@ -229,4 +228,9 @@ header {
   border-left: 2px solid #f2f2f2;
   border-top: 2px  solid #f2f2f2;
 
+}
+.icon {
+  width: 24px ;
+  height: 24px ;
+  color: white;
 }
