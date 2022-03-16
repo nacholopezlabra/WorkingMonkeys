@@ -45,6 +45,7 @@ export class RankingComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.apiService.deleteRankings(ranking.id_ranking, ranking.id_teacher);
+        this.router.navigate(['ranking']);
         Swal.fire({
           title:'Eliminado!',
           text:'Su ranking ha sido eliminado.',
@@ -52,6 +53,7 @@ export class RankingComponent implements OnInit {
           showConfirmButton: false,
           timer: 1000
         });
+
       }
     });
 
