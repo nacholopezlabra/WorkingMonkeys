@@ -154,7 +154,7 @@ header {
 	display: flex;
 	align-items: center;
 	padding: 15px 0;
-	border-bottom: 1px solid #fff;
+
 }
 
 .lboard_wrap .lboard_mem:first-child{
@@ -213,13 +213,14 @@ header {
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
 }
-.button {
+.editDelet {
 	background-color: #3a3d51;
 	  display: inline-block;
 	  padding: 12px 50px;
 	  color:#f2f2f2;
 	  border:2px solid #f2f2f2;
 	}
+
  .rankingbutton{
   background-color: #3a3d51;
   display: inline-block;
@@ -228,5 +229,9 @@ header {
   border:2px solid #3a3d51;
   border-left: 2px solid #f2f2f2;
   border-top: 2px  solid #f2f2f2;
-
+  margin-left:  54px;
+}
+.icon {
+  width: 24px ;
+  height: 24px ;
 }

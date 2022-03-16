@@ -26,26 +26,31 @@
 
           <ul>
             <li data-li="today">Rankings</li>
-            <button class="rankingbutton" (click)="createRanking()">Crear</button>
+            <button class="rankingbutton" (click)="createRanking()"><img class="icon" src="../../../assets/icons/addicon.png"></button>
             </ul>
         </div>
       </div>
       <div class="lboard_wrap">
-        <div class="lboard_item month" style="display: block;" *ngFor="let item of ranking; let i = index" (click)="toRankingDetails(item)">
-          <div class="lboard_mem">
+        <div class="lboard_item month" style="display: block;" *ngFor="let item of ranking; let i = index" >
+          <div class="lboard_mem" (click)="toRankingDetails(item)" >
+            <ng-container (click)="toRankingDetails(item)">
             <div class="img">
               <img src="../../../assets/placeholders/userPlaceholder.jpg">
             </div>
             <div class="name_bar">
               <!--nombre usuario-->
               <p><span>{{i+1}}.</span>{{item.name}}</p>
+
             </div>
+
+            </ng-container>
+          </div>
             <!--editar boton-->
             <div class="edit">
-              <button (click)="editarRanking(item)">Editar</button>
-              <button (click)="borrarRanking(item)">Borrar</button>
+              <img class="icon" src="../../../assets/icons/editiconR.png" (click)="editarRanking(item)">
+              <img class="icon" src="../../../assets/icons/deleticon.png" (click)="borrarRanking(item)">
             </div>
-          </div>
+
         </div>
       </div>
     </div>
