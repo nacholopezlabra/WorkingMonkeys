@@ -30,7 +30,7 @@ export class RankingComponent implements OnInit {
   ngOnInit(): void {}
 
   createRanking(){
-    this.modal.show(AddRankingsComponent);
+    this.modal.show(AddRankingsComponent,{backdrop: 'static', keyboard: false});
   }
 
   borrarRanking(ranking:ranking){
@@ -68,6 +68,6 @@ export class RankingComponent implements OnInit {
   }
   editarRanking(rank: any){
     this.rankingService.setCurrentRanking(rank);
-    this.modal.show(UpdateRankingComponent);
+    this.modal.show(UpdateRankingComponent,{backdrop: 'static', keyboard: false});
   }
 }
