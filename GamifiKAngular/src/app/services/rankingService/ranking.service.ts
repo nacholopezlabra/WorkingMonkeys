@@ -76,4 +76,20 @@ export class RankingService {
     }
     )
   }
+
+  updateRanking(ranking:any){
+    this.apiService.updateRanking(ranking).subscribe((data) =>{
+      if (data.data == 2) {
+        this.commonService.sweetalert("success","Ranking modificado correctamente");
+      }
+      else if (data.data == 1) {
+        this.commonService.sweetalert("error","No se ha podido modificar el ranking");
+      }
+    },
+    (error) => {
+      console.log(error);
+    }
+    )
+  }
+
 }

@@ -18,6 +18,7 @@ import { UserRankingService } from 'src/app/services/userRankingService/user-ran
 export class RankingComponent implements OnInit {
   user: user;
   ranking:ranking[]=[];
+  ranking1: ranking | undefined;
   constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
     private apiService:ApiService, private router:Router, private userRankingService:UserRankingService) {
     this.user = this.usersService.getCurrentUser();
@@ -57,7 +58,6 @@ export class RankingComponent implements OnInit {
   }
 
    toRankingDetails(rank:any){
-
     this.rankingService.setCurrentRanking(rank);
     this.rankingService.fetchTasks();
     this.userRankingService.getUsersById().then((res)=>{
@@ -66,8 +66,8 @@ export class RankingComponent implements OnInit {
 
 
   }
-
-  editarRanking(){
+  editarRanking(rank: any){
+    this.rankingService.setCurrentRanking(rank);
     this.modal.show(UpdateRankingComponent);
   }
 }

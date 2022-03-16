@@ -17,7 +17,7 @@ $decoded = json_decode($inputJSON,true);
 
 $response = new Result();
 
-$query = "UPDATE rankings SET name = '".$decoded['name']."' , code = '".$decoded['code']."' WHERE id_ranking = '".$decoded['id_ranking']."'";
+$query = "UPDATE rankings SET name = '".$decoded['name']."' WHERE id_ranking = '".$decoded['id_ranking']."'";
 
 $res = mysqli_query($con,$query);
 

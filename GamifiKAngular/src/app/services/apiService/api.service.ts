@@ -43,9 +43,7 @@ export class ApiService {
   }
 
 
-  updateRanking(data:any){
-    return this.http.post(this.generateUrl(UPDATERANKING),data,{responseType:'json'});
-  }
+
 
   getRankings(data:any){
     if(data.userType == 1){
@@ -83,4 +81,11 @@ export class ApiService {
     console.log(this.generateUrl(CREATERANKING),rankingData,{responseType:'json'})
     return this.http.post(this.generateUrl(CREATERANKING),rankingData,{responseType:'json'});
   }
+
+  updateRanking(ranking:ranking):Observable<any>{
+    let rankingData = ranking;
+    console.log(this.generateUrl(UPDATERANKING),rankingData,{responseType:'json'})
+    return this.http.post(this.generateUrl(UPDATERANKING),rankingData,{responseType:'json'});
+  }
+
 }
