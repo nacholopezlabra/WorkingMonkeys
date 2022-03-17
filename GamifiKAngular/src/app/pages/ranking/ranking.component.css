@@ -144,6 +144,7 @@ header {
 	width: 100%;
 	height: 100%;
 	border-radius: 5px;
+  overflow: auto;
 }
 
 .lboard_wrap .lboard_item{
@@ -201,6 +202,8 @@ header {
 	border-radius: 5px;
 	position: relative;
 	overflow: hidden;
+}::-webkit-scrollbar {
+  display: none;
 }
 
 .lboard_wrap .lboard_mem .name_bar .bar_wrap .inner_bar{
