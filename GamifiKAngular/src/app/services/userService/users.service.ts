@@ -43,7 +43,7 @@ export class UsersService {
   }
 
    public async registerUser(user: user) {
-    await this.apiService.register(user).subscribe(
+    await this.apiService.register(user).then(
       (data) => {
         console.log(data);
         if (data.data == 3) {
@@ -64,7 +64,7 @@ export class UsersService {
   }
 
   async logIn(user:string,pass:string){
-    await this.apiService.logIn(user,pass).subscribe((data) => {
+    await this.apiService.logIn(user,pass).then((data) => {
       let res = data.data;
       if(res.id){
         this.sessionToken = this.randomString(40, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -85,7 +85,7 @@ export class UsersService {
 
 
   async changePassword(data:any){
-    await this.apiService.changePassword(data).subscribe(
+    await this.apiService.changePassword(data).then(
       (data) => {
         if(data.data == 3){//el tres lo usamos para comprobar que la peticion se ha hecho correctamente
           this.commonService.sweetalert("success", "Se ha cambiado la contraseña correctamente");
@@ -99,7 +99,7 @@ export class UsersService {
 
   public async changeUserprofile(data:any)  {
 
-    await this.apiService.modifyuser(data).subscribe(
+    await this.apiService.modifyuser(data).then(
       (data) => {
         if(data.data == 1){//el primero lo usamos para comprobar que la peticion se ha hecho correctamente
           this.commonService.sweetalert("success", "Se ha modificado el usuario correctamente");

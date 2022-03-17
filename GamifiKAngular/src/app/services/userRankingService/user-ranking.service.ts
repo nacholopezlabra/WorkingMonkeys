@@ -13,7 +13,7 @@ export class UserRankingService {
   constructor(private apiService:ApiService, private rankingService:RankingService) { }
 
   async getUsersById(){
-    await this.apiService.getUsersById(this.rankingService.currentRanking.id_ranking).toPromise().then(async (data:any)=>{
+    await this.apiService.getUsersById(this.rankingService.currentRanking.id_ranking).then(async (data:any)=>{
      if(data.data){
        this.currentRankingUsers = data.data;
        await this.getUserScores();
@@ -25,9 +25,8 @@ export class UserRankingService {
   private async getUserScores(){
 
     let score:any[];
-    await this.apiService.getScore().toPromise().then((data:any)=>{
+    await this.apiService.getScore().then((data:any)=>{
       let res = data.data;
-      console.log(res)
       score = res;
       this.filterScore(score);
 
@@ -36,6 +35,7 @@ export class UserRankingService {
 
   }
   filterScore(score:any[]){
+
     this.score = [];
     this.currentRankingUsers.forEach(user =>{
       let scor:scores = {id_student:0,scores:[],totalScore:0};
@@ -55,7 +55,8 @@ export class UserRankingService {
       if(scor.id_student != 0){
         this.score.push(scor);
       }
-    })
+    });
+
   }
 
   getScore(){

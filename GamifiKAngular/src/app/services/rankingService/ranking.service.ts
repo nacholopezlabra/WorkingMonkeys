@@ -17,8 +17,8 @@ export class RankingService {
 
 
   async fetchRankings(data:any){
-
-    await this.apiService.getRankings(data).subscribe((data:any)=>{
+    this.rankings = [];
+    await this.apiService.getRankings(data).then((data:any)=>{
       let res = data.data;
       this.rankings = res;
     });
@@ -48,7 +48,7 @@ export class RankingService {
   }
 
   fetchTasks(){
-    this.apiService.getTasksById(this.currentRanking.id_ranking).subscribe((data:any)=>{
+    this.apiService.getTasksById(this.currentRanking.id_ranking).then((data:any)=>{
       if(data.data){
         this.tasks = data.data;
       }
@@ -60,10 +60,15 @@ export class RankingService {
     return this.tasks;
   }
 
-  createRanking(ranking:any){
-    this.apiService.createRanking(ranking).subscribe((data) =>{
+  async createRanking(ranking:any){
+    await this.apiService.createRanking(ranking).then((data) =>{
       if (data.data == 3) {
         this.commonService.sweetalert("success","Ranking creado correctamente");
+        let data = {
+          userType:this.userService.getCurrentUser().userType,
+          id:this.userService.getCurrentUser().id
+        }
+        this.fetchRankings(data);
       }
       else if (data.data == 2) {
         this.commonService.sweetalert("error","El codigo del ranking ya exite");
@@ -78,10 +83,15 @@ export class RankingService {
     )
   }
 
-  updateRanking(ranking:any){
-    this.apiService.updateRanking(ranking).subscribe((data) =>{
+  async updateRanking(ranking:any){
+    await this.apiService.updateRanking(ranking).then((data) =>{
       if (data.data == 2) {
         this.commonService.sweetalert("success","Ranking modificado correctamente");
+        let data = {
+          userType:this.userService.getCurrentUser().userType,
+          id:this.userService.getCurrentUser().id
+        }
+        this.fetchRankings(data);
       }
       else if (data.data == 1) {
         this.commonService.sweetalert("error","No se ha podido modificar el ranking");
@@ -102,6 +112,11 @@ export class RankingService {
       let res = data.data;
       if(res == 3){
         this.commonService.sweetalert("success","Usuario añadido correctamente");
+        let data = {
+          userType:this.userService.getCurrentUser().userType,
+          id:this.userService.getCurrentUser().id
+        }
+        this.fetchRankings(data);
       }else if(res == 2){
         this.commonService.sweetalert("error","El usuario no se ha podido añadir correctamente");
       }else if(res == 1){

@@ -18,7 +18,7 @@ import { UserRankingService } from 'src/app/services/userRankingService/user-ran
 export class RankingComponent implements OnInit {
   user: user;
   ranking:ranking[]=[];
-  ranking1: ranking | undefined;
+
   constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
     private apiService:ApiService, private router:Router, private userRankingService:UserRankingService) {
     this.user = this.usersService.getCurrentUser();
@@ -33,7 +33,7 @@ export class RankingComponent implements OnInit {
     this.modal.show(AddRankingsComponent,{backdrop: 'static', keyboard: false});
   }
 
-  borrarRanking(ranking:ranking){
+  deleteRanking(ranking:ranking){
     Swal.fire({
       title: 'Estas seguro?',
       text: "¡No podrás revertir esto!",
@@ -45,13 +45,14 @@ export class RankingComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.apiService.deleteRankings(ranking.id_ranking, ranking.id_teacher);
-        this.router.navigate(['ranking']);
         Swal.fire({
           title:'Eliminado!',
           text:'Su ranking ha sido eliminado.',
           icon:'success',
           showConfirmButton: false,
           timer: 1000
+        }).then(()=>{
+          this.router.navigate(['ranking']);
         });
 
       }
@@ -68,7 +69,7 @@ export class RankingComponent implements OnInit {
 
 
   }
-  editarRanking(rank: any){
+  modifyRanking(rank: any){
     this.rankingService.setCurrentRanking(rank);
     this.modal.show(UpdateRankingComponent,{backdrop: 'static', keyboard: false});
   }
