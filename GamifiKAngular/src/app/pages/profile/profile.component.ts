@@ -6,6 +6,7 @@ import { RankingService } from 'src/app/services/rankingService/ranking.service'
 import { UsersService } from 'src/app/services/userService/users.service';
 import { AddRankingsComponent } from 'src/app/modals/add-rankings/add-rankings.component';
 import { AddTasksComponent } from 'src/app/modals/add-tasks/add-tasks.component';
+import { DbService } from 'src/app/services/Database/db.service';
 
 
 @Component({
@@ -27,8 +28,9 @@ export class ProfileComponent implements OnInit {
 
 
 
-  constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
-   this.user = this.usersService.getCurrentUser();
+  constructor(private db:DbService,private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
+    console.log(this.db.fetchData("user"));
+    this.user = this.usersService.getCurrentUser();
     if(this.usersService.isSession()){
      this.getRanking();
     }

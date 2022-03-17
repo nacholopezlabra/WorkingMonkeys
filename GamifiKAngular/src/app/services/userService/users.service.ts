@@ -24,10 +24,9 @@ export class UsersService {
 
   constructor(private db: DbService, private apiService: ApiService, private commonService:CommonService,
     private router:Router) {
-    this.fetchCurrentUser();
   }
 
-  public fetchCurrentUser(data?: user): void {
+  public fetchCurrentUser(data: user): void {
 
     if (!!data) {
       this.currentUser = data;
@@ -68,7 +67,9 @@ export class UsersService {
       let res = data.data;
       if(res.id){
         this.sessionToken = this.randomString(40, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-        console.log(this.sessionToken)
+        this.db.pushData("sessionToken", this.sessionToken);
+        this.db.pushData("user",res);
+        console.log(this.db.fetchData("user"));
         this.fetchCurrentUser(res);
         this.commonService.sweetalert("success","Usuario logeado").then((result)=>{
           this.router.navigate(['profile']);
@@ -126,4 +127,8 @@ export class UsersService {
     return false;
   }
 
+
+  setSession(token:string){
+    this.sessionToken = token;
+  }
 }
