@@ -145,17 +145,12 @@ header {
 	height: 100%;
 	border-radius: 5px;
   overflow: auto;
+  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
 }
 
 .lboard_wrap .lboard_item{
 	padding: 25px;
-}
-
-.lboard_wrap .lboard_mem{
-	display: flex;
-	align-items: center;
-	padding: 15px 0;
-
 }
 
 .lboard_wrap .lboard_mem:first-child{
@@ -169,6 +164,7 @@ header {
 
 .lboard_wrap .lboard_mem .img{
 	width: 50px;
+  float: left;
 }
 
 .lboard_wrap .lboard_mem img{
@@ -179,6 +175,8 @@ header {
 .lboard_wrap .lboard_mem .name_bar{
 	margin: 0 20px;
 	width: calc(100% - 150px);
+  float: left;
+  padding-top: 8px;
 }
 
 .lboard_wrap .lboard_mem .name_bar p{
@@ -202,8 +200,6 @@ header {
 	border-radius: 5px;
 	position: relative;
 	overflow: hidden;
-}::-webkit-scrollbar {
-  display: none;
 }
 
 .lboard_wrap .lboard_mem .name_bar .bar_wrap .inner_bar{
@@ -237,4 +233,26 @@ header {
 .icon {
   width: 24px ;
   height: 24px ;
+}
+.crudbotones{
+  float: right;
+  padding-top: 5px;
+}
+
+.botoneseditar{
+  float: left;
+}
+
+
+.lboard_mem {
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-left: 57px;
+  float: left;
+  position: relative;
+  width: 45%;
+  height: auto;
+  padding-bottom: 50px;
+  text-align: center;
+  justify-content: center;
 }
