@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { UpdateRankingComponent } from 'src/app/modals/update-ranking/update-ranking.component';
 import { UserRankingService } from 'src/app/services/userRankingService/user-ranking.service';
+import { JoinRankingComponent } from 'src/app/modals/join-ranking/join-ranking.component';
 
 @Component({
   selector: 'app-ranking',
@@ -31,6 +32,10 @@ export class RankingComponent implements OnInit {
 
   createRanking(){
     this.modal.show(AddRankingsComponent,{backdrop: 'static', keyboard: false});
+  }
+
+  addUserRanking(){
+    this.modal.show(JoinRankingComponent,{backdrop: 'static', keyboard: false});
   }
 
   deleteRanking(ranking:ranking){

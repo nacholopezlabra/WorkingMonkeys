@@ -104,10 +104,12 @@ export class RankingService {
   }
 
   addUserIntoRanking(code:string){
+    console.log(this.userService.getCurrentUser());
     let data = {
       code:code,
       id_user:this.userService.getCurrentUser().id
     }
+    console.log(data);
     this.apiService.addUserIntoRanking(data).then((data:any)=>{
       let res = data.data;
       if(res == 3){

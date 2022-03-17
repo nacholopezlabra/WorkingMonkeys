@@ -19,6 +19,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { RankingDetailComponent } from './pages/ranking-detail/ranking-detail.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
+import { JoinRankingComponent } from './modals/join-ranking/join-ranking.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { RankingComponent } from './pages/ranking/ranking.component';
     AddTasksComponent,
     UpdateTaskComponent,
     RankingDetailComponent,
-    RankingComponent
+    RankingComponent,
+    JoinRankingComponent
   ],
   imports: [
     CommonModule,

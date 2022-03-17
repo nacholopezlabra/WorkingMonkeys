@@ -77,7 +77,7 @@ export class ApiService {
   }
 
   addUserIntoRanking(data:any):Promise<any>{
-    return this.http.get(this.generateUrl(ADDUSERINTORANKING+data.code+"&id_user="+data.id)).toPromise();
+    return this.http.get(this.generateUrl(ADDUSERINTORANKING+data.code+"&id_user="+data.id_user)).toPromise();
   }
 
 
