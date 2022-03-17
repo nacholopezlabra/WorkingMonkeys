@@ -53,6 +53,7 @@ export class RegisterTeachersComponent implements OnInit {
         this.userService.setSession(this.db.fetchData("sessionToken"));
         this.userService.fetchCurrentUser(this.db.fetchData("user"));
         if(this.userService.isSession()){
+          //this.getRanking();
           this.commonService.sweetalert("success","Iniciando Session").then(()=>{
             this.router.navigate(['profile']);
           })

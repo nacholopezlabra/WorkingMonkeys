@@ -20,7 +20,10 @@ export class RankingService {
     this.rankings = [];
     await this.apiService.getRankings(data).then((data:any)=>{
       let res = data.data;
-      this.rankings = res;
+      if(res != 1){
+        this.rankings = res;
+      }
+
     });
 
   }
