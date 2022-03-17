@@ -17,8 +17,15 @@ $query = "SELECT * FROM ranking_students WHERE id_student = ".$_GET['id_user']."
 $res = mysqli_query($con,$query);
 
 if(mysqli_num_rows($res) == 1){
+    
+     $query = "SELECT * from tasks where id_ranking = ".$_GET['id_ranking'];
+     $res = mysqli_query($con,$query);
+     while($row = $res->fetch_assoc()){
+        $query = "DELETE FROM score where id_student = ".$_GET['id_user']." AND id_task = ".$row['id_task'];
+        $result = mysqli_query($con, $query);
+     }
+
     $query = " DELETE FROM ranking_students WHERE id_student = ".$_GET['id_user']." AND id_ranking = ".$_GET['id_ranking'];
-    //DELETE FROM rankings WHERE id_ranking=".$_GET['id_ranking']."AND id_teacher =".$_GET['id_teacher']
     $res = mysqli_query($con,$query);
     if($res){
         $response->resultado = 'OK';

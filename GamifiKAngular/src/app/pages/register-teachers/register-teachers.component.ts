@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/userService/users.service';
 import * as sha512 from 'js-sha512';
 import { CommonService } from 'src/app/services/commonService/common.service';
+import { DbService } from 'src/app/services/Database/db.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -45,13 +47,24 @@ export class RegisterTeachersComponent implements OnInit {
   cardImageBase64: string = '';
 
 
-  constructor(
-    private userService: UsersService,
-    private commonService: CommonService
+  constructor( private userService: UsersService, private commonService: CommonService, private db:DbService,
+    private router : Router) {
+      if(!!this.db.fetchData("sessionToken")){
+        this.userService.setSession(this.db.fetchData("sessionToken"));
+        this.userService.fetchCurrentUser(this.db.fetchData("user"));
+        if(this.userService.isSession()){
+          this.commonService.sweetalert("success","Iniciando Session").then(()=>{
+            this.router.navigate(['profile']);
+          })
+        }
+      }
+    }
 
-  ) {
+  ngOnInit(): void {
+
 
   }
+
   //REGISTRO
 
   onSubmit() {
@@ -82,7 +95,6 @@ encode(pass:string){
 
   }
 
-  ngOnInit(): void {}
 
   //LOGIN
   async logIn() {
