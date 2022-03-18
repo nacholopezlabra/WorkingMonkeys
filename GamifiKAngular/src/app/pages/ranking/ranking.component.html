@@ -26,55 +26,41 @@
 
           <ul>
             <li data-li="today">Rankings</li>
-            <button class="rankingbutton" (click)="createRanking()" *ngIf="user.userType == 1"><img class="icon" src="../../../assets/icons/addicon.png"></button>
-            <button class="rankingbutton" (click)="addUserRanking()"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
-          </ul>
+            <button class="rankingbutton" (click)="createRanking()"><img class="icon" src="../../../assets/icons/addicon.png"></button>
+            </ul>
         </div>
       </div>
-      <div class="lboard_wrap" *ngIf="!!ranking">
-
+      <div class="lboard_wrap">
         <div class="lboard_item month" style="display: block;" *ngFor="let item of ranking; let i = index" >
           <div class="lboard_mem" (click)="toRankingDetails(item)" >
-            <ng-container >
+            <ng-container (click)="toRankingDetails(item)">
             <div class="img">
               <img src="../../../assets/placeholders/userPlaceholder.jpg">
             </div>
             <div class="name_bar">
               <!--nombre usuario-->
               <p><span>{{i+1}}.</span>{{item.name}}</p>
-
             </div>
-            </ng-container>
+          </ng-container>
+        </div>
 
-          </div>
-<<<<<<< Updated upstream
-            <!--editar boton-->
-            <div class="edit" *ngIf="user.userType == 1">
+        <div class="crudbotones">
+            <div class="botoneseditar">
               <img class="icon" src="../../../assets/icons/editiconR.png" (click)="modifyRanking(item)">
-              <img class="icon" src="../../../assets/icons/deleticon.png" (click)="deleteRanking(item)">
-=======
-          <div class="crudbotones">
-              <div class="botoneseditar">
-                <img class="icon" src="../../../assets/icons/editiconR.png" (click)="editarRanking(item)">
-              </div>
-              <div class="botoneseditar">
-                <img class="icon" src="../../../assets/icons/deleticon.png" (click)="borrarRanking(item)">
-              </div>
->>>>>>> Stashed changes
             </div>
-            <!--editar boton-->
+            <div class="botoneseditar">
+              <img class="icon" src="../../../assets/icons/deleticon.png" (click)="deleteRanking(item)">
+            </div>
+          </div>
+          <!--editar boton-->
 
 
-        </div>
       </div>
-      <div class="lboard_wrap" *ngIf="!!!ranking">
-        <div class="lboard_item month" style="display: block;">
-        <span>Usted no tiene rankings porfavor unase a uno!
-        </span>
-        </div>
+    </div>
+    <div class="lboard_wrap" *ngIf="!!!ranking">
+      <div class="lboard_item month" style="display: block;">
+      <span>Usted no tiene rankings porfavor unase a uno!
+      </span>
       </div>
     </div>
   </div>
-</body>
-
-</html>
