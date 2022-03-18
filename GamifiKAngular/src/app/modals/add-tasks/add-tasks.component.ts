@@ -21,12 +21,13 @@ export class AddTasksComponent implements OnInit {
     this.modal.hide();
   }
 
-  crearRanking(){
+  async createRanking(){
 
     if (this.task.name=="") {
       this.commonService.sweetalert("error","Has de introduir un nombre de tarea");
     }
     else{
+     // await this.rankingService
       this.commonService.sweetalert("success","Tarea creada correctamente").then((result)=>{
         console.log(this.task);
         this.modal.hide();

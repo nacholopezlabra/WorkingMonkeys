@@ -26,13 +26,14 @@ export class UpdateRankingComponent implements OnInit {
     this.modal.hide();
   }
 
-  crearRanking(){
+  async updateRanking(){
     if (this.ranking.name=="") {
       this.commonService.sweetalert("error","Has de introduir un nombre de ranking");
     }
     else{
-      this.rankingService.updateRanking(this.ranking);
-      this.modal.hide();
+      await this.rankingService.updateRanking(this.ranking).then(()=>{
+        this.modal.hide();
+      });
     }
   }
 

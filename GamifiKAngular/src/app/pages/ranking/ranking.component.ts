@@ -23,12 +23,21 @@ export class RankingComponent implements OnInit {
   constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
     private apiService:ApiService, private router:Router, private userRankingService:UserRankingService) {
     this.user = this.usersService.getCurrentUser();
+    console.log(this.user);
+
     if(this.usersService.isSession()){
-      this.ranking = this.rankingService.getRankings();
+      this.fetchRankings();
     }
   }
 
   ngOnInit(): void {}
+
+  async fetchRankings(){
+    await this.rankingService.fetchRankings().then(()=>{
+      this.ranking = this.rankingService.getRankings();
+    });
+
+  }
 
   createRanking(){
     this.modal.show(AddRankingsComponent,{backdrop: 'static', keyboard: false});

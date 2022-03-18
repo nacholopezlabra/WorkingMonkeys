@@ -4,6 +4,7 @@ import { user } from 'src/app/model/interfaces';
 import { ApiService } from '../apiService/api.service';
 import { CommonService } from '../commonService/common.service';
 import { DbService } from '../Database/db.service';
+import { RankingService } from '../rankingService/ranking.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class UsersService {
   private sessionToken:string= "";
 
   constructor(private db: DbService, private apiService: ApiService, private commonService:CommonService,
-    private router:Router) {
+    private router:Router, ) {
   }
 
   public fetchCurrentUser(data: user): void {
@@ -39,6 +40,8 @@ export class UsersService {
   public logOut() {
     this.currentUser = {id: 0,nickname: '',mail: '',password: '',name: '',surname: '',birthday: '',userType: 0,image: ''};
     this.sessionToken = "";
+    this.db.clear("sessionToken");
+    this.db.clear("user");
   }
 
    public async registerUser(user: user) {
@@ -72,7 +75,7 @@ export class UsersService {
         console.log(this.db.fetchData("user"));
         this.fetchCurrentUser(res);
         this.commonService.sweetalert("success","Usuario logeado").then((result)=>{
-          this.router.navigate(['profile']);
+          this.router.navigate(['ranking']);
         })
       }else if (res == 2){
         this.commonService.sweetalert("error","La contraseña o el usuario no son validos");

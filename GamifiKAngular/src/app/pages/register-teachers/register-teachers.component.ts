@@ -6,6 +6,7 @@ import * as sha512 from 'js-sha512';
 import { CommonService } from 'src/app/services/commonService/common.service';
 import { DbService } from 'src/app/services/Database/db.service';
 import { Router } from '@angular/router';
+import { RankingService } from 'src/app/services/rankingService/ranking.service';
 
 
 @Component({
@@ -48,14 +49,14 @@ export class RegisterTeachersComponent implements OnInit {
 
 
   constructor( private userService: UsersService, private commonService: CommonService, private db:DbService,
-    private router : Router) {
+    private router : Router, private rankingService:RankingService) {
       if(!!this.db.fetchData("sessionToken")){
         this.userService.setSession(this.db.fetchData("sessionToken"));
         this.userService.fetchCurrentUser(this.db.fetchData("user"));
         if(this.userService.isSession()){
-          //this.getRanking();
+          this.rankingService.fetchRankings();
           this.commonService.sweetalert("success","Iniciando Session").then(()=>{
-            this.router.navigate(['profile']);
+            this.router.navigate(['ranking']);
           })
         }
       }

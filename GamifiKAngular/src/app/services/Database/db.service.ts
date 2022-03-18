@@ -18,5 +18,8 @@ export class DbService {
     return JSON.parse(localStorage.getItem(dbSlot)!);
   }
 
+  clear(dbSlot:string){
+    localStorage.removeItem(dbSlot);
+  }
 
 }

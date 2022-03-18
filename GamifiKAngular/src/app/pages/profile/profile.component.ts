@@ -28,11 +28,11 @@ export class ProfileComponent implements OnInit {
 
 
 
-  constructor(private db:DbService,private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
+  constructor(private db:DbService,public usersService: UsersService, public rankingService: RankingService, private modal:BsModalService) {
     console.log(this.db.fetchData("user"));
     this.user = this.usersService.getCurrentUser();
     if(this.usersService.isSession()){
-     this.getRanking();
+     this.rankingService.fetchRankings();
     }
 
   }
@@ -40,14 +40,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRanking(){
-    let data = {
-      userType:this.user.userType,
-      id:this.user.id
-    }
-    this.rankingService.fetchRankings(data);
 
-  }
 
   encode(pass:string){
     return sha512.sha512(pass);
