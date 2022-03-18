@@ -12,7 +12,7 @@
           <div class="title">Ranking</div>
           <div class="bar"></div>
         </a>
-        <a href="#" class="link" >
+        <a href="#" class="link" (click)="usersService.logOut()">
           <div class="title">cerrar sesion</div>
           <div class="bar"></div>
         </a>
@@ -26,7 +26,7 @@
 
           <ul>
             <li data-li="today">Rankings</li>
-            <button class="rankingbutton" (click)="createRanking()"><img class="icon" src="../../../assets/icons/addicon.png"></button>
+            <button class="rankingbutton" (click)="createRanking()" *ngIf="this.user.userType == 1"><img class="icon" src="../../../assets/icons/addicon.png"></button>
             </ul>
         </div>
       </div>
@@ -45,7 +45,7 @@
           </ng-container>
         </div>
 
-        <div class="crudbotones">
+        <div class="crudbotones" *ngIf="this.user.userType == 1">
             <div class="botoneseditar">
               <img class="icon" src="../../../assets/icons/editiconR.png" (click)="modifyRanking(item)">
             </div>
