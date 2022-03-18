@@ -27,7 +27,8 @@
           <ul>
             <li data-li="today">Rankings</li>
             <button class="rankingbutton" (click)="createRanking()" *ngIf="this.user.userType == 1"><img class="icon" src="../../../assets/icons/addicon.png"></button>
-            </ul>
+            <button class="rankingbutton" (click)="addUserRanking()" *ngIf="this.user.userType == 0"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+          </ul>
         </div>
       </div>
       <div class="lboard_wrap" *ngIf="ranking.length != 0">
