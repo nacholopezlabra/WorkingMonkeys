@@ -30,7 +30,7 @@
             </ul>
         </div>
       </div>
-      <div class="lboard_wrap" *ngIf="!!ranking">
+      <div class="lboard_wrap" *ngIf="ranking.length != 0">
 
         <div class="lboard_item month" style="display: block;"  *ngFor="let item of rankingService.getRankings(); let i = index" >
           <div class="lboard_mem" (click)="toRankingDetails(item)" >
