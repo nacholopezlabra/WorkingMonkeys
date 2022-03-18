@@ -13,8 +13,6 @@ $con = $bd->getConnection();
 
 $query = "SELECT * FROM rankings where id_ranking = '".$_GET['id_ranking']."' AND id_teacher = '".$_GET['id_teacher']."'";
 $res = mysqli_query($con,$query);
-
-echo (mysqli_num_rows($res) > 0);
 if(mysqli_num_rows($res) > 0){
     
     $query = "DELETE FROM rankings WHERE id_ranking=".$_GET['id_ranking']." AND id_teacher =".$_GET['id_teacher'];

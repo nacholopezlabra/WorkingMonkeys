@@ -12,8 +12,8 @@
           <div class="title">Ranking</div>
           <div class="bar"></div>
         </a>
-        <a href="#" class="link" >
-          <div class="title">Login/Register</div>
+        <a href="#" class="link" (click)="usersService.logOut()">
+          <div class="title">Cerrar sesion</div>
           <div class="bar"></div>
         </a>
       </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="name_bar">
               <!--nombre usuario-->
-              <p><span>{{i}}.</span> {{user.name}} {{user.surname}} </p>
+              <p><span>{{i}}.</span> {{user.nickname}} {{user.name}} {{user.surname}} </p>
 
               <div class="bar_wrap">
                 <!--barra rango-->

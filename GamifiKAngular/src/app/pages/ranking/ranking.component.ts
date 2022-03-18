@@ -20,7 +20,7 @@ export class RankingComponent implements OnInit {
   user: user;
   ranking:ranking[]=[];
 
-  constructor(private usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
+  constructor(public usersService: UsersService, public rankingService: RankingService, private modal:BsModalService,
     private apiService:ApiService, private router:Router, private userRankingService:UserRankingService) {
     this.user = this.usersService.getCurrentUser();
     console.log(this.user);
@@ -58,16 +58,19 @@ export class RankingComponent implements OnInit {
       confirmButtonText: '¡Sí, bórralo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.apiService.deleteRankings(ranking.id_ranking, ranking.id_teacher);
-        Swal.fire({
-          title:'Eliminado!',
-          text:'Su ranking ha sido eliminado.',
-          icon:'success',
-          showConfirmButton: false,
-          timer: 1000
-        }).then(()=>{
-          this.router.navigate(['ranking']);
+        this.apiService.deleteRankings(ranking.id_ranking, ranking.id_teacher).then(()=>{
+          this.rankingService.fetchRankings().then(()=>{
+            Swal.fire({
+              title:'Eliminado!',
+              text:'Su ranking ha sido eliminado.',
+              icon:'success',
+              showConfirmButton: false,
+              timer: 1000
+            })
+          })
+
         });
+
 
       }
     });

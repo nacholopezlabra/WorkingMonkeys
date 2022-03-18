@@ -12,7 +12,7 @@
           <div class="title">Ranking</div>
           <div class="bar"></div>
         </a>
-        <a href="#" class="link" >
+        <a href="#" class="link" (click)="usersService.logOut()">
           <div class="title">cerrar sesion</div>
           <div class="bar"></div>
         </a>
@@ -26,11 +26,12 @@
 
           <ul>
             <li data-li="today">Rankings</li>
-            <button class="rankingbutton" (click)="createRanking()"><img class="icon" src="../../../assets/icons/addicon.png"></button>
-            </ul>
+            <button class="rankingbutton" (click)="createRanking()" *ngIf="this.user.userType == 1"><img class="icon" src="../../../assets/icons/addicon.png"></button>
+            <button class="rankingbutton" (click)="addUserRanking()" *ngIf="this.user.userType == 0"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+          </ul>
         </div>
       </div>
-      <div class="lboard_wrap" *ngIf="!!ranking">
+      <div class="lboard_wrap" *ngIf="ranking.length != 0">
 
         <div class="lboard_item month" style="display: block;"  *ngFor="let item of rankingService.getRankings(); let i = index" >
           <div class="lboard_mem" (click)="toRankingDetails(item)" >

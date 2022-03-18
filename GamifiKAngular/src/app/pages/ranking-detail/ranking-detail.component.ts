@@ -15,7 +15,7 @@ export class RankingDetailComponent implements OnInit {
   currentTask:string = "";
 
 
-  constructor(public rankingService:RankingService, private UserRankingService:UserRankingService, private usersService:UsersService) {
+  constructor(public rankingService:RankingService, private UserRankingService:UserRankingService, public usersService:UsersService) {
     if(this.usersService.isSession()){
       this.ranking = this.rankingService.getCurrentRanking();
       this.getRankingUsers();
