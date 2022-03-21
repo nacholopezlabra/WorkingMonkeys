@@ -12,7 +12,7 @@ $bd = new bd();
 $con = $bd->getConnection();
 
 
-$query = "SELECT * from rankings where ".$_GET['id'];
+$query = "SELECT * from rankings where id_teacher=".$_GET['id'];
 $res = mysqli_query($con, $query);
 
 

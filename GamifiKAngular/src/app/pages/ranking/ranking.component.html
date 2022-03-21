@@ -41,12 +41,12 @@
             </div>
             <div class="name_bar">
               <!--nombre usuario-->
-              <p><span>{{i+1}}.</span>{{item.name}}</p>
+              <p><span>{{i+1}}.</span>{{item.name}} / {{item.code}}</p>
             </div>
           </ng-container>
         </div>
 
-        <div class="crudbutons">
+        <div class="crudbutons" *ngIf="this.user.userType == 1">
             <div class="butonsedit">
               <img class="icon" src="../../../assets/icons/editiconR.png" (click)="modifyRanking(item)">
             </div>

@@ -25,13 +25,13 @@
         <div class="tabs">
           <ul>
             <li data-li="today">LeaderBoard</li>
-
-            <button class="buttonA"><img class="icon" src="../../../assets/icons/editiconB.png"></button>
-
-            <select name="taskas" [(ngModel)]="currentTask">
+            <select aria-placeholder="Tareas" name="taskas" [(ngModel)]="currentTask">
+              <option value="" selected>Tareas</option>
               <option [value]="item" *ngFor="let item of rankingService.getTasks()">{{item.name}}</option>
-
-              </select>
+            </select>
+              <button *ngIf="this.user2.userType == 1" class="buttonA"><img class="icon" src="../../../assets/icons/editiconB.png"></button>
+              <button *ngIf="this.user2.userType == 1" class="buttonA"><img class="icon" src="../../../assets/icons/deleticonB.png"></button>
+              <button *ngIf="this.user2.userType == 1" class="buttonA"><img class="icon" src="../../../assets/icons/addiconB.png"></button>
           </ul>
         </div>
       </div>
