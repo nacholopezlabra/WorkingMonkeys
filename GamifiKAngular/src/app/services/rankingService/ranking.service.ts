@@ -39,13 +39,12 @@ export class RankingService {
     return this.rankings;
   }
 
-  randomNumberRanking(){
+  randomCodeRanking(length: number, chars:string){
 
-    let min = 0;
-    let max = 99999999;
-    let code: number;
-    code = min + Math.floor(Math.random()*max);
-    return code.toString().padStart(8,"0");
+
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
 
   }
 

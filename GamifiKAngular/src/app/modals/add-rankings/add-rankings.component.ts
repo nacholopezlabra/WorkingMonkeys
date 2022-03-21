@@ -19,7 +19,7 @@ export class AddRankingsComponent implements OnInit {
   constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,
     private usersService: UsersService){
       this.ranking.id_teacher = this.usersService.getCurrentUser().id;
-      this.ranking.code = this.rankingService.randomNumberRanking();
+      this.ranking.code = this.rankingService.randomCodeRanking(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     }
 
   ngOnInit(): void {}

@@ -78,11 +78,11 @@ export class RankingComponent implements OnInit {
   }
 
    toRankingDetails(rank:any){
-    //this.rankingService.setCurrentRanking(rank);
-    //this.rankingService.fetchTasks();
-    //this.userRankingService.getUsersById().then((res)=>{
+    this.rankingService.setCurrentRanking(rank);
+    this.rankingService.fetchTasks();
+    this.userRankingService.getUsersById().then((res)=>{
     this.router.navigate(['rankingDetails']);
-    //});
+    });
 
 
   }

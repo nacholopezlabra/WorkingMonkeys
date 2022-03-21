@@ -13,7 +13,7 @@
           <div class="bar"></div>
         </a>
         <a href="#" class="link" (click)="usersService.logOut()">
-          <div class="title">cerrar sesion</div>
+          <div class="title">Cerrar sesion</div>
           <div class="bar"></div>
         </a>
       </div>
@@ -27,7 +27,7 @@
           <ul>
             <li data-li="today">Rankings</li>
             <button class="rankingbutton" (click)="createRanking()" *ngIf="this.user.userType == 1"><img class="icon" src="../../../assets/icons/addicon.png"></button>
-            <button class="rankingbutton" (click)="addUserRanking()" *ngIf="this.user.userType == 0"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+            <button class="rankingbutton" (click)="addUserRanking()" *ngIf="this.user.userType == 0">Unirse</button>
           </ul>
         </div>
       </div>
