@@ -13,9 +13,11 @@ export class RankingDetailComponent implements OnInit {
   user:user[]=[];
   ranking:ranking = {id_ranking:0,id_teacher:0,name:"",code:""  }
   currentTask:string = "";
+  user2:user;
 
 
   constructor(public rankingService:RankingService, private UserRankingService:UserRankingService, public usersService:UsersService) {
+    this.user2 = this.usersService.getCurrentUser();
     if(this.usersService.isSession()){
       this.ranking = this.rankingService.getCurrentRanking();
       this.getRankingUsers();
