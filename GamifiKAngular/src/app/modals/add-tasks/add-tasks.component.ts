@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { task } from 'src/app/model/interfaces';
+import { ranking, task } from 'src/app/model/interfaces';
 import { CommonService } from 'src/app/services/commonService/common.service';
+import { RankingService } from 'src/app/services/rankingService/ranking.service';
 
 @Component({
   selector: 'app-add-tasks',
@@ -10,32 +11,31 @@ import { CommonService } from 'src/app/services/commonService/common.service';
 })
 export class AddTasksComponent implements OnInit {
 
-  task: task = {id_task:0, name:"", id_ranking:0}
+  task: task = {id_task: 1, name: "", id_ranking: 1}
 
-  constructor(private modal:BsModalService, private commonService: CommonService){}
+  apiService: any;
 
-  ngOnInit():void {
-  }
+  constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService){
+      this.task.id_ranking = this.rankingService.getCurrentRanking().id_ranking;
+    }
+
+  ngOnInit(): void {}
 
   closeDialog(){
     this.modal.hide();
   }
 
-  async createRanking(){
+  crearRanking(){
 
     if (this.task.name=="") {
-      this.commonService.sweetalert("error","Has de introduir un nombre de tarea");
+      this.commonService.sweetalert("error","Has de introduir un nombre de ranking");
     }
     else{
-     // await this.rankingService
-      this.commonService.sweetalert("success","Tarea creada correctamente").then((result)=>{
-        console.log(this.task);
-        this.modal.hide();
-      })
+      this.rankingService.createTask(this.task);
+      this.modal.hide();
     }
 
 
   }
+
 }
-
-

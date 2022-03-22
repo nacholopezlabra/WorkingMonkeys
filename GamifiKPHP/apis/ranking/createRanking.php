@@ -17,16 +17,18 @@ $decoded = json_decode($inputJSON,true);
 $response = new Result();
 
 $query = "SELECT * FROM rankings where code ='".$decoded['code']."'";
+echo $query;
 $res = mysqli_query($con,$query);
 
 if (mysqli_num_rows($res) == 0) {
 
         $query = "SELECT * FROM rankings where name ='".$decoded['name']."' AND id_teacher = '".$decoded['id_teacher']."'";
         $res = mysqli_query($con,$query);
-
+        echo $query;
         if(mysqli_num_rows($res) == 0){
             //todo
-            $query = "INSERT INTO rankings(name,id_teacher,code) values ('".$decoded['name']."' ,".$decoded['id_teacher'].",".$decoded['code'].")";
+            $query = "INSERT INTO rankings(name,id_teacher,code) values ('".$decoded['name']."' ,".$decoded['id_teacher'].",'".$decoded['code']."')";
+            echo $query;
             $res = mysqli_query($con,$query);
             $response->resultado = 'OK';
             $response->mensaje = 'SE HA CREADO EL RANKING EXITOSAMENTE';

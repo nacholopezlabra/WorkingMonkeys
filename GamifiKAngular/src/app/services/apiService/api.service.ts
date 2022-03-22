@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ranking } from 'src/app/model/interfaces';
+import { task } from 'src/app/model/interfaces';
 import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
 const HOST: string = "http://localhost:8080/apis/";
+//const HOST: string = "http://192.168.7.140:8080/apis/";
 const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
 const MODIFYUSER :string = "user/modifyUser.php";
@@ -18,6 +20,9 @@ const GETSCORE: string = "score/getScore.php";
 const CREATERANKING: string = "ranking/createRanking.php?";
 const ADDUSERINTORANKING : string = "userRanking/addUser.php?code=";
 const GETRANKINGSUSER : string = "userRanking/getRankingsUser.php?id=";
+const CREATETASK: string = "tasks/createTask.php?";
+const DELETETASK: string = "tasks/deleteTask.php";
+const UPDATETASK: string = "tasks/updateTask.php";
 
 @Injectable({
   providedIn: 'root'
@@ -52,10 +57,6 @@ export class ApiService {
 
   }
 
-  deleteRankings(id_ranking:number, id_teacher: number):Promise<any>{
-    return this.http.get(this.generateUrl(DELETERANKING+"id_ranking="+id_ranking+"&id_teacher="+id_teacher)).toPromise();
-  }
-
   getTasksById(id:number):Promise<any>{
     return this.http.get(this.generateUrl(GETTASKBYID+id)).toPromise();
   }
@@ -76,21 +77,27 @@ export class ApiService {
     return this.http.post(this.generateUrl(UPDATERANKING),ranking,{responseType:'json'}).toPromise();
   }
 
+  deleteRankings(id_ranking:number, id_teacher: number):Promise<any>{
+    return this.http.get(this.generateUrl(DELETERANKING+"id_ranking="+id_ranking+"&id_teacher="+id_teacher)).toPromise();
+  }
+
   addUserIntoRanking(data:any):Promise<any>{
     return this.http.get(this.generateUrl(ADDUSERINTORANKING+data.code+"&id_user="+data.id_user)).toPromise();
   }
 
-
-
-
-
-
-
-
-
-
-
   generateUrl(path:string):string{
     return HOST+path;
+  }
+
+  createTask(task: task):Promise<any>{
+    return this.http.post(this.generateUrl(CREATETASK), task,{responseType:'json'}).toPromise();
+  }
+
+  updateTask(task: task):Promise<any>{
+    return this.http.post(this.generateUrl(UPDATETASK), task,{responseType:'json'}).toPromise();
+  }
+
+  deleteTask(id_task:number){
+    return this.http.get(this.generateUrl(DELETETASK+"id_task="+id_task)).toPromise();
   }
 }

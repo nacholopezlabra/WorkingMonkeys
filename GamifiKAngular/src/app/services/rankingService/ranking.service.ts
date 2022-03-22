@@ -56,7 +56,7 @@ export class RankingService {
     return this.currentRanking;
   }
 
-  fetchTasks(){
+  async fetchTasks(){
     this.apiService.getTasksById(this.currentRanking.id_ranking).then((data:any)=>{
       if(data.data){
         this.tasks = data.data;
@@ -126,6 +126,23 @@ export class RankingService {
         this.commonService.sweetalert("error","Codigo inexistente");
       }
     });
+  }
+
+  async createTask(task:any){
+    await this.apiService.createTask(task).then(async (data) =>{
+      if (data.data == 3) {
+        await this.fetchTasks().then(()=>{
+          this.commonService.sweetalert("success","Tarea creada correctamente");
+        });
+      }
+      else if (data.data == 1){
+        this.commonService.sweetalert("error","La tasca ya existe");
+      }
+    },
+    (error) => {
+      console.log(error);
+    }
+    )
   }
 
 }

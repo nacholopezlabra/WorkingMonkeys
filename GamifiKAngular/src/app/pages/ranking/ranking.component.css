@@ -253,7 +253,7 @@ header {
 .lboard_mem {
   padding-left: 10px;
   padding-top: 10px;
-  margin-left: 5px;
+  margin-left: 0px;
   float: left;
   position: relative;
   width: 75%;

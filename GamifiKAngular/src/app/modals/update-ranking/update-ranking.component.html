@@ -4,6 +4,9 @@
        <h2><b>Editor de Rankings</b></h2>
        <h3>Nuevo nombre del ranking:</h3>
       <input [(ngModel)]="ranking.name" type="text" size="55" placeholder="Nuevo nombre" required>
+      <br>
+      <br>
+      <button class="button">Generar un nuevo codigo</button>
       <div style="padding: 20px">
         <button class="button1" (click)="updateRanking()">Editar</button>
         <button class="button2" (click)="closeDialog()">Cerrar</button>

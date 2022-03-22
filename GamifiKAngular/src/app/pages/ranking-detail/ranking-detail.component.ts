@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AddTasksComponent } from 'src/app/modals/add-tasks/add-tasks.component';
 import { ranking, user } from 'src/app/model/interfaces';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UserRankingService } from 'src/app/services/userRankingService/user-ranking.service';
 import { UsersService } from 'src/app/services/userService/users.service';
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-ranking-detail',
   templateUrl: './ranking-detail.component.html',
@@ -16,7 +17,7 @@ export class RankingDetailComponent implements OnInit {
   user2:user;
 
 
-  constructor(public rankingService:RankingService, private UserRankingService:UserRankingService, public usersService:UsersService) {
+  constructor(public rankingService:RankingService, private UserRankingService:UserRankingService, public usersService:UsersService, private modal:BsModalService) {
     this.user2 = this.usersService.getCurrentUser();
     if(this.usersService.isSession()){
       this.ranking = this.rankingService.getCurrentRanking();
@@ -77,5 +78,13 @@ export class RankingDetailComponent implements OnInit {
     return users;
 
   }
+
+  addtask(){
+      this.modal.show(AddTasksComponent,{backdrop: 'static', keyboard: false});
+  }
+
+  edittask(){}
+
+  deletetask(){}
 
 }

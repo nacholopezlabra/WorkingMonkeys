@@ -29,9 +29,9 @@
               <option value="" selected>Tareas</option>
               <option [value]="item" *ngFor="let item of rankingService.getTasks()">{{item.name}}</option>
             </select>
-              <button *ngIf="this.user2.userType == 1" class="buttonA"><img class="icon" src="../../../assets/icons/editiconB.png"></button>
-              <button *ngIf="this.user2.userType == 1" class="buttonA"><img class="icon" src="../../../assets/icons/deleticonB.png"></button>
-              <button *ngIf="this.user2.userType == 1" class="buttonA"><img class="icon" src="../../../assets/icons/addiconB.png"></button>
+              <button  (click)="edittask()" *ngIf="this.user2.userType == 1" class="buttonA"><img class="icon" src="../../../assets/icons/editiconB.png"></button>
+              <button (click)="deletetask()" *ngIf="this.user2.userType == 1"  class="buttonA"><img class="icon" src="../../../assets/icons/deleticonB.png"></button>
+              <button (click)="addtask()" *ngIf="this.user2.userType == 1"  class="buttonA"><img class="icon" src="../../../assets/icons/addiconB.png"></button>
           </ul>
         </div>
       </div>
