@@ -26,7 +26,7 @@ export class RankingService {
     console.log(data);
     await this.apiService.getRankings(data).then((data:any)=>{
       let res = data.data;
-      if(res != 1){
+      if(res != 1 && res !=104){
         this.rankings = res;
       }
       console.log(this.rankings);
