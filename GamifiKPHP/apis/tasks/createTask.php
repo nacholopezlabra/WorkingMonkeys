@@ -19,7 +19,7 @@ $res = mysqli_query($con,$query);
 
 
 if(mysqli_num_rows($res) == 0){
-    $query = "INSERT INTO TASKS (name, id_ranking) values (".$decoded['name'].",".$decoded['id_ranking'].")";
+    $query = "INSERT INTO TASKS (name, id_ranking) values ('".$decoded['name']."','".$decoded['id_ranking']."')";
     $res = mysqli_query($con,$query);
     $response->resultado = 'OK';
     $response->mensaje = 'SE HA CREADO LA TASCA EXITOSAMENTE';
