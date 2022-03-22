@@ -18,12 +18,15 @@ $query = "SELECT * FROM tasks where name = '".$decoded['name']."' AND id_ranking
 $res = mysqli_query($con,$query);
 
 if(mysqli_num_rows($res) == 0){
-    $query = "UPDATE `task` SET name= '".$decoded['name']."', id_ranking='".$decoded['id_ranking']."' WHERE id_task='".$decoded['id_task']."'";
+    $query = "UPDATE `tasks` SET name= '".$decoded['name']."' WHERE id_task = '".$decoded['id_task']."'";
     $res = mysqli_query($con,$query);
-    $response->resultado = 'OK';
-    $response->mensaje = 'SE HA MODIFICADO LA TASCA EXITOSAMENTE';
-    $response->data = 3;
-    echo json_encode($response);
+    if($res){
+        $response->resultado = 'OK';
+        $response->mensaje = 'SE HA MODIFICADO LA TASCA EXITOSAMENTE';
+        $response->data = 3;
+        echo json_encode($response);
+    }
+    
 }else{
     $response->resultado = 'ERROR';
     $response->mensaje = 'NO SE HA MODIFICADO CORRECTAMENTE';

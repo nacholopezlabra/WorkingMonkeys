@@ -12,6 +12,7 @@ export class RankingService {
   rankings:ranking[]=[];
   currentRanking: any;
   tasks:task[] = [];
+  currentTask:any;
 
   constructor(private apiService:ApiService, private commonService: CommonService, private userService:UsersService) {}
 
@@ -63,6 +64,15 @@ export class RankingService {
       }
     })
   }
+
+  setCurrentTask(task:task){
+    this.currentTask = task;
+  }
+
+  getCurrentTask():task{
+    return this.currentTask;
+  }
+
 
 
   getTasks(){
@@ -137,6 +147,23 @@ export class RankingService {
       }
       else if (data.data == 1){
         this.commonService.sweetalert("error","La tasca ya existe");
+      }
+    },
+    (error) => {
+      console.log(error);
+    }
+    )
+  }
+
+  async updateTask(task:any){
+    await this.apiService.updateTask(task).then(async (data) =>{
+      console.log(data)
+      if (data.data == 3) {
+        await this.fetchTasks();
+        this.commonService.sweetalert("success","Tarea modificada correctamente");
+      }
+      else if (data.data == 1) {
+        this.commonService.sweetalert("error","No se ha podido modificar la tarea");
       }
     },
     (error) => {
