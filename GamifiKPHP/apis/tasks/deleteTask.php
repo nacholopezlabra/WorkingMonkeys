@@ -1,6 +1,8 @@
 <?php 
+
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Content-Type: application/json');
 
 include_once('../../Controlers/bd.php');
 include_once('../../Models/result.php');
@@ -8,12 +10,12 @@ include_once('../../Models/ranking.php');
 
 $bd = new bd();
 $con = $bd->getConnection();
+
 $query = "SELECT * FROM tasks where id_task = '".$_GET['id_task']."'";
 $res = mysqli_query($con,$query);
 
 if(mysqli_num_rows($res) > 0){
-    
-    $queRy = "DELETE FROM tasks WHERE id_task=".$_GET['id_task'];
+    $query = "DELETE FROM tasks WHERE id_task= '".$_GET['id_task']."'";
     $res = mysqli_query($con,$query);
     $response = new Result();
     if($res){

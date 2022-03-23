@@ -12,26 +12,27 @@ $con = $bd->getConnection();
 $query = "SELECT * from tasks where id_ranking='".$_GET['id_ranking']."'";
 $res = mysqli_query($con, $query);
 
-if (mysqli_num_rows($res) == 0) {
-    $response = new Result();
+$response = new Result();
+
+if(mysqli_num_rows($res)>0){
+    $taskboard = array();
+    while ($row = $res->fetch_assoc()) {
+    $task = new task();
+    $task->id_task = $row['id_task'];
+    $task->name = $row['name'];
+    $task->id_ranking = $row['id_ranking'];
+    $taskboard[] = $task;
+    }
+    
+    $response->resultado='OK';
+    $response->mensaje ='TAREAS MOSTRADAS EXITOSAMENTE';
+    $response->data=$taskboard;
+    echo json_encode($response);
+    
+} else if(mysqli_num_rows($res)==0){
     $response->resultado = 'ERROR';
-    $response->mensaje = 'TAREAS NO ENCONTRADOS O EL RANKING NO TIENE';
-    $response->data = 1;
+    $response->mensaje = 'NO SE HAN ENCONTRADO TAREAS';
+    $response->data = 104;
     echo json_encode($response);
 }
-else {
-    $array = array();
-        while ($row = $res->fetch_assoc()) {
-            $taskData = new task();
-            $taskData->id_task = $row['id_task'];
-            $taskData->name = $row['name'];
-            $taskData->id_ranking = $_GET['id_ranking'];
-            $array[] = $taskData;
-        } 
-        $response = new Result();
-        $response->resultado = 'OK';
-        $response->mensaje = 'TAREAS RECOGIDAS CORRECTAMENTE'; 
-        $response->data = $array;
-        echo json_encode($response);
-    }
 ?>

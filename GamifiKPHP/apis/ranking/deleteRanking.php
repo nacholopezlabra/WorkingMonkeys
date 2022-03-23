@@ -29,9 +29,5 @@ if(mysqli_num_rows($res) > 0){
         $response->data = 1;
         echo json_encode($response);
     }
-
-
 }
-
-
 ?>   

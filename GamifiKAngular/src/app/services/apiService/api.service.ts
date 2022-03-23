@@ -21,8 +21,8 @@ const CREATERANKING: string = "ranking/createRanking.php?";
 const ADDUSERINTORANKING : string = "userRanking/addUser.php?code=";
 const GETRANKINGSUSER : string = "userRanking/getRankingsUser.php?id=";
 const CREATETASK: string = "tasks/createTask.php?";
-const DELETETASK: string = "tasks/deleteTask.php";
-const UPDATETASK: string = "tasks/updateTask.php";
+const DELETETASK: string = "tasks/deleteTask.php?";
+const UPDATETASK: string = "tasks/updateTask.php?";
 
 @Injectable({
   providedIn: 'root'
@@ -97,7 +97,7 @@ export class ApiService {
     return this.http.post(this.generateUrl(UPDATETASK), task,{responseType:'json'}).toPromise();
   }
 
-  deleteTask(id_task:number){
+  deleteTask(id_task:number):Promise<any>{
     return this.http.get(this.generateUrl(DELETETASK+"id_task="+id_task)).toPromise();
   }
 }
