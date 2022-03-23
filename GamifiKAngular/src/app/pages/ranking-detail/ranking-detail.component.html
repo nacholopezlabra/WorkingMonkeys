@@ -49,8 +49,11 @@
               <!--Puntuacion ranking-->
               {{findUserScore(user)}} puntos
             </div>
+            <div>
+              <img (click)="deletetask()" *ngIf="this.user2.userType == 1" class="icon" src="../../../assets/icons/deleticon.png">
+            </div>
             <!--editar boton-->
-            <img (click)="deletetask()" *ngIf="this.user2.userType == 1" class="icon" src="../../../assets/icons/deleticonB.png">
+
           </div>
         </div>
       </div>
