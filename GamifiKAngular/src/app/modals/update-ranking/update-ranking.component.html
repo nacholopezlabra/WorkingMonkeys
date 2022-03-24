@@ -6,7 +6,8 @@
       <input [(ngModel)]="ranking.name" type="text" size="55" placeholder="Nuevo nombre" required>
       <br>
       <br>
-      <button class="button">Generar un nuevo codigo</button>
+      <button class="button" (click)="generateCode()">Generar un nuevo codigo</button>
+      <p *ngIf="codeUpdated">Se ha actualizado el codigo correctamente</p>
       <div style="padding: 20px">
         <button class="button1" (click)="updateRanking()">Editar</button>
         <button class="button2" (click)="closeDialog()">Cerrar</button>

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./update-ranking.component.css']
 })
 export class UpdateRankingComponent implements OnInit {
-
+  codeUpdated:boolean =false;
   ranking: ranking = {id_ranking: 0, name: '', id_teacher: 0,code: '' };
   apiService: any;
   constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,  private router:Router)
@@ -36,5 +36,8 @@ export class UpdateRankingComponent implements OnInit {
       });
     }
   }
-
+  generateCode(){
+    this.ranking.code=this.rankingService.randomCodeRanking(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    this.codeUpdated=true;
+  }
 }
