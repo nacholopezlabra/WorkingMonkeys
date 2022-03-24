@@ -11,7 +11,7 @@ $con = $bd->getConnection();
 
 $inputJSON =  file_get_contents('php://input');
 $decoded = json_decode($inputJSON,true);
-
+echo $decoded['id_teacher'];
 $response = new Result();
 
 $query = "SELECT * FROM tasks where name = '".$decoded['name']."' AND id_ranking = '".$decoded['id_ranking']."'";

@@ -32,6 +32,14 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
+  callApiTest(){
+    let data = {
+      id_student:12,
+      code:'27873814'
+    }
+    return this.http.post(this.generateUrl("join/askToJoin.php"),data).toPromise();
+  }
+
   logIn(user:string, pass:string): Promise<any>{
     return  this.http.get(this.generateUrl(LOGINURL+"user="+user+"&pass="+pass)).toPromise();
   }
