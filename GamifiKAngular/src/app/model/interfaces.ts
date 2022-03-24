@@ -33,3 +33,19 @@ export interface score{
   id_task:number;
   score:number;
 }
+
+export interface notis{
+  id:number,
+  rankingName:string,
+  status:number //status can be 0, 1 , 2. 0 = pendent, 1 = accepted, 2 = denied
+}
+//"id":"3","id_teacher":"22","code":"27873814","status":"2","student_nickname":"pol","name":"pol","surname":"pol"
+export interface request{
+  id:number,
+  id_teacher:number,
+  code:string,
+  status:number,
+  studentNickname:string,
+  studentName:string,
+  studentSurname:string
+}

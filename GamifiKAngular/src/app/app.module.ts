@@ -36,7 +36,7 @@ import { JoinRankingComponent } from './modals/join-ranking/join-ranking.compone
     UpdateTaskComponent,
     RankingDetailComponent,
     RankingComponent,
-    JoinRankingComponent
+    JoinRankingComponent,
   ],
   imports: [
     CommonModule,

@@ -64,7 +64,7 @@ export class RegisterTeachersComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    //this.userService.callApi();
   }
 
   //REGISTRO

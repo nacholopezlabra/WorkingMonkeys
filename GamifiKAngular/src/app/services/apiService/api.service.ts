@@ -5,8 +5,8 @@ import { task } from 'src/app/model/interfaces';
 import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
-const HOST: string = "http://localhost:8080/apis/";
-//const HOST: string = "http://192.168.7.140:8080/apis/";
+//const HOST: string = "http://localhost:8080/apis/";
+const HOST: string = "http://192.168.7.141:8080/apis/";
 const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
 const MODIFYUSER :string = "user/modifyUser.php";
@@ -32,6 +32,14 @@ const UPDATETASK: string = "tasks/updateTask.php?";
 export class ApiService {
 
   constructor(private http:HttpClient) { }
+
+  callApiTest(){
+    let data = {
+      id_student:12,
+      code:'27873814'
+    }
+    return this.http.post(this.generateUrl("join/askToJoin.php"),data).toPromise();
+  }
 
   logIn(user:string, pass:string): Promise<any>{
     return  this.http.get(this.generateUrl(LOGINURL+"user="+user+"&pass="+pass)).toPromise();

@@ -27,6 +27,12 @@ export class UsersService {
     private router:Router, ) {
   }
 
+  callApi(){
+    this.apiService.callApiTest().then(()=>{
+
+    });
+  }
+
   public fetchCurrentUser(data: user): void {
 
     if (!!data) {
