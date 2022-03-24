@@ -20,6 +20,7 @@ const GETSCORE: string = "score/getScore.php";
 const CREATERANKING: string = "ranking/createRanking.php?";
 const ADDUSERINTORANKING : string = "userRanking/addUser.php?code=";
 const GETRANKINGSUSER : string = "userRanking/getRankingsUser.php?id=";
+const DELETEUSERRANKING : string = "userRanking/deleteUser.php?";
 const CREATETASK: string = "tasks/createTask.php?";
 const DELETETASK: string = "tasks/deleteTask.php?";
 const UPDATETASK: string = "tasks/updateTask.php?";
@@ -99,5 +100,9 @@ export class ApiService {
 
   deleteTask(id_task:number):Promise<any>{
     return this.http.get(this.generateUrl(DELETETASK+"id_task="+id_task)).toPromise();
+  }
+
+  deleteUserRanking(id_user:number, id_ranking: number):Promise<any>{
+    return this.http.get(this.generateUrl(DELETEUSERRANKING+"id_user="+id_user+"&id_ranking="+id_ranking)).toPromise();
   }
 }

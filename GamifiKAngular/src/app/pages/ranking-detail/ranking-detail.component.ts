@@ -33,7 +33,6 @@ export class RankingDetailComponent implements OnInit {
   ngOnInit(): void {}
 
   getRankingUsers(){
-
   this.user = this.orderUsersByScore();
   console.log(this.user)
   }
@@ -139,5 +138,31 @@ export class RankingDetailComponent implements OnInit {
     }else{
       this.commonService.sweetalert("error","No has selecionado ninguna tarea");
     }
+  }
+
+  deleteUser(user: user){
+    Swal.fire({
+      title: 'Estas seguro que quieres eliminar a este usuario del ranking?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.apiService.deleteUserRanking(user.id, this.ranking.id_ranking).then(()=>{
+          this.UserRankingService.getUsersById().then(()=>{
+            Swal.fire({
+              title:'Eliminado!',
+              text:'Su ranking ha sido eliminado.',
+              icon:'success',
+              showConfirmButton: false,
+              timer: 1000
+            })
+          })
+        });
+      }
+    });
   }
 }
