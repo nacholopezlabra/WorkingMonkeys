@@ -4,11 +4,11 @@ import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 
 @Component({
-  selector: 'app-notificaciones',
-  templateUrl: './notificaciones.component.html',
-  styleUrls: ['./notificaciones.component.css']
+  selector: 'app-notificacions',
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.css']
 })
-export class NotificacionesComponent implements OnInit {
+export class NotificationsComponent implements OnInit {
   user: user;
   constructor(public usersService: UsersService,  private apiService:ApiService) {
   this.user = this.usersService.getCurrentUser();

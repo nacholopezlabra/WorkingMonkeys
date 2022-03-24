@@ -20,6 +20,7 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { RankingDetailComponent } from './pages/ranking-detail/ranking-detail.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { JoinRankingComponent } from './modals/join-ranking/join-ranking.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { JoinRankingComponent } from './modals/join-ranking/join-ranking.compone
     RankingDetailComponent,
     RankingComponent,
     JoinRankingComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,

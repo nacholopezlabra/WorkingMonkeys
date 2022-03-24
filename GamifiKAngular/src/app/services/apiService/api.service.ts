@@ -23,7 +23,7 @@ const GETRANKINGSUSER : string = "userRanking/getRankingsUser.php?id=";
 const CREATETASK: string = "tasks/createTask.php?";
 const DELETETASK: string = "tasks/deleteTask.php?";
 const UPDATETASK: string = "tasks/updateTask.php?";
-
+const GETREQUESTS: string = "join/getRequestsToJoin.php?id=";
 @Injectable({
   providedIn: 'root'
 })
@@ -93,10 +93,6 @@ export class ApiService {
     return this.http.get(this.generateUrl(ADDUSERINTORANKING+data.code+"&id_user="+data.id_user)).toPromise();
   }
 
-  generateUrl(path:string):string{
-    return HOST+path;
-  }
-
   createTask(task: task):Promise<any>{
     return this.http.post(this.generateUrl(CREATETASK), task,{responseType:'json'}).toPromise();
   }
@@ -108,4 +104,32 @@ export class ApiService {
   deleteTask(id_task:number):Promise<any>{
     return this.http.get(this.generateUrl(DELETETASK+"id_task="+id_task)).toPromise();
   }
+
+  getRequests(id:number){
+    return this.http.get(this.generateUrl(GETREQUESTS+id)).toPromise();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  generateUrl(path:string):string{
+    return HOST+path;
+  }
+
+
+
 }
