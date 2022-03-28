@@ -30,7 +30,7 @@ export class UserRankingService {
     })
   }
 
-  private async getUserScores(){
+  async getUserScores(){
 
     let score:any[];
     await this.apiService.getScore().then((data:any)=>{

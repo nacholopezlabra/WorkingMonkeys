@@ -24,17 +24,13 @@
   </header>
 <body>
   <div class="wrapper">
-  <p>Notificaciones</p>
- <div class="container">
-
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
-
- </div>
-      </div>
+    <p>Notificaciones</p>
+    <div class="container" *ngIf="usersService.currentUser.userType == 0">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
+    </div>
+    <div class="container" *ngIf="usersService.currentUser.userType == 1">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
+    </div>
+  </div>
 
 </body>

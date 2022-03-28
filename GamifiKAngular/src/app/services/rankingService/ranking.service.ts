@@ -95,8 +95,9 @@ export class RankingService {
     },
     (error) => {
       console.log(error);
-    }
-    )
+    });
+
+
   }
 
   async updateRanking(ranking:any){

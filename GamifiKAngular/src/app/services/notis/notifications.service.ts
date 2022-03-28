@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { notis, request } from 'src/app/model/interfaces';
 import { ApiService } from '../apiService/api.service';
+import { UsersService } from '../userService/users.service';
 
 @Injectable({
   providedIn: 'root'
