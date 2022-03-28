@@ -116,23 +116,23 @@ export class RankingService {
     )
   }
 
-  addUserIntoRanking(code:string){
+  async addUserIntoRanking(code:string){
     console.log(this.userService.getCurrentUser());
     let data = {
       code:code,
       id_user:this.userService.getCurrentUser().id
     }
     console.log(data);
-    this.apiService.addUserIntoRanking(data).then((data:any)=>{
-      let res = data.data;
-      if(res == 3){
-        this.commonService.sweetalert("success","Usuario añadido correctamente");
-        this.fetchRankings();
-      }else if(res == 2){
+    await this.apiService.addUserIntoRanking(data).then(async (data:any)=>{
+      if(data.data == 3){
+        await this.fetchRankings().then(()=>{
+          this.commonService.sweetalert("success","Usuario añadido correctamente");
+        });
+      }else if(data.data == 2){
         this.commonService.sweetalert("error","El usuario no se ha podido añadir correctamente");
-      }else if(res == 1){
+      }else if(data.data == 1){
         this.commonService.sweetalert("error","El usuario ya esta dentro de este ranking");
-      }else if(res == 4){
+      }else if(data.data == 4){
         this.commonService.sweetalert("error","Codigo inexistente");
       }
     });
