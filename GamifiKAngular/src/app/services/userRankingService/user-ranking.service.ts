@@ -22,6 +22,14 @@ export class UserRankingService {
     });
   }
 
+  async fetchUsers(){
+    this.getUsersById().then((data:any)=>{
+      if(data.data){
+        this.currentRankingUsers = data.data;
+      }
+    })
+  }
+
   private async getUserScores(){
 
     let score:any[];

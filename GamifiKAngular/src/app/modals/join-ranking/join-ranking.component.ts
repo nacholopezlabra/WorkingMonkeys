@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ranking } from 'src/app/model/interfaces';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
+import { CommonService } from 'src/app/services/commonService/common.service';
+
 
 @Component({
   selector: 'app-join-ranking',
@@ -10,15 +12,22 @@ import { RankingService } from 'src/app/services/rankingService/ranking.service'
 })
 export class JoinRankingComponent implements OnInit {
 
-  constructor(private modal:BsModalService,private rankingService:RankingService) { }
+  constructor(private modal:BsModalService,private rankingService:RankingService, private CommonService: CommonService) { }
 code:string ="";
   ngOnInit(): void {
   }
   addUserRanking(){
-    this.rankingService.addUserIntoRanking(this.code);
+    if (this.code =="") {
+      this.CommonService.sweetalert("error","Has de introduir un nombre de ranking");
+    }
+    else{
+      this.rankingService.addUserIntoRanking(this.code);
+      this.modal.hide();
+    }
   }
   closeDialog(){
     this.modal.hide();
   }
 }
+
 
