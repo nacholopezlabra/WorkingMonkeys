@@ -58,8 +58,8 @@ export class RankingService {
   }
 
   async fetchTasks(){
-    this.apiService.getTasksById(this.currentRanking.id_ranking).then((data:any)=>{
-      if(data.data){
+    await this.apiService.getTasksById(this.currentRanking.id_ranking).then((data:any)=>{
+      if(data.data != 104){
         this.tasks = data.data;
       }
     })

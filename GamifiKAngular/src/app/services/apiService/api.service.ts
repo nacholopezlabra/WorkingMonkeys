@@ -21,9 +21,9 @@ const CREATERANKING: string = "ranking/createRanking.php?";
 const ADDUSERINTORANKING : string = "userRanking/addUser.php?code=";
 const GETRANKINGSUSER : string = "userRanking/getRankingsUser.php?id=";
 const DELETEUSERRANKING : string = "userRanking/deleteUser.php?";
-const CREATETASK: string = "tasks/createTask.php?";
-const DELETETASK: string = "tasks/deleteTask.php?";
-const UPDATETASK: string = "tasks/updateTask.php?";
+const CREATETASK: string = "tasks/createTask.php";
+const DELETETASK: string = "tasks/deleteTask.php";
+const UPDATETASK: string = "tasks/updateTask.php";
 const GETREQUESTS: string = "join/getRequestsToJoin.php?id=";
 @Injectable({
   providedIn: 'root'

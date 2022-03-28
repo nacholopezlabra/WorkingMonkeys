@@ -79,10 +79,12 @@ export class RankingComponent implements OnInit {
 
    toRankingDetails(rank:any){
     this.rankingService.setCurrentRanking(rank);
-    this.rankingService.fetchTasks();
-    this.router.navigate(['rankingDetails']).then((res)=>{
-      this.userRankingService.getUsersById();
+    this.rankingService.fetchTasks().then(()=>{
+      this.userRankingService.getUsersById().then((res)=>{
+        this.router.navigate(['rankingDetails']);
+      });
     });
+
   }
   modifyRanking(rank: any){
     this.rankingService.setCurrentRanking(rank);

@@ -45,26 +45,29 @@ export class UserRankingService {
   filterScore(score:any[]){
 
     this.score = [];
-    this.currentRankingUsers.forEach(user =>{
-      let scor:scores = {id_student:0,scores:[],totalScore:0};
-      scor.id_student = user.id;
-      score.forEach(sc => {
-        if(user.id == sc.id_student){
-          this.rankingService.getTasks().forEach(task=>{
-            if(sc.id_task == task.id_task){
-              let sco: score;
-              sco = sc;
-              scor.totalScore = scor.totalScore + Number(sco.score);
-              scor.scores.push(sco);
-            }
-          });
+    if(this.currentRankingUsers.length > 0){
+      this.currentRankingUsers.forEach(user =>{
+        let scor:scores = {id_student:0,scores:[],totalScore:0};
+        scor.id_student = user.id;
+        score.forEach(sc => {
+          if(user.id == sc.id_student){
+            this.rankingService.getTasks().forEach(task=>{
+              if(sc.id_task == task.id_task){
+                let sco: score;
+                sco = sc;
+                scor.totalScore = scor.totalScore + Number(sco.score);
+                scor.scores.push(sco);
+              }
+            });
+          }
+        });
+        if(scor.id_student != 0){
+          this.score.push(scor);
         }
       });
-      if(scor.id_student != 0){
-        this.score.push(scor);
-      }
-    });
+    }
 
+    console.log(this.score);
   }
 
   getScore(){

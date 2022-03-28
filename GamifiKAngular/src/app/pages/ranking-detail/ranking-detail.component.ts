@@ -34,7 +34,6 @@ export class RankingDetailComponent implements OnInit {
 
   getRankingUsers(){
   this.user = this.orderUsersByScore();
-  console.log(this.user)
   }
 
   findUserScore(user:user){
@@ -72,7 +71,9 @@ export class RankingDetailComponent implements OnInit {
     let score = this.orderByScore();
     console.log(score);
     score.forEach(score=>{
+
       this.UserRankingService.currentRankingUsers.forEach(user=>{
+        console.log(user,score);
         if(user.id == score.id_student){
           users.push(user);
         }
