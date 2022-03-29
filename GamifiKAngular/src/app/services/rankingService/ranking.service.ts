@@ -121,7 +121,7 @@ export class RankingService {
     console.log(this.userService.getCurrentUser());
     let data = {
       code:code,
-      id_user:this.userService.getCurrentUser().id
+      id_student:this.userService.getCurrentUser().id
     }
     console.log(data);
     await this.apiService.addUserIntoRanking(data).then(async (data:any)=>{

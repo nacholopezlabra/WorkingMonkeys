@@ -15,7 +15,7 @@ $decoded = json_decode($inputJSON,true);
 $response = new Result();
 
 
-$query = "SELECT * FROM join_status where id_student = ".$decoded['id_student']." and code = ".$decoded['code'];
+$query = "SELECT * FROM join_status where id_student = ".$decoded['id_student']." and code = '".$decoded['code']."'";
 $res = mysqli_query($con,$query);
 if(!is_bool($res) && mysqli_num_rows($res) == 0){
     $query = "SELECT * FROM rankings where code = '".$decoded['code']."'";

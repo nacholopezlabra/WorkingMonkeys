@@ -18,7 +18,7 @@ const DELETERANKING : string = "ranking/deleteRanking.php?";
 const GETTASKBYID : string = "tasks/getTasks.php?id_ranking=";
 const GETSCORE: string = "score/getScore.php";
 const CREATERANKING: string = "ranking/createRanking.php?";
-const ADDUSERINTORANKING : string = "userRanking/addUser.php?code=";
+const ADDUSERINTORANKING : string = "join/askToJoin.php";
 const GETRANKINGSUSER : string = "userRanking/getRankingsUser.php?id=";
 const DELETEUSERRANKING : string = "userRanking/deleteUser.php?";
 const CREATETASK: string = "tasks/createTask.php";
@@ -26,6 +26,10 @@ const DELETETASK: string = "tasks/deleteTask.php";
 const UPDATETASK: string = "tasks/updateTask.php";
 const GETREQUESTS: string = "join/getRequestToJoin.php?id=";
 const GETNOTIS: string = "join/getNotifications.php?id_user=";
+const ACCEPTREQUEST:string = "join/acceptRequest.php?id="
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -92,7 +96,7 @@ export class ApiService {
   }
 
   addUserIntoRanking(data:any):Promise<any>{
-    return this.http.get(this.generateUrl(ADDUSERINTORANKING+data.code+"&id_user="+data.id_user)).toPromise();
+    return this.http.post(this.generateUrl(ADDUSERINTORANKING),data,{responseType:'json'}).toPromise();
   }
 
   createTask(task: task):Promise<any>{
@@ -119,6 +123,9 @@ export class ApiService {
     return this.http.get(this.generateUrl(GETNOTIS+id)).toPromise();
   }
 
+  acceptRequest(id:number,status:number){
+    return this.http.get(this.generateUrl(ACCEPTREQUEST+id+"&status="+status)).toPromise();
+  }
 
 
 

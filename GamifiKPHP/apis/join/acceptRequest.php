@@ -17,10 +17,10 @@ $res = mysqli_query($con,$query);
 if($res){
     $row = $res->fetch_assoc();
     if($_GET['status'] == 1){
-        $query = "SELECT * FROM rankings WHERE code = ".$row['code'];
-        $res = mysqli_query($con,$query);
-        $row2 = $res->fetch_assoc();
-        if(!is_bool($res) && !empty($row2)){
+        $query = "SELECT * FROM rankings WHERE code = '".$row['code']."'";
+        $res2 = mysqli_query($con,$query);
+        $row2 = $res2->fetch_assoc();
+        if(!is_bool($res2) && !empty($row2)){
             $query = "SELECT * FROM ranking_students WHERE id_student = ".$row['id_student']." AND id_ranking = ".$row2['id_ranking'];
             $res = mysqli_query($con,$query);
             if(!$res || mysqli_num_rows($res) == 0){
@@ -58,7 +58,7 @@ if($res){
         $res = mysqli_query($con,$query);
         $response->resultado = 'OK';
         $response->mensaje = 'SE HA RECHAZADO AL USUARIO EXITOSAMENTE DEL RANKING';
-        $response->data = 3;
+        $response->data = 5;
     }
     echo json_encode($response);
 }
