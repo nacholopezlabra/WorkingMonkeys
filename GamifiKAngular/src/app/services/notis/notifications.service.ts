@@ -64,6 +64,7 @@ export class NotificationsService {
     this.apiService.deleteNotis(id).then((data:any)=>{
       if(data.data == 3){
         this.common.sweetalert('success',"La notificación ha sido borrada");
+        this.getData(this.userService.getCurrentUser());
       }
     })
   }
