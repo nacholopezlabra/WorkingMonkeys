@@ -14,7 +14,7 @@ export class UserRankingService {
 
   async getUsersById(){
     await this.apiService.getUsersById(this.rankingService.currentRanking.id_ranking).then(async (data:any)=>{
-     if(data.data){
+     if(data.data != 1){
        this.currentRankingUsers = data.data;
        await this.getUserScores();
        console.log(this.currentRankingUsers);
@@ -22,13 +22,7 @@ export class UserRankingService {
     });
   }
 
-  async fetchUsers(){
-    this.getUsersById().then((data:any)=>{
-      if(data.data){
-        this.currentRankingUsers = data.data;
-      }
-    })
-  }
+
 
   async getUserScores(){
 
