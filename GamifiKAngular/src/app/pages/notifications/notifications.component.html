@@ -35,7 +35,7 @@
     <p>Notificaciones</p>
     <div class="container" *ngFor="let req of notisService.getRequests()">
       <p>El usuario {{req.studentName}} {{req.studentSurname}} ({{req.studentNickname}}) solicita unirse al ranking {{req.rankingName}} (codigo: {{req.code}})</p>
-      <button (click)="notisService.answerRequest(req,1)">aceptar</button><button (click)="notisService.answerRequest(req,2)">rechazar</button>
+      <button class="aceptar" (click)="notisService.answerRequest(req,1)">aceptar</button><button class="rechazar" (click)="notisService.answerRequest(req,2)">rechazar</button>
     </div>
   </div>
 
