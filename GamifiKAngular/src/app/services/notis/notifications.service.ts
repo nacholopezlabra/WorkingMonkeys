@@ -1,25 +1,44 @@
 import { Injectable } from '@angular/core';
-import { notis, request } from 'src/app/model/interfaces';
+import { notis, request, user } from 'src/app/model/interfaces';
 import { ApiService } from '../apiService/api.service';
-import { UsersService } from '../userService/users.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationsService {
 
-  notis:notis[] = [];
-  request : request[] =[];
+  private notis:notis[] = [];
+  private request : request[] =[];
 
-  constructor(private apiSerivce:ApiService) { }
+  constructor(private apiService:ApiService) { }
 
-  async getRequests(id:number){
-    await this.apiSerivce.getRequests(id).then((data:any)=>{
-      let res = data.data;
-      if(!res.length){
-        this.request = res;
-        console.log(this.request)
-      }
-    })
+  async getData(user:user){
+    if(user.userType == 1){
+      await this.apiService.getRequests(user.id).then((data:any)=>{
+        let res = data.data;
+        if(!!res.length){
+          this.request = res;
+          console.log(this.request)
+        }
+      })
+    }else if(user.userType == 0){
+      await this.apiService.getNotis(user.id).then((data:any)=>{
+        let res = data.data;
+        if(!!res.length){
+          this.notis = res;
+          console.log(this.notis)
+        }
+      });
+    }
+
+  }
+
+  getNotis(){
+    return this.notis;
+  }
+
+  getRequests(){
+    return this.request;
   }
 }
