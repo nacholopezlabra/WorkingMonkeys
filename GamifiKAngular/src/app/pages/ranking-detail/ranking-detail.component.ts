@@ -16,7 +16,7 @@ import { ApiService } from 'src/app/services/apiService/api.service';
 })
 export class RankingDetailComponent implements OnInit {
   user:user[]=[];
-  ranking:ranking = {id_ranking:0,id_teacher:0,name:"",code:""  }
+  ranking:ranking = {id_ranking:0,id_teacher:0,name:"",code:"", image:""  }
   currentTask:task = {id_task:0,name:"",id_ranking:0};
   user2:user;
 
