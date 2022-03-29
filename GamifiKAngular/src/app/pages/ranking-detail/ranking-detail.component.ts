@@ -153,7 +153,7 @@ export class RankingDetailComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.apiService.deleteUserRanking(user.id, this.ranking.id_ranking).then(()=>{
-          this.UserRankingService.fetchUsers().then(()=>{
+          this.UserRankingService.getUsersById().then(()=>{
             Swal.fire({
               title:'Eliminado!',
               text:'Su ranking ha sido eliminado.',
