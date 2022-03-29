@@ -25,8 +25,14 @@
 <body>
   <div class="wrapper" *ngIf="usersService.currentUser.userType == 0">
     <p>Notificaciones</p>
-    <div class="container" *ngFor="let noti of notisService.getNotis()">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A esse dolore odio animi, harum beatae, excepturi accusamus saepe voluptate tempora ratione ab nam natus eveniet soluta! Accusantium mollitia molestias voluptates!</p>
+    <div class="container" *ngFor="let noti of notisService.getNotis();let i = index">
+      <p *ngIf="noti.status == 1">
+        Usted a sido aceptado al ranking {{noti.rankingName}}.
+      </p>
+      <p *ngIf="noti.status == 2">
+        La peticion al ranking {{noti.rankingName}} ha sido rechazada.
+      </p>
+      <img src="../../../assets/icons/deleticon.png" (click)="notisService.deleteNoti()">
     </div>
 
   </div>

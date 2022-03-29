@@ -59,4 +59,8 @@ export class NotificationsService {
       }
     })
   }
+
+  deleteNoti(){
+
+  }
 }
