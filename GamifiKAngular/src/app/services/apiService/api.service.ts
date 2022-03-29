@@ -5,8 +5,8 @@ import { task } from 'src/app/model/interfaces';
 import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
-const HOST: string = "http://localhost:8080/apis/";
-//const HOST: string = "http://192.168.7.141:8080/apis/";
+//const HOST: string = "http://localhost:8080/apis/";
+const HOST: string = "http://192.168.7.141:8080/apis/";
 const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
 const MODIFYUSER :string = "user/modifyUser.php";
@@ -24,7 +24,8 @@ const DELETEUSERRANKING : string = "userRanking/deleteUser.php?";
 const CREATETASK: string = "tasks/createTask.php";
 const DELETETASK: string = "tasks/deleteTask.php";
 const UPDATETASK: string = "tasks/updateTask.php";
-const GETREQUESTS: string = "join/getRequestsToJoin.php?id=";
+const GETREQUESTS: string = "join/getRequestToJoin.php?id=";
+const GETNOTIS: string = "join/getNotifications.php?id_user=";
 @Injectable({
   providedIn: 'root'
 })
@@ -114,7 +115,9 @@ export class ApiService {
     return this.http.get(this.generateUrl(DELETEUSERRANKING+"id_user="+id_user+"&id_ranking="+id_ranking)).toPromise();
   }
 
-
+  getNotis(id:number){
+    return this.http.get(this.generateUrl(GETNOTIS+id)).toPromise();
+  }
 
 
 

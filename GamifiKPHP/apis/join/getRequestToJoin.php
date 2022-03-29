@@ -28,6 +28,10 @@ if(!is_bool($res) && mysqli_num_rows($res)){
         $req->studentNickname = $row2['nickname'];
         $req->studentName = $row2['name'];
         $req->studentSurname = $row2['surname'];
+        $query2 = "SELECT * FROM rankings where code = '".$row['code']."'";
+        $res2 = mysqli_query($con,$query2);
+        $row3 = $res2->fetch_assoc();
+        $req->rankingName = $row3['name'];
         $return[] = $req;
     }
     $response->resultado = 'OK';

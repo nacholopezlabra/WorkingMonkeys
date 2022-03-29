@@ -47,5 +47,6 @@ export interface request{
   status:number,
   studentNickname:string,
   studentName:string,
-  studentSurname:string
+  studentSurname:string,
+  rankingName:string
 }
