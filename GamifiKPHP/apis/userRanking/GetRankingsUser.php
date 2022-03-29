@@ -11,7 +11,6 @@ $con = $bd->getConnection();
 
 $query = "SELECT * from ranking_students where id_student='".$_GET['id']."'";
 $res = mysqli_query($con, $query);
-
 if (mysqli_num_rows($res) == 0) {
     $response = new Result();
     $response->resultado = 'ERROR';
@@ -23,12 +22,12 @@ else {
     $array =  array();
     while ($row = $res->fetch_assoc()) {          
         $query = "SELECT * from rankings where id_ranking=".$row['id_ranking'];
-        $res = mysqli_query($con, $query);
-        while ($row = $res->fetch_assoc()) {  
+        $res2 = mysqli_query($con, $query);
+        while ($row2 = $res2->fetch_assoc()) {  
             $rankingData = new ranking();
-            $rankingData->id_ranking = $row['id_ranking'];
-            $rankingData->name = $row['name'];
-            $rankingData->code = $row['code'];
+            $rankingData->id_ranking = $row2['id_ranking'];
+            $rankingData->name = $row2['name'];
+            $rankingData->code = $row2['code'];
             $array[] = $rankingData;
         }
     }  

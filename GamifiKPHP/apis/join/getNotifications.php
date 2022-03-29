@@ -19,7 +19,7 @@ if($res){
     while($row = $res->fetch_assoc()){
     
         $info = new info();
-        $query = "SELECT * from rankings where code = ".$row['code'];
+        $query = "SELECT * from rankings where code = '".$row['code']."'";
         $res2 = mysqli_query($con,$query);
         $row2 = $res2->fetch_assoc();
         $info->id = $row['id'];

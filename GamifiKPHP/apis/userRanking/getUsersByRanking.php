@@ -33,7 +33,7 @@ else {
             $rankingData->surname = $row['surname'];
             $rankingData->id = $row['id'];
             $rankingData->mail = $row['mail'];
-            
+            $rankingData->image = $row['image'];
             $array[] = $rankingData;
         }
     }  
