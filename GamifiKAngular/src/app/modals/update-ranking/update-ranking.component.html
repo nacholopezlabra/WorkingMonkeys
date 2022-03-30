@@ -1,17 +1,22 @@
 <body>
   <div class="container">
     <div class="text-center">
-       <h2><b>Editor de Rankings</b></h2>
-       <h3>Nuevo nombre del ranking:</h3>
+      <h2><b>Editor de Rankings</b></h2>
+      <h3>Nuevo nombre del ranking:</h3>
       <input [(ngModel)]="ranking.name" type="text" size="55" placeholder="Nuevo nombre" required>
       <br>
       <br>
+      <h3>Nuevo codigo:</h3>
       <button class="button" (click)="generateCode()">Generar un nuevo codigo</button>
       <p *ngIf="codeUpdated">Se ha actualizado el codigo correctamente</p>
+      <br>
+      <br>
+      <h3>Nueva foto:</h3>
+      <input type="file" class="button" accept="image/" (change)="fileChangeEvent($event)" #fileInput>
       <div style="padding: 20px">
         <button class="button1" (click)="updateRanking()">Editar</button>
         <button class="button2" (click)="closeDialog()">Cerrar</button>
-    </div>
+      </div>
     </div>
   </div>
-  </body>
+</body>

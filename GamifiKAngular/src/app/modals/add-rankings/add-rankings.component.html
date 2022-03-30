@@ -5,7 +5,7 @@
      <h3>Nombre del ranking</h3>
     <input [(ngModel)]="ranking.name" type="text" size="55" placeholder="Pon el nombre del ranking" required>
     <h2><b>¿Quieres poner una imagen al ranking?</b></h2>
-     <input type="file" accept="image/" (change)="fileChangeEvent($event)" #fileInput>
+    <input type="file" accept="image/" (change)="fileChangeEvent($event)" #fileInput>
     <div style="padding: 20px">
       <button class="button1" (click)="crearRanking()">Crear</button>
       <button class="button2" (click)="closeDialog()">Cerrar</button>

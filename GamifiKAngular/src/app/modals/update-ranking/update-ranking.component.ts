@@ -14,6 +14,10 @@ export class UpdateRankingComponent implements OnInit {
   codeUpdated:boolean =false;
   ranking: ranking = {id_ranking: 0, name: '', id_teacher: 0,code: '', image:""};
   apiService: any;
+  imgBase64Path: string = '';
+  isImageSaved: boolean = false;
+  cardImageBase64: string = '';
+
   constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,  private router:Router)
   {}
 
@@ -39,5 +43,23 @@ export class UpdateRankingComponent implements OnInit {
   generateCode(){
     this.ranking.code=this.rankingService.randomCodeRanking(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     this.codeUpdated=true;
+  }
+
+  fileChangeEvent(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs) => {
+          this.imgBase64Path = e.target.result;
+          this.cardImageBase64 = this.imgBase64Path;
+          this.isImageSaved = true;
+          this.ranking.image = this.cardImageBase64;
+          console.log(this.ranking)
+        };
+      };
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
   }
 }
