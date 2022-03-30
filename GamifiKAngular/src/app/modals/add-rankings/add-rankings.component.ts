@@ -13,8 +13,11 @@ import { UsersService } from 'src/app/services/userService/users.service';
 })
 export class AddRankingsComponent implements OnInit {
 
-  ranking: ranking = {id_ranking:1, name:"", id_teacher:17, code:""};
+  ranking: ranking = {id_ranking:1, name:"", id_teacher:17, code:"", image:""};
   apiService: any;
+  imgBase64Path: string = '';
+  isImageSaved: boolean = false;
+  cardImageBase64: string = '';
 
   constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,
     private usersService: UsersService){
@@ -40,5 +43,24 @@ export class AddRankingsComponent implements OnInit {
 
 
   }
+
+  fileChangeEvent(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs) => {
+          this.imgBase64Path = e.target.result;
+          this.cardImageBase64 = this.imgBase64Path;
+          this.isImageSaved = true;
+          this.ranking.image = this.cardImageBase64;
+          console.log(this.ranking)
+        };
+      };
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
+
 
 }

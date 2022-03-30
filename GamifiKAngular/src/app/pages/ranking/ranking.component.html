@@ -5,7 +5,7 @@
     </div>
     <div class="menu">
       <a routerLink="../notifications" class="link">
-        <div class="title">Notificaciones</div>
+        <div class="title">Notifications</div>
         <div class="bar"></div>
       </a>
         <a routerLink="../profile" class="link">
@@ -41,7 +41,9 @@
           <div class="lboard_mem" (click)="toRankingDetails(item)" >
             <ng-container (click)="toRankingDetails(item)">
             <div class="img">
-              <img src="../../../assets/placeholders/insigniaaaaaa.jpg">
+
+              <img class="profileImage" *ngIf="item?.image != ''" src="{{item?.image}}">
+              <img class="profileImage" *ngIf="item?.image == '' || item?.image == null" src="../../../assets/placeholders/insigniaaaaaa.jpg">
             </div>
             <div class="name_bar">
               <!--nombre usuario-->

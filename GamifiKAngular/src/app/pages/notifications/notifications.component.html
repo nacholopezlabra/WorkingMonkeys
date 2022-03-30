@@ -5,7 +5,7 @@
     </div>
     <div class="menu">
       <a routerLink="../notifications" class="link">
-        <div class="title">Notificaciones</div>
+        <div class="title">Notifications</div>
         <div class="bar"></div>
       </a>
         <a routerLink="../profile" class="link">
@@ -33,7 +33,7 @@
         La peticion al ranking {{noti.rankingName}} ha sido rechazada.
         </p>
         <div class="icons">
-      <img src="../../../assets/icons/deleticon.png" class="icon" (click)="notisService.deleteNoti()">
+      <img src="../../../assets/icons/deleticon.png" class="icon" (click)="notisService.deleteNoti(noti.id)">
     </div>
     </div>
 

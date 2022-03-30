@@ -27,7 +27,7 @@ if(mysqli_num_rows($res)>0){
     $rank->name = $row['name'];
     $rank->id_teacher = $row['id_teacher'];
     $rank->code = $row['code'];
-    
+    $rank->image = $row['image'];
     $leaderboard[] = $rank;
     }
     

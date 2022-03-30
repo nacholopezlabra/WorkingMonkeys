@@ -16,6 +16,7 @@ export interface ranking{
   name:string;
   id_teacher: number;
   code: string;
+  image:string;
 }
 
 export interface task {

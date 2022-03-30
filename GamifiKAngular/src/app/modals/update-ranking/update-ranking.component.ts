@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class UpdateRankingComponent implements OnInit {
   codeUpdated:boolean =false;
-  ranking: ranking = {id_ranking: 0, name: '', id_teacher: 0,code: '' };
+  ranking: ranking = {id_ranking: 0, name: '', id_teacher: 0,code: '', image:""};
   apiService: any;
   constructor(private modal:BsModalService, private commonService: CommonService, private rankingService: RankingService,  private router:Router)
   {}

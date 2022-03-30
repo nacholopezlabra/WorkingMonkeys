@@ -26,8 +26,8 @@ const DELETETASK: string = "tasks/deleteTask.php";
 const UPDATETASK: string = "tasks/updateTask.php";
 const GETREQUESTS: string = "join/getRequestToJoin.php?id=";
 const GETNOTIS: string = "join/getNotifications.php?id_user=";
-const ACCEPTREQUEST:string = "join/acceptRequest.php?id="
-
+const ACCEPTREQUEST:string = "join/acceptRequest.php?id=";
+const DELETENOTIS: string = "join/deleteNotis.php?id=";
 
 
 @Injectable({
@@ -126,7 +126,9 @@ export class ApiService {
   acceptRequest(id:number,status:number){
     return this.http.get(this.generateUrl(ACCEPTREQUEST+id+"&status="+status)).toPromise();
   }
-
+  deleteNotis(id:number){
+    return this.http.get(this.generateUrl(DELETENOTIS+id)).toPromise();
+  }
 
 
 

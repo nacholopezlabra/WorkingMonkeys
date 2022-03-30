@@ -51,16 +51,21 @@ export class NotificationsService {
   async answerRequest(req:request,status:number /*status can be 1 or 2 (1 to accept 2 to deny)*/){
     await this.apiService.acceptRequest(req.id,status).then((data:any)=>{
       if(data.data == 3){
-        this.common.sweetalert('success',"El usuario a sido acceptado");
+        this.common.sweetalert('success',"El usuario ha sido acceptado");
         this.getData(this.userService.getCurrentUser());
       }else if (data.data == 5){
-        this.common.sweetalert('success',"El usuario a sido acceptado");
+        this.common.sweetalert('success',"El usuario ha sido rechazado");
         this.getData(this.userService.getCurrentUser());
       }
     })
   }
 
-  deleteNoti(){
-
+  deleteNoti(id:number){
+    this.apiService.deleteNotis(id).then((data:any)=>{
+      if(data.data == 3){
+        this.common.sweetalert('success',"La notificación ha sido borrada");
+        this.getData(this.userService.getCurrentUser());
+      }
+    })
   }
 }
