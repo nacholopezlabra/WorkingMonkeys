@@ -70,7 +70,7 @@ header {
 
   }
   .wrapper{
-    width: 1000px;
+    width: 600px;
     height: 600px;
     background: #2c3a47;
     padding: 25px 40px;
@@ -83,7 +83,6 @@ header {
   display: none;
   }
 p{
-
   color: #f2f2f2;
   font-size: 25px;
   font-weight: 500;
@@ -95,7 +94,8 @@ p{
   padding-right: 10px;
   padding-top:5px;
   padding-bottom: 5px;
-
+  margin-top: 10px;
+  display: flex;
 }
 .aceptar{
   background-color: #3e850e;
@@ -118,4 +118,8 @@ p{
 .icon{
   width: 24px ;
   height: 24px ;
+
+}
+.icons {
+  padding-left: 20px;
 }

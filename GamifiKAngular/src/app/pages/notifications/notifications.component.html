@@ -29,10 +29,12 @@
       <p *ngIf="noti.status == 1">
         Usted a sido aceptado al ranking {{noti.rankingName}}.
       </p>
-      <p *ngIf="noti.status == 2">
+      <p *ngIf="noti.status == 2" >
         La peticion al ranking {{noti.rankingName}} ha sido rechazada.
-      </p>
+        </p>
+        <div class="icons">
       <img src="../../../assets/icons/deleticon.png" class="icon" (click)="notisService.deleteNoti()">
+    </div>
     </div>
 
   </div>
