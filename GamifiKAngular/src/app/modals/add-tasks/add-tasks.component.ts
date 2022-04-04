@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { ranking, task } from 'src/app/model/interfaces';
+import { task } from 'src/app/model/interfaces';
 import { CommonService } from 'src/app/services/commonService/common.service';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { UserRankingService } from 'src/app/services/userRankingService/user-ranking.service';
