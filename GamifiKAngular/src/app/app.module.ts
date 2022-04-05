@@ -21,9 +21,9 @@ import { RankingDetailComponent } from './pages/ranking-detail/ranking-detail.co
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { JoinRankingComponent } from './modals/join-ranking/join-ranking.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
-import { ExplicacionPentabilitiesComponent } from './modals/explicacion-pentabilities/explicacion-pentabilities.component';
 import { PentabilitiesExplanationComponent } from './modals/pentabilities-explanation/pentabilities-explanation.component';
-
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,6 @@ import { PentabilitiesExplanationComponent } from './modals/pentabilities-explan
     RankingComponent,
     JoinRankingComponent,
     NotificationsComponent,
-    ExplicacionPentabilitiesComponent,
     PentabilitiesExplanationComponent
   ],
   imports: [
@@ -53,7 +52,9 @@ import { PentabilitiesExplanationComponent } from './modals/pentabilities-explan
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    ModalModule
+    ModalModule,
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]

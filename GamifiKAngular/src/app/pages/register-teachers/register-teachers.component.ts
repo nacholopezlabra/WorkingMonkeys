@@ -8,6 +8,7 @@ import { DbService } from 'src/app/services/Database/db.service';
 import { Router } from '@angular/router';
 import { RankingService } from 'src/app/services/rankingService/ranking.service';
 import { NotificationsService } from 'src/app/services/notis/notifications.service';
+import { SessionService } from 'src/app/services/session/session.service';
 
 
 @Component({
@@ -50,7 +51,9 @@ export class RegisterTeachersComponent implements OnInit {
 
 
   constructor( private userService: UsersService, private commonService: CommonService, private db:DbService,
-    private router : Router, private rankingService:RankingService, private notisService:NotificationsService) {
+    private router : Router, private rankingService:RankingService, private notisService:NotificationsService,
+    private sessionService:SessionService) {
+
       if(!!this.db.fetchData("sessionToken")){
         this.userService.setSession(this.db.fetchData("sessionToken"));
         this.userService.fetchCurrentUser(this.db.fetchData("user"));
@@ -58,18 +61,18 @@ export class RegisterTeachersComponent implements OnInit {
           this.rankingService.fetchRankings();
           this.notisService.getData(this.userService.getCurrentUser());
           this.commonService.sweetalert("success","Iniciando Session").then(()=>{
+            this.sessionService.startIdle();
             this.router.navigate(['ranking']);
           })
         }
       }
+
     }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     //this.userService.callApi();
   }
-
-  //REGISTRO
 
   onSubmit() {
     this.user.nickname = this.validateUser.get('nickname')?.value;
@@ -83,16 +86,19 @@ export class RegisterTeachersComponent implements OnInit {
     this.register();
     console.log(this.user.password);
   }
-encode(pass:string){
-   return sha512.sha512(pass);
-}
+
+  encode(pass:string){
+    return sha512.sha512(pass);
+  }
 
 
 
   async register() {
 
     if (this.validateUser.get('password')?.value == this.validateUser.get('confirmPassword')?.value) {
-      this.userService.registerUser(this.user);
+      this.userService.registerUser(this.user).then(()=>{
+        this.sessionService.startIdle();
+      });
     }else{
       this.commonService.sweetalert("error","La contraseña no es la misma");
     }
@@ -106,7 +112,9 @@ encode(pass:string){
       user:this.validateLog.get('nickname')?.value,
       pass:this.encode(this.validateLog.get('password')?.value)
     }
-    this.userService.logIn(data.user,data.pass);
+    this.userService.logIn(data.user,data.pass).then(()=>{
+      this.sessionService.startIdle();
+    });
   }
 
   fileChangeEvent(fileInput: any) {

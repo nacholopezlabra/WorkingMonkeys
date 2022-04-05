@@ -26,7 +26,6 @@ if (mysqli_num_rows($res) == 0) {
         if(mysqli_num_rows($res) == 0){
             //todo
             $query = "INSERT INTO rankings(name,id_teacher,code, image) values ('".$decoded['name']."' ,".$decoded['id_teacher'].",'".$decoded['code']."', '".$decoded['image']."')";
-            echo $query;
             $res = mysqli_query($con,$query);
             $response->resultado = 'OK';
             $response->mensaje = 'SE HA CREADO EL RANKING EXITOSAMENTE';

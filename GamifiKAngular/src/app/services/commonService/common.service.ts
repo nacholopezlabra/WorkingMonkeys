@@ -15,7 +15,21 @@ export class CommonService {
       title: title,
       showConfirmButton: false,
       timer: 1000
+    });
+  }
+  public sweetAlertWithTimer(icon:SweetAlertIcon,title:string,timer:number){
+    return Swal.fire({
+      icon:icon,
+      title:title,
+      showConfirmButton:false,
+      timer:timer
     })
   }
-
+  public sweetAlertWithOutTimer(icon:SweetAlertIcon,title:string,button?:string){
+    return Swal.fire({
+      icon:icon,
+      title:title,
+      showConfirmButton:true,
+    })
+  }
 }

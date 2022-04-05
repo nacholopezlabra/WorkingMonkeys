@@ -7,6 +7,10 @@ import { CommonService } from 'src/app/services/commonService/common.service';
 import { ApiService } from 'src/app/services/apiService/api.service';
 import { UsersService } from 'src/app/services/userService/users.service';
 import * as sha512 from 'js-sha512';
+import { SessionService } from 'src/app/services/session/session.service';
+import { RankingService } from 'src/app/services/rankingService/ranking.service';
+import { NotificationsService } from 'src/app/services/notis/notifications.service';
+import { DbService } from 'src/app/services/Database/db.service';
 
 @Component({
   selector: 'app-register-students',
@@ -33,7 +37,23 @@ export class RegisterStudentsComponent implements OnInit {
   isImageSaved: boolean = false;
   cardImageBase64: string = '';
 
-  constructor(private router: Router, private apiService: ApiService, private userService: UsersService, private  commonService: CommonService ) { }
+  constructor(private userService: UsersService, private commonService: CommonService, private db:DbService,
+    private router : Router, private rankingService:RankingService, private notisService:NotificationsService,
+    private sessionService:SessionService) {
+
+      if(!!this.db.fetchData("sessionToken")){
+        this.userService.setSession(this.db.fetchData("sessionToken"));
+        this.userService.fetchCurrentUser(this.db.fetchData("user"));
+        if(this.userService.isSession()){
+          this.rankingService.fetchRankings();
+          this.notisService.getData(this.userService.getCurrentUser());
+          this.commonService.sweetalert("success","Iniciando Session").then(()=>{
+            this.sessionService.startIdle();
+            this.router.navigate(['ranking']);
+          })
+        }
+      }
+  }
 
   //REGISTRO
 
