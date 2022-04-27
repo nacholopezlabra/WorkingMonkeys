@@ -28,7 +28,7 @@ const GETREQUESTS: string = "join/getRequestToJoin.php?id=";
 const GETNOTIS: string = "join/getNotifications.php?id_user=";
 const ACCEPTREQUEST:string = "join/acceptRequest.php?id=";
 const DELETENOTIS: string = "join/deleteNotis.php?id=";
-
+const GETPENTABILITIES: string = "pentabilities/getPentabilities.php";
 
 @Injectable({
   providedIn: 'root'
@@ -129,22 +129,12 @@ export class ApiService {
   deleteNotis(id:number){
     return this.http.get(this.generateUrl(DELETENOTIS+id)).toPromise();
   }
-
-
-
-
-
-
-
-
-
-
-
-
   generateUrl(path:string):string{
     return HOST+path;
   }
 
-
+  getPentabilities():Promise<any>{
+    return this.http.get(this.generateUrl(GETPENTABILITIES)).toPromise();
+  }
 
 }

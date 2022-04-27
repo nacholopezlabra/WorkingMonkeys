@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { pentabilities } from 'src/app/model/interfaces';
+import { PentabilitiesServiceService } from 'src/app/services/pentabilitiesService/pentabilities-service.service';
 
 @Component({
   selector: 'app-pentabilities-explanation',
@@ -7,8 +9,16 @@ import { BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./pentabilities-explanation.component.css']
 })
 export class PentabilitiesExplanationComponent implements OnInit {
+  pentabilities: pentabilities[]=[];
 
-  constructor(private modal:BsModalService) { }
+  constructor(private modal:BsModalService, private pentabilitiesService: PentabilitiesServiceService) {
+  this.pentabilitiesService.getPentabilities().then(()=>{
+    this.pentabilities = this.pentabilitiesService.fetchPentabilities();
+    console.log(this.pentabilities);
+  });
+
+  }
+
 
   ngOnInit(): void {
   }
@@ -16,6 +26,4 @@ export class PentabilitiesExplanationComponent implements OnInit {
   closeDialog(){
     this.modal.hide();
   }
-
-
 }

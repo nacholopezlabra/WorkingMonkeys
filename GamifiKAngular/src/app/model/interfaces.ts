@@ -51,3 +51,8 @@ export interface request{
   studentSurname:string,
   rankingName:string
 }
+
+export interface pentabilities{
+  id:number,
+  explanation: string
+}
