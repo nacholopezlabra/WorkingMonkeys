@@ -16,10 +16,10 @@ import { ApiService } from 'src/app/services/apiService/api.service';
 })
 export class RankingDetailComponent implements OnInit {
   user:user[]=[];
-  ranking:ranking = {id_ranking:0,id_teacher:0,name:"",code:"", image:""  }
+  ranking:ranking = {id_ranking:0,id_teacher:0,name:"",code:"", image:""}
   currentTask:task = {id_task:0,name:"",id_ranking:0};
   user2:user;
-
+  optionSelected: boolean = false;
 
   constructor(public rankingService:RankingService, private UserRankingService:UserRankingService, public usersService:UsersService,
     private modal:BsModalService, private commonService: CommonService, private apiService:ApiService) {
@@ -37,31 +37,39 @@ export class RankingDetailComponent implements OnInit {
   }
 
   findUserScore(user:user){
-
     let userScore:number = 0;
-    this.UserRankingService.getScore().forEach((score)=>{
-      if(score.id_student == user.id){
-        userScore = score.totalScore;
-      }
-    });
+    if(!this.optionSelected){
+      this.UserRankingService.getScore().forEach((score)=>{
+        if(score.id_student == user.id){
+          userScore = score.totalScore;
+        }
+      });
+
+    }else{
+      this.UserRankingService.getScore().forEach((score)=>{
+        if(score.id_student == user.id){
+          userScore = score.selectedScore;
+        }
+      })
+
+    }
 
     return userScore;
 
   }
   orderByScore(){
-    console.log(this.UserRankingService.getScore());
+
     let data = this.UserRankingService.getScore().sort((n1,n2) => {
       if (n1.totalScore > n2.totalScore) {
-          return 1;
+        return 1;
       }
 
       if (n1.totalScore < n2.totalScore) {
-          return -1;
+        return -1;
       }
 
       return 0;
-  })
-  console.log(data)
+    })
     return data.reverse();
   }
 
@@ -69,11 +77,9 @@ export class RankingDetailComponent implements OnInit {
 
     let users:any[]=[];
     let score = this.orderByScore();
-    console.log(score);
     score.forEach(score=>{
 
       this.UserRankingService.currentRankingUsers.forEach(user=>{
-        console.log(user,score);
         if(user.id == score.id_student){
           users.push(user);
         }
@@ -83,6 +89,19 @@ export class RankingDetailComponent implements OnInit {
     return users;
 
   }
+
+  changeScores(e:Event){
+    this.optionSelected = true;
+    this.orderByScore().forEach(el => {
+      el.scores.forEach(score =>{
+        if(this.currentTask.id_task == score.id_task){
+          el.selectedScore = score.score;
+        }
+      })
+    });
+  }
+
+
 
   addtask(){
       this.modal.show(AddTasksComponent,{backdrop: 'static', keyboard: false});

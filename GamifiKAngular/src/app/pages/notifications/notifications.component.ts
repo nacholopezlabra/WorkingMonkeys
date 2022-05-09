@@ -15,6 +15,7 @@ export class NotificationsComponent implements OnInit {
   constructor(public usersService: UsersService, public notisService:NotificationsService, private common:CommonService) {
   this.user = this.usersService.getCurrentUser();
 }
+
   ngOnInit(): void {
     this.notisService.getData(this.user);
   }

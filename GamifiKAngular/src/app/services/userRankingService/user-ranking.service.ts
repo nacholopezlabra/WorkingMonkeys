@@ -41,7 +41,7 @@ export class UserRankingService {
     this.score = [];
     if(this.currentRankingUsers.length > 0){
       this.currentRankingUsers.forEach(user =>{
-        let scor:scores = {id_student:0,scores:[],totalScore:0};
+        let scor:scores = {id_student:0,scores:[],totalScore:0, selectedScore: 0};
         scor.id_student = user.id;
         score.forEach(sc => {
           if(user.id == sc.id_student){

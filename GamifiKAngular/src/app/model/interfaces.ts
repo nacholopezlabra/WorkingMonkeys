@@ -28,6 +28,7 @@ export interface scores {
   id_student:number;
   scores:score[];
   totalScore:number;
+  selectedScore:number;
 }
 
 export interface score{
