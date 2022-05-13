@@ -58,5 +58,4 @@ export interface pentabilities{
   name: string;
   explanation: string;
   image: string;
-
 }
