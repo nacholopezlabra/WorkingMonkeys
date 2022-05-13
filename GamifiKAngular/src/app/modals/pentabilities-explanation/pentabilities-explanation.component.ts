@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { pentabilities, user } from 'src/app/model/interfaces';
 import { PentabilitiesServiceService } from 'src/app/services/pentabilitiesService/pentabilities-service.service';
 import { UsersService } from 'src/app/services/userService/users.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ExplanationPentabilitiesComponent } from '../explanation-pentabilities/explanation-pentabilities.component';
 
 
 @Component({
@@ -11,43 +13,22 @@ import { UsersService } from 'src/app/services/userService/users.service';
 })
 export class PentabilitiesExplanationComponent implements OnInit {
   user: user;
-  pentabilities: pentabilities = {id_pentabilitie: 1,name: "", explanation:"", image:""};
-  apiService: any;
-  imgBase64Path: string = '';
-  isImageSaved: boolean = false;
-  cardImageBase64: string = '';
+  pentabilities: pentabilities[]=[];
 
-  constructor(public usersService: UsersService, private pentabilitiesService: PentabilitiesServiceService) {
+  constructor(public usersService: UsersService, private pentabilitiesService: PentabilitiesServiceService, private modal:BsModalService) {
     this.user = this.usersService.getCurrentUser();
     console.log(this.user);
+
+    this.pentabilitiesService.getPentabilities().then(()=>{
+      this.pentabilities = this.pentabilitiesService.fetchPentabilities();
+      console.log(this.pentabilities);
+    });
   }
 
   ngOnInit(): void {}
 
-  crearPentabilities(){
-    this.pentabilitiesService.createPentabilities(this.pentabilities);
-
+  abrirmodal(item:any){
+    this.pentabilitiesService.setCurrentPenta(item);
+    this.modal.show(ExplanationPentabilitiesComponent,{backdrop: 'static', keyboard: false});
   }
-
-  fileChangeEvent(fileInput: any) {
-    if (fileInput.target.files && fileInput.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const image = new Image();
-        image.src = e.target.result;
-        image.onload = (rs) => {
-          this.imgBase64Path = e.target.result;
-          this.cardImageBase64 = this.imgBase64Path;
-          this.isImageSaved = true;
-          this.pentabilities.image = this.cardImageBase64;
-          console.log(this.pentabilities)
-        };
-      };
-      reader.readAsDataURL(fileInput.target.files[0]);
-    }
-  }
-
 }
-
-
-

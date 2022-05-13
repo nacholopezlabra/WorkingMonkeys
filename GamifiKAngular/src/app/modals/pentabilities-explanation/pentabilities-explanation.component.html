@@ -38,17 +38,12 @@
         </div>
       </div>
       <div class="lboard_wrap">
-        <div class="text-center">
-
-          <input [(ngModel)]="pentabilities.name" type="text" size="55" placeholder="Pon el nombre pentabilities" required>
-          <input [(ngModel)]="pentabilities.explanation" type="text" size="55" placeholder="descripcion pentabilities" required>
-
-          <input type="file" accept="image/" (change)="fileChangeEvent($event)" #fileInput>
-
-          <div style="padding: 20px">
-           <button class="button1" (click)="crearPentabilities()">Crear</button>
-          </div>
-       </div>
+        <div class="lboard_item month" style="display:inline-block;" *ngFor="let item of pentabilities; let i = index" >
+          <img class="img2" alt="" src="{{item.image}}" (click)="abrirmodal(item)" >
+          <h2 style="color: white;">{{item.name}}</h2>
+        </div>
       </div>
     </div>
   </div>
+
+

@@ -44,10 +44,6 @@ export class RankingComponent implements OnInit {
     this.modal.show(AddRankingsComponent,{backdrop: 'static', keyboard: false});
   }
 
-  createRanking2(){
-    this.modal.show(PentabilitiesExplanationComponent,{backdrop: 'static', keyboard: false});
-  }
-
   addUserRanking(){
     this.modal.show(JoinRankingComponent,{backdrop: 'static', keyboard: false});
   }

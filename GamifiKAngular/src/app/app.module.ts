@@ -24,6 +24,7 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { PentabilitiesExplanationComponent } from './modals/pentabilities-explanation/pentabilities-explanation.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
+import { ExplanationPentabilitiesComponent } from './modals/explanation-pentabilities/explanation-pentabilities.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MomentModule } from 'angular2-moment';
     RankingComponent,
     JoinRankingComponent,
     NotificationsComponent,
-    PentabilitiesExplanationComponent
+    PentabilitiesExplanationComponent,
+    ExplanationPentabilitiesComponent
   ],
   imports: [
     CommonModule,

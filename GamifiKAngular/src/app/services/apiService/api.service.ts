@@ -5,8 +5,8 @@ import { task } from 'src/app/model/interfaces';
 import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
-//const HOST: string = "http://localhost:8080/apis/";
-const HOST: string = "http://192.168.7.182:8080/apis/";
+const HOST: string = "http://localhost:8080/apis/";
+//const HOST: string = "http://192.168.7.182:8080/apis/";
 const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
 const MODIFYUSER :string = "user/modifyUser.php";
@@ -29,7 +29,6 @@ const GETNOTIS: string = "join/getNotifications.php?id_user=";
 const ACCEPTREQUEST:string = "join/acceptRequest.php?id=";
 const DELETENOTIS: string = "join/deleteNotis.php?id=";
 const GETPENTABILITIES: string = "pentabilities/getPentabilities.php";
-const CREATEPENTA: string= "pentabilities/createPentabilitie.php";
 
 @Injectable({
   providedIn: 'root'
@@ -129,10 +128,6 @@ export class ApiService {
 
   getPentabilities():Promise<any>{
     return this.http.get(this.generateUrl(GETPENTABILITIES)).toPromise();
-  }
-
-  createPentabilitie(pentabilities: pentabilities):Promise<any>{
-    return this.http.post(this.generateUrl(CREATEPENTA), pentabilities,{responseType:'json'}).toPromise();
   }
 
 }
