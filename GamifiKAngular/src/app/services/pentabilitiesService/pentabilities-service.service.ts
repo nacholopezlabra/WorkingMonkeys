@@ -6,7 +6,7 @@ import { ApiService } from '../apiService/api.service';
   providedIn: 'root'
 })
 export class PentabilitiesServiceService {
-
+  currentPenta: any;
   pentabilities: pentabilities[]=[];
   constructor(private apiService:ApiService) { }
 
@@ -22,4 +22,12 @@ export class PentabilitiesServiceService {
     return this.pentabilities;
   }
 
+
+  setCurrentPenta(pentabilities:pentabilities){
+    this.currentPenta = pentabilities;
+  }
+
+  getCurrentPenta():pentabilities{
+    return this.currentPenta;
+  }
 }

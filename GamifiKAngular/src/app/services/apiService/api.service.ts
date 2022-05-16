@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ranking } from 'src/app/model/interfaces';
+import { pentabilities, ranking } from 'src/app/model/interfaces';
 import { task } from 'src/app/model/interfaces';
 import { Observable } from 'rxjs';
 import { user } from 'src/app/model/interfaces';
 
 const HOST: string = "http://localhost:8080/apis/";
-//const HOST: string = "http://192.168.7.141:8080/apis/";
+//const HOST: string = "http://192.168.7.182:8080/apis/";
 const LOGINURL : string = "user/login.php?";
 const REGISTERURL : string = "user/register.php";
 const MODIFYUSER :string = "user/modifyUser.php";

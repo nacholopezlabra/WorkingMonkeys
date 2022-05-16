@@ -7,6 +7,7 @@ import { RankingComponent } from './pages/ranking/ranking.component';
 import { AddRankingsComponent } from './modals/add-rankings/add-rankings.component';
 import { RankingDetailComponent } from './pages/ranking-detail/ranking-detail.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { PentabilitiesExplanationComponent } from './modals/pentabilities-explanation/pentabilities-explanation.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'ranking', component: RankingComponent },
   { path: 'rankingDetails', component:RankingDetailComponent},
-  { path: 'notifications', component:NotificationsComponent}
+  { path: 'notifications', component:NotificationsComponent},
+  { path: 'pentabilities', component:PentabilitiesExplanationComponent},
 ];
 
 @NgModule({

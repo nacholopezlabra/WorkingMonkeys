@@ -54,6 +54,8 @@ export interface request{
 }
 
 export interface pentabilities{
-  id:number,
-  explanation: string
+  id_pentabilitie: number;
+  name: string;
+  explanation: string;
+  image: string;
 }

@@ -1,11 +1,49 @@
-<body>
-  <div class="container">
-    <div class="text-center">
-      <h3><b>Titulo Pentabilities</b></h3>
-      <p [(ngModel)]="pentabilities"></p>
-      <div style="padding: 20px">
-        <button class="button2" (click)="closeDialog()">Cerrar</button>
+<html>
+  <header>
+    <div class="logo">
+     <img class="logoo" src="../../../assets/backgroundimg/logomonke.png">
     </div>
+    <div class="menu">
+      <a routerLink="../pentabilities" class="link">
+        <div class="title">Pentabilities</div>
+        <div class="bar"></div>
+      </a>
+      <a routerLink="../notifications" class="link">
+        <div class="title">Notifications</div>
+        <div class="bar"></div>
+      </a>
+        <a routerLink="../profile" class="link">
+          <div class="title">Profile</div>
+          <div class="bar"></div>
+        </a>
+        <a routerLink="../ranking" class="link">
+          <div class="title">Ranking</div>
+          <div class="bar"></div>
+        </a>
+        <a href="#" class="link" (click)="usersService.logOut()">
+          <div class="title">Cerrar sesion</div>
+          <div class="bar"></div>
+        </a>
+      </div>
+  </header>
+<body>
+  <div class="wrapper">
+    <div class="lboard_section">
+      <div class="lboard_tabs">
+        <div class="tabs">
+
+          <ul>
+            <li data-li="today">Pentabilities</li>
+          </ul>
+        </div>
+      </div>
+      <div class="lboard_wrap">
+        <div class="lboard_item month" style="display:inline-block;" *ngFor="let item of pentabilities; let i = index" >
+          <img class="img2" alt="" src="{{item.image}}" (click)="abrirmodal(item)" >
+          <h2 style="color: white;">{{item.name}}</h2>
+        </div>
+      </div>
     </div>
   </div>
-  </body>
+
+
