@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 include_once('../../Controlers/bd.php');
 include_once('../../Models/result.php');
-include_once('../../Models/ranking.php');
+include_once('../../Models/task.php');
 
 $bd = new bd();
 $con = $bd->getConnection();

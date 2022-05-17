@@ -138,7 +138,7 @@ header {
 
 .lboard_wrap{
 	position: absolute;
-	top: 70px;
+	top: 107px;
 	left: 40px;
 	background: #3a3d51;
 	width: 100%;
@@ -234,4 +234,12 @@ header {
   height: 30px ;
   color: white;
   margin: 5px;
+}
+.volveratras{
+  margin-right: 127px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #3a3d51;
+	cursor: pointer;
+  text-decoration: none;
 }

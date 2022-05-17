@@ -53,6 +53,9 @@ export class ProfileComponent implements OnInit {
      this.editMode = true;
    }
  }
+ cerrar2(){
+   this.editMode= false;
+ }
 
   showPassword(): void {
     if (!this.passwordShowed) {
@@ -60,6 +63,9 @@ export class ProfileComponent implements OnInit {
     } else {
       this.passwordShowed = false;
     }
+  }
+  cerrar(){
+    this.passwordShowed= false;
   }
   changePassword(){
     let data= {

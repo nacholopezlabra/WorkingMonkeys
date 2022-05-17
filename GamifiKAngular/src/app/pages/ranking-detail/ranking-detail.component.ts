@@ -150,6 +150,7 @@ export class RankingDetailComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1000
               })
+
             })
 
           });

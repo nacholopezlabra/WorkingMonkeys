@@ -22,7 +22,7 @@ const ADDUSERINTORANKING : string = "join/askToJoin.php";
 const GETRANKINGSUSER : string = "userRanking/getRankingsUser.php?id=";
 const DELETEUSERRANKING : string = "userRanking/deleteUser.php?";
 const CREATETASK: string = "tasks/createTask.php";
-const DELETETASK: string = "tasks/deleteTask.php";
+const DELETETASK: string = "tasks/deleteTask.php?";
 const UPDATETASK: string = "tasks/updateTask.php";
 const GETREQUESTS: string = "join/getRequestToJoin.php?id=";
 const GETNOTIS: string = "join/getNotifications.php?id_user=";

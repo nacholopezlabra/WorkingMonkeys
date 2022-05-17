@@ -18,7 +18,7 @@ code:string ="";
   }
   addUserRanking(){
     if (this.code =="") {
-      this.CommonService.sweetalert("error","Has de introduir un nombre de ranking");
+      this.CommonService.sweetalert("error","Has de introduir un codigo de ranking correcto");
     }
     else{
       this.rankingService.addUserIntoRanking(this.code);

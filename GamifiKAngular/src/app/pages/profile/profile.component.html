@@ -35,7 +35,7 @@
   <div>
 
     <div class="imageCard standarCard">
-      <button (click)="openEditMode()"><img class="icon" src="../../../assets/icons/editIcon.png"></button>
+      <button (click)="openEditMode()">Editar perfil</button>
 
       <div class="imageCardContainer">
 
@@ -73,7 +73,8 @@
            <input class="inputBox" type="password" [(ngModel)]="lastPassword" placeholder="Introduzca su contraseña">
            <input class="inputBox" type="password" [(ngModel)]="newPassword" placeholder="Introduzca una contraseña nueva">
            <input class="inputBox" type="password" [(ngModel)]="repeatNewPassword" placeholder="Introduzca la contraseña nueva de nuevo">
-          <button (click)="changePassword()">Cambiar contraseña</button>
+          <button style="margin:10px" (click)="changePassword()">Cambiar contraseña</button>
+          <button (click)="cerrar()">Cerrar</button>
           </div>
         </div>
 
@@ -87,7 +88,8 @@
           <p>correo: <input type="text" [(ngModel)]="user.mail"></p>
 
 
-          <button (click)="editProfileData()">Editar</button>
+          <button style="margin:10px" (click)="editProfileData()">Editar</button>
+          <button (click)="cerrar2()">Cerrar</button>
         </div>
     </div>
 
